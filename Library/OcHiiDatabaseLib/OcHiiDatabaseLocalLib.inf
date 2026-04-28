@@ -39,7 +39,7 @@
   ConfigKeywordHandler.c
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdeModulePkg/MdeModulePkg.dec
   MdePkg/MdePkg.dec
 

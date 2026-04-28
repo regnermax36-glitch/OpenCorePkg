@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build QEMU image, example:
-# qemu-system-x86_64 -drive file=$QEMU_IMAGE/OpenCore.RO.raw -serial stdio \
+# qemu-system-x86_64 -drive file=$QEMU_IMAGE/MaxRegner.RO.raw -serial stdio \
 #   -usb -device usb-kbd -device usb-mouse -s -m 8192
 
 cd "$(dirname "$0")" || exit 1
@@ -61,7 +61,7 @@ if [ "$(uname)" = "Linux" ]; then
     echo "fdisk tool is missing!"
     exit 1
   fi
-  IMAGE=OpenCore.raw
+  IMAGE=MaxRegner.raw
   DIR="$IMAGE.d"
   NBD=/dev/nbd0
 
@@ -123,9 +123,9 @@ END
 
   chown "$(whoami)" "$IMAGE"
 elif [ "$(uname)" = "Darwin" ]; then
-  rm -f OpenCore.dmg.sparseimage OpenCore.RO.raw OpenCore.RO.dmg
-  hdiutil create -size 200m  -layout "UNIVERSAL HD"  -type SPARSE  -o OpenCore.dmg
-  newDevice=$(hdiutil attach -nomount OpenCore.dmg.sparseimage |head -n 1 |  awk  '{print $1}')
+  rm -f MaxRegner.dmg.sparseimage MaxRegner.RO.raw MaxRegner.RO.dmg
+  hdiutil create -size 200m  -layout "UNIVERSAL HD"  -type SPARSE  -o MaxRegner.dmg
+  newDevice=$(hdiutil attach -nomount MaxRegner.dmg.sparseimage |head -n 1 |  awk  '{print $1}')
   echo newdevice "$newDevice"
 
   diskutil partitionDisk "${newDevice}" 1 MBR fat32 TEST R
@@ -181,6 +181,6 @@ MAKEACTIVE
   fi
 
   hdiutil detach "$newDevice"
-  hdiutil convert -format UDRO OpenCore.dmg.sparseimage -o OpenCore.RO.dmg
-  qemu-img convert -f dmg -O raw OpenCore.RO.dmg OpenCore.RO.raw
+  hdiutil convert -format UDRO MaxRegner.dmg.sparseimage -o MaxRegner.RO.dmg
+  qemu-img convert -f dmg -O raw MaxRegner.RO.dmg MaxRegner.RO.raw
 fi

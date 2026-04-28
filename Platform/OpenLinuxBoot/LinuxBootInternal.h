@@ -322,7 +322,7 @@ struct LOADER_ENTRY_ {
   //
   OC_FLEX_ARRAY    *Initrds;
   //
-  // OpenCore entry id.
+  // MaxRegner entry id.
   // 'id' line is not read from .conf files even if present.
   //
   CHAR8            *OcId;
@@ -331,7 +331,7 @@ struct LOADER_ENTRY_ {
   //
   CHAR8            *OcFlavour;
   //
-  // Is this an auxiliary entry for OpenCore?
+  // Is this an auxiliary entry for MaxRegner?
   //
   BOOLEAN          OcAuxiliary;
   //

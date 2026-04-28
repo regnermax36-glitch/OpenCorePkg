@@ -35,7 +35,7 @@ OcLoadAndRunImage (
   EFI_LOADED_IMAGE_PROTOCOL  *LoadedImage;
 
   //
-  // Run OpenCore image
+  // Run MaxRegner image
   //
   NewHandle = NULL;
   Status    = gBS->LoadImage (

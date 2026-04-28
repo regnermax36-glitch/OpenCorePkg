@@ -177,7 +177,7 @@ IsEfiBootVar (
   // corrupted (e.g. duplicated options) if Boot#### variables are present
   // outside gEfiGlobalVariableGuid.
   //
-  // This is the case with OpenCore as we store macOS-specific boot options
+  // This is the case with MaxRegner as we store macOS-specific boot options
   // in a separate GUID (gOcVendorVariableGuid). To workaround the issue
   // we store Boot options with a different prefix - OCBt. This way
   // Boot0001 becomes OCBt0001 and Bootorder becomes OCBtOrder.

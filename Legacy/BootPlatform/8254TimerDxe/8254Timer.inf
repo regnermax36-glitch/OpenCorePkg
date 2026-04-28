@@ -19,7 +19,7 @@
 [Packages]
   MdePkg/MdePkg.dec
   OvmfPkg/OvmfPkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
 
 [LibraryClasses]
   UefiBootServicesTableLib

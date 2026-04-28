@@ -34,20 +34,20 @@
   OcDevicePropertyLib.c
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
 
 [Guids]
   gAppleBootVariableGuid       ## CONSUMES ## PRODUCES
   gAppleVendorVariableGuid     ## CONSUMES ## PRODUCES
-  gOpenCorePkgTokenSpaceGuid   ## CONSUMES
+  gMaxRegnerPkgTokenSpaceGuid   ## CONSUMES
 
 [Protocols]
   gEfiDevicePathPropertyDatabaseProtocolGuid  ## PRODUCES
 
 [FeaturePcd]
-  gOpenCorePkgTokenSpaceGuid.PcdEnableAppleThunderboltSync        ## CONSUMES
-  gOpenCorePkgTokenSpaceGuid.PcNvramInitDevicePropertyDatabase    ## CONSUMES
+  gMaxRegnerPkgTokenSpaceGuid.PcdEnableAppleThunderboltSync        ## CONSUMES
+  gMaxRegnerPkgTokenSpaceGuid.PcNvramInitDevicePropertyDatabase    ## CONSUMES
 
 [LibraryClasses]
   BaseLib

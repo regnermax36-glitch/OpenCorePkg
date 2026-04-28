@@ -55,7 +55,7 @@ typedef struct OC_HOTKEY_CONTEXT_ OC_HOTKEY_CONTEXT;
 /**
   Default strings for use in the interfaces.
 **/
-#define OC_MENU_BOOT_MENU             L"OpenCore Boot Menu"
+#define OC_MENU_BOOT_MENU             L"MaxRegner Boot Menu"
 #define OC_MENU_UEFI_SHELL_ENTRY      L"UEFI Shell"
 #define OC_MENU_PASSWORD_REQUEST      L"Password: "
 #define OC_MENU_PASSWORD_PROCESSING   L"Verifying password..."
@@ -1025,7 +1025,7 @@ struct OC_PICKER_CONTEXT_ {
   UINT32                      ConsoleAttributes;
   //
   // Picker attribues:
-  // - BIT0~BIT15  are OpenCore reserved.
+  // - BIT0~BIT15  are MaxRegner reserved.
   // - BIT16~BIT31 are OEM-specific.
   //
   UINT32                      PickerAttributes;
@@ -1306,7 +1306,7 @@ OcShowSimplePasswordRequest (
 
   Shared context function to be used by all pickers rather than directly linked call
   to OcVerifyPasswordSha512, to pick up status of Avx acceleration as enabled within
-  OpenCore.efi and to avoid unnecessary OcCryptoLib lib linking into external picker.
+  MaxRegner.efi and to avoid unnecessary OcCryptoLib lib linking into external picker.
 
 
   @param[in]  Password          Password.

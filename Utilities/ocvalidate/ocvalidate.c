@@ -83,7 +83,7 @@ ENTRY_POINT (
   PcdGet32 (PcdFixedDebugPrintErrorLevel) |= DEBUG_INFO;
   PcdGet32 (PcdDebugPrintErrorLevel)      |= DEBUG_INFO;
 
-  DEBUG ((DEBUG_ERROR, "\nNOTE: This version of ocvalidate is only compatible with OpenCore version %a!\n\n", OPEN_CORE_VERSION));
+  DEBUG ((DEBUG_ERROR, "\nNOTE: This version of ocvalidate is only compatible with MaxRegner version %a!\n\n", OPEN_CORE_VERSION));
 
   //
   // Print usage.

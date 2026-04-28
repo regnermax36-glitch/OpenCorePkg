@@ -41,8 +41,8 @@
   LegacyRegion2.h
 
 [Packages]
-  OpenCorePkg/OpenDuetPkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
 

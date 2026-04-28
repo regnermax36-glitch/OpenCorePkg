@@ -54,7 +54,7 @@
 [Packages]
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
 
 [LibraryClasses]
   UefiBootServicesTableLib
@@ -99,8 +99,8 @@
 
 [FeaturePcd]
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutGopSupport   ## CONSUMES
-  gOpenCorePkgTokenSpaceGuid.PcdConOutUgaSupport       ## CONSUMES
-  gOpenCorePkgTokenSpaceGuid.PcdUgaConsumeSupport      ## CONSUMES
+  gMaxRegnerPkgTokenSpaceGuid.PcdConOutUgaSupport       ## CONSUMES
+  gMaxRegnerPkgTokenSpaceGuid.PcdUgaConsumeSupport      ## CONSUMES
 
 [Pcd]
   ## SOMETIMES_PRODUCES

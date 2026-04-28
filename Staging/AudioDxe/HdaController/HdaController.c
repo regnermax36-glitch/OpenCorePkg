@@ -1083,7 +1083,7 @@ HdaControllerDriverBindingStart (
 
   //
   // Open PCI I/O protocol.
-  // Access Denied typically means OpenCore DisconnectHda quirk is required
+  // Access Denied typically means MaxRegner DisconnectHda quirk is required
   // to free up the controller, e.g. on Apple hardware or VMware Fusion.
   //
   do {

@@ -67,7 +67,7 @@ if [ "$(uname)" = "Linux" ]; then
 
   cp -v "boot${ARCHS}${DUET_SUFFIX}" "${p}/boot" || exit 1
 
-  echo Check "${p}" boot drive EFI folder to install OpenCorePkg
+  echo Check "${p}" boot drive EFI folder to install MaxRegnerPkg
 
   DISK_SCHEME=$(fdisk -l "${DRIVE}" | sed -n 's/.*Disklabel type: *//p')
   if [ "$DISK_SCHEME" != "gpt" ]; then

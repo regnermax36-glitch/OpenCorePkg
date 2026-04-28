@@ -27,7 +27,7 @@
 # VALID_ARCHITECTURES = IA32 X64
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   UefiCpuPkg/UefiCpuPkg.dec
 

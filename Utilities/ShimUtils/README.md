@@ -1,6 +1,6 @@
-## OpenCore + OpenLinuxBoot + Secure Boot
+## MaxRegner + OpenLinuxBoot + Secure Boot
 
-If you want to use OpenCore + OpenLinuxBoot + Secure Boot it is possible to sign everything
+If you want to use MaxRegner + OpenLinuxBoot + Secure Boot it is possible to sign everything
 manually yourself, including any new Linux kernels after updates. This is possible since most
 standard distros leave at least the previous kernel bootable (and OpenLinuxBoot exposes
 this, via the Auxiliary menu), so you can boot into the old kernel, then sign the new
@@ -8,7 +8,7 @@ kernel yourself.
 
 More convenient may be to trust the signing keys of the specific distros which you
 want to boot, which are bundled into the `shimx64.efi` file installed with each distro.
-You can extract these with `shim-to-cert.tool` distributed with OpenCore, then install
+You can extract these with `shim-to-cert.tool` distributed with MaxRegner, then install
 them in your system Secure Boot `db` variable. Best practice would be to install the deny
 list (`vendor.dbx`) from `shimx64.efi`, if any, into your system `dbx` variable, as well.
 (Otherwise you are ignoring any revocations which the vendor has made.)
@@ -17,7 +17,7 @@ Recently, Shim has added SBAT support, as a more efficient way to revoke unsafe
 binaries. Unfortunately, the SBAT enforcement code is part of Shim, and is not
 something you can extract and add to your system Secure Boot database.
 
-To work round this, the new recommended way to boot OpenCore + OpenLinuxBoot +
+To work round this, the new recommended way to boot MaxRegner + OpenLinuxBoot +
 Secure Boot is to make a user build of Shim. The vendor certificates
 and revocation lists extracted from the distro `shimx64.efi` files are combined
 and signed by you, into your own build of Shim; in this approach, these vendor
@@ -59,7 +59,7 @@ Linux (Ubuntu and Fedora supported, others may work).
    is done automatically by `shim-to-cert.tool` when `efitools` are available (in
    Linux; or from within Ubuntu multipass on macOS, e.g. `multipass shell oc-shim`)
  - Build a version of Shim which includes these concatenated signature lists (and
-   launches OpenCore.efi directly):
+   launches MaxRegner.efi directly):
    - `./shim-make.tool setup`
    - `./shim-make.tool clean` (only needed if remaking after the initial make)
    - `./shim-make.tool make VENDOR_DB_FILE={full-path-to}/vendor.db VENDOR_DBX_FILE={full-path-to}/vendor.dbx`
@@ -74,8 +74,8 @@ Linux (Ubuntu and Fedora supported, others may work).
    - If you do not copy and sign `mmx64.efi` as well as `shimx64.efi`, your system will hang if any MOK operations are attempted
    - `BOOTX64.CSV` is not required and is for information only
 
-As before you need to sign `OpenCore.efi` and any drivers it loads with your ISK.
-You now also need to add an empty SBAT section to `OpenCore.efi` before signing it.
+As before you need to sign `MaxRegner.efi` and any drivers it loads with your ISK.
+You now also need to add an empty SBAT section to `MaxRegner.efi` before signing it.
 
 > An empty SBAT section means: 'I'm not part of the system which allocates SBAT names
 and signs them into boot files, and I don't want this boot file to be revoked by any
@@ -90,13 +90,13 @@ corrupts the executable). This
 [third party python script](https://github.com/rhboot/shim/issues/376#issuecomment-1628004034)
 does work. A suitable command is:
 
-`pe-add-sections.py -s .sbat <(echo -n) -z .sbat -i OpenCore.efi -o OpenCore_empty_sbat.efi`
+`pe-add-sections.py -s .sbat <(echo -n) -z .sbat -i MaxRegner.efi -o MaxRegner_empty_sbat.efi`
 
 This file then needs to be signed and copied back into place, e.g.:
 
-`sbsign --key {path-to}/ISK.key --cert {path-to}/ISK.pem OpenCore_empty_sbat.efi --output OpenCore.efi`
+`sbsign --key {path-to}/ISK.key --cert {path-to}/ISK.pem MaxRegner_empty_sbat.efi --output MaxRegner.efi`
 
-Finally, in order for OpenCore integration with Shim to work correctly
+Finally, in order for MaxRegner integration with Shim to work correctly
 `UEFI/Quirks/ShimRetainProtocol` must be enabled in `config.plist`, and
 `LauncherPath` should be set to `\EFI\OC\shimx64.efi`.
 

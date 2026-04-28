@@ -40,8 +40,8 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
-  OpenCorePkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
+  MaxRegnerPkg/OpenDuetPkg.dec
 
 [LibraryClasses]
   BaseLib

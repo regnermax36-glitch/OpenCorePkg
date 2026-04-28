@@ -169,7 +169,7 @@ HeciGetResponse (
 
     //
     // Note, this was reworked to make more sense.
-    // https://github.com/osy86/OpenCorePkg/commit/8f7188d41876109aec2fe3a721f69daf979dd268.diff
+    // https://github.com/osy86/MaxRegnerPkg/commit/8f7188d41876109aec2fe3a721f69daf979dd268.diff
     //
     if (!mCurrentMeClientRequestedReceiveMsg) {
       ZeroMem (&Command, sizeof (Command));

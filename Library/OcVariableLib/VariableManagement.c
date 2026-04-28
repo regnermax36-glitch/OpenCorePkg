@@ -135,11 +135,11 @@ IsDeletableVariable (
     }
 
     //
-    // Lilu & OpenCore extensions if present
+    // Lilu & MaxRegner extensions if present
     //
   } else if (CompareGuid (Guid, &gOcVendorVariableGuid)) {
     //
-    // Do not remove OpenCore critical variables.
+    // Do not remove MaxRegner critical variables.
     //
     if (  (StrCmp (Name, OC_BOOT_REDIRECT_VARIABLE_NAME) != 0)
        && (StrCmp (Name, OC_SCAN_POLICY_VARIABLE_NAME) != 0))
@@ -401,7 +401,7 @@ GetBootstrapBootData (
   }
 
   //
-  // OpenCore moved Bootstrap to BootOrder[0] on initialisation.
+  // MaxRegner moved Bootstrap to BootOrder[0] on initialisation.
   //
   OptionData = OcGetBootOptionData (
                  OptionSize,

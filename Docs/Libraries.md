@@ -10,7 +10,7 @@
 * OcCryptoLib — Misc cryptographic primitives (AES, RSA, MD5, SHA-1, SHA-256)
 * OcDataHubLib — Apple-specific DataHub data configuration
 * OcAppleDiskImageLib — Expose DMG as a UEFI RAM disk
-* OcConfigurationLib — Deserialize OpenCore configuration
+* OcConfigurationLib — Deserialize MaxRegner configuration
 * OcDebugLogLib — Debug output redirection through OC Log protocol
 * OcDevicePathLib — Device path management and transformation
 * OcDevicePropertyLib — Apple device property protocol implementation

@@ -1,9 +1,9 @@
-<img src="/Docs/Logos/OpenCore_with_text_Small.png" width="200" height="48"/>
+<img src="/Docs/Logos/MaxRegner_with_text_Small.png" width="200" height="48"/>
 
-[![Build Status](https://github.com/acidanthera/OpenCorePkg/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/acidanthera/OpenCorePkg/actions) [![Scan Status](https://scan.coverity.com/projects/18169/badge.svg?flat=1)](https://scan.coverity.com/projects/18169)
+[![Build Status](https://github.com/acidanthera/MaxRegnerPkg/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/acidanthera/MaxRegnerPkg/actions) [![Scan Status](https://scan.coverity.com/projects/18169/badge.svg?flat=1)](https://scan.coverity.com/projects/18169)
 -----
 
-OpenCore bootloader with development SDK.
+MaxRegner bootloader with development SDK.
 
 ## Libraries
 
@@ -58,4 +58,4 @@ details.
 
 #### Discussion
 
-Please refer to the following [list of OpenCore discussion forums](/Docs/FORUMS.md).
+Please refer to the following [list of MaxRegner discussion forums](/Docs/FORUMS.md).

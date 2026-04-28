@@ -1,5 +1,5 @@
 /** @file
-  OpenCore driver.
+  MaxRegner driver.
 
 Copyright (c) 2019, vit9696. All rights reserved.<BR>
 This program and the accompanying materials
@@ -28,7 +28,7 @@ typedef struct {
 BASE_ALIGNAS (16)
 STATIC
 OC_BUILTIN_VAULT_KEY
-mOpenCoreVaultKey = {
+mMaxRegnerVaultKey = {
   .StartMagic = { '=', 'B', 'E', 'G', 'I', 'N', ' ', 'O', 'C', ' ', 'V', 'A', 'U', 'L', 'T', '=' },
   .EndMagic   = { '=', '=', 'E', 'N', 'D', ' ', 'O', 'C', ' ', 'V', 'A', 'U', 'L', 'T', '=', '=' }
 };
@@ -56,14 +56,14 @@ OcGetVaultKey (
 
   AllZero = TRUE;
   for (Index = 0; Index < sizeof (OC_RSA_PUBLIC_KEY); ++Index) {
-    if (((UINT8 *)&mOpenCoreVaultKey.VaultKey)[Index] != 0) {
+    if (((UINT8 *)&mMaxRegnerVaultKey.VaultKey)[Index] != 0) {
       AllZero = FALSE;
       break;
     }
   }
 
   if (!AllZero) {
-    return (OC_RSA_PUBLIC_KEY *)&mOpenCoreVaultKey.VaultKey;
+    return (OC_RSA_PUBLIC_KEY *)&mMaxRegnerVaultKey.VaultKey;
   }
 
   return NULL;

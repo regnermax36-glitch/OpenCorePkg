@@ -1,5 +1,5 @@
 /** @file
-  Methods wrapping calls to legacy NVRAM protocol from OpenCore.
+  Methods wrapping calls to legacy NVRAM protocol from MaxRegner.
 
   Copyright (C) 2022, mikebeaton. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-3-Clause
@@ -47,7 +47,7 @@ InternalLocateVariableRuntimeProtocol (
 }
 
 //
-// TODO: We should normally strictly avoid passing OpenCore config structures outside of OcMainLib, but the
+// TODO: We should normally strictly avoid passing MaxRegner config structures outside of OcMainLib, but the
 // emulated NVRAM protocol is so tightly tied to the legacy NVRAM map that we (currently?) do so.
 //
 VOID
@@ -70,7 +70,7 @@ OcLoadLegacyNvram (
 
   //
   // It is not really required to support boot var routing with emulated NVRAM (since there are
-  // no firmware NVRAM boot vars used outside of OpenCore to avoid trashing), but having working
+  // no firmware NVRAM boot vars used outside of MaxRegner to avoid trashing), but having working
   // support is more convenient when switching back and forth between emulated and non-emulated
   // NVRAM, i.e. one less thing to have to remember to switch, since with this code everything
   // works as expected with or without RequestBootVarRouting. (Without it, boot entries do not

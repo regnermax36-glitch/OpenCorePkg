@@ -307,7 +307,7 @@ Ip4Config2DeleteStaticIpNvData (
 
   if (FoundStaticPolicy && FoundManualAddress) {
     //
-    // We may be called after Ip4Dxe has run (e.g. OpenNetworkBoot loaded by OpenCore, with native network stack).
+    // We may be called after Ip4Dxe has run (e.g. OpenNetworkBoot loaded by MaxRegner, with native network stack).
     // Since this variable is boot services access only we should not just delete it, as this may leave one boot
     // where the OS could set it. Instead reinitialise the variable to the value to which Ip4Dxe initialises it.
     // For initial values, see:

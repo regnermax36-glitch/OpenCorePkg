@@ -1,5 +1,5 @@
 /** @file
-  Lilu & OpenCore specific GUIDs for UEFI Variable Storage, version 1.0.
+  Lilu & MaxRegner specific GUIDs for UEFI Variable Storage, version 1.0.
 
 Copyright (c) 2019, vit9696. All rights reserved.<BR>
 This program and the accompanying materials
@@ -16,24 +16,24 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 #define OC_VARIABLE_H
 
 //
-// Variable used for OpenCore log storage (if enabled).
+// Variable used for MaxRegner log storage (if enabled).
 //
 #define OC_LOG_VARIABLE_NAME  L"boot-log"
 
 //
-// Variable used for OpenCore boot path (if enabled).
+// Variable used for MaxRegner boot path (if enabled).
 //
 #define OC_LOG_VARIABLE_PATH  L"boot-path"
 
 //
-// Variable used for OpenCore request to redirect NVRAM Boot variable write.
+// Variable used for MaxRegner request to redirect NVRAM Boot variable write.
 // Boot Services only.
 // See: https://github.com/acidanthera/bugtracker/issues/308.
 //
 #define OC_BOOT_REDIRECT_VARIABLE_NAME  L"boot-redirect"
 
 //
-// Variable used for exposing OpenCore Security -> ScanPolicy.
+// Variable used for exposing MaxRegner Security -> ScanPolicy.
 // Boot Services only.
 //
 #define OC_SCAN_POLICY_VARIABLE_NAME  L"scan-policy"
@@ -49,10 +49,10 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 #define OC_BOOT_PROTECT_VARIABLE_BOOTSTRAP  BIT0
 
 //
-// Variable used to report OpenCore version in the following format:
+// Variable used to report MaxRegner version in the following format:
 // REL-001-2019-01-01. This follows versioning style of Lilu and plugins.
 //
-#define OC_VERSION_VARIABLE_NAME  L"opencore-version"
+#define OC_VERSION_VARIABLE_NAME  L"maxregner-version"
 
 //
 // Variable used to report OEM product from SMBIOS Type1 ProductName.

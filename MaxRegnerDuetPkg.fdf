@@ -51,7 +51,7 @@
   !include OpenDuetPkgDefines.fdf.inc
 
   # BIOS Block I/O
-  INF OpenCorePkg/Legacy/BootPlatform/BlockIoDxe/BlockIoDxe.inf
+  INF MaxRegnerPkg/Legacy/BootPlatform/BlockIoDxe/BlockIoDxe.inf
 
 [Rule.Common.DXE_CORE]
   FILE DXE_CORE = $(NAMED_GUID) {

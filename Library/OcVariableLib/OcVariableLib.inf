@@ -1,5 +1,5 @@
 ## @file
-# Component description file for the OpenCore Variable library.
+# Component description file for the MaxRegner Variable library.
 #
 # Copyright (C) 2016-2022, Vitaly Cheptsov, Marvin Haeuser, Mike Beaton. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-3-Clause
@@ -23,7 +23,7 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   UefiCpuPkg/UefiCpuPkg.dec
 
 [Guids]

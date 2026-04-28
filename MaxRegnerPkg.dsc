@@ -15,14 +15,14 @@
 ##
 
 [Defines]
-  PLATFORM_NAME           = OpenCorePkg
+  PLATFORM_NAME           = MaxRegnerPkg
   PLATFORM_GUID           = C46F121D-ABC6-42A3-A241-91B09224C357
   PLATFORM_VERSION        = 1.0
   SUPPORTED_ARCHITECTURES = X64|IA32
   BUILD_TARGETS           = RELEASE|DEBUG|NOOPT
   SKUID_IDENTIFIER        = DEFAULT
   DSC_SPECIFICATION       = 0x00010006
-  FLASH_DEFINITION        = OpenCorePkg/OpenCorePkg.fdf
+  FLASH_DEFINITION        = MaxRegnerPkg/MaxRegnerPkg.fdf
 
   #
   # Network definition
@@ -57,7 +57,7 @@
   BcfgCommandLib|ShellPkg/Library/UefiShellBcfgCommandLib/UefiShellBcfgCommandLib.inf
   CacheMaintenanceLib|MdePkg/Library/BaseCacheMaintenanceLib/BaseCacheMaintenanceLib.inf
   CpuLib|MdePkg/Library/BaseCpuLib/BaseCpuLib.inf
-  DebugLib|OpenCorePkg/Library/OcDebugLibProtocol/OcDebugLibProtocol.inf
+  DebugLib|MaxRegnerPkg/Library/OcDebugLibProtocol/OcDebugLibProtocol.inf
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
   MtrrLib|UefiCpuPkg/Library/MtrrLib/MtrrLib.inf
   DebugPrintErrorLevelLib|MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
@@ -72,78 +72,78 @@
   HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
   IoLib|MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsic.inf
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
-  OcAcpiLib|OpenCorePkg/Library/OcAcpiLib/OcAcpiLib.inf
-  OcAfterBootCompatLib|OpenCorePkg/Library/OcAfterBootCompatLib/OcAfterBootCompatLib.inf
-  OcApfsLib|OpenCorePkg/Library/OcApfsLib/OcApfsLib.inf
-  OcAppleBootPolicyLib|OpenCorePkg/Library/OcAppleBootPolicyLib/OcAppleBootPolicyLib.inf
-  OcAppleChunklistLib|OpenCorePkg/Library/OcAppleChunklistLib/OcAppleChunklistLib.inf
-  OcAppleDiskImageLib|OpenCorePkg/Library/OcAppleDiskImageLib/OcAppleDiskImageLib.inf
-  OcAppleEventLib|OpenCorePkg/Library/OcAppleEventLib/OcAppleEventLib.inf
-  OcAppleImageConversionLib|OpenCorePkg/Library/OcAppleImageConversionLib/OcAppleImageConversionLib.inf
-  OcAppleImg4Lib|OpenCorePkg/Library/OcAppleImg4Lib/OcAppleImg4Lib.inf
-  OcAppleKernelLib|OpenCorePkg/Library/OcAppleKernelLib/OcAppleKernelLib.inf
-  OcAppleKeyMapLib|OpenCorePkg/Library/OcAppleKeyMapLib/OcAppleKeyMapLib.inf
-  OcAppleKeysLib|OpenCorePkg/Library/OcAppleKeysLib/OcAppleKeysLib.inf
-  OcAppleRamDiskLib|OpenCorePkg/Library/OcAppleRamDiskLib/OcAppleRamDiskLib.inf
-  OcAppleSecureBootLib|OpenCorePkg/Library/OcAppleSecureBootLib/OcAppleSecureBootLib.inf
-  OcAppleUserInterfaceThemeLib|OpenCorePkg/Library/OcAppleUserInterfaceThemeLib/OcAppleUserInterfaceThemeLib.inf
-  OcAudioLib|OpenCorePkg/Library/OcAudioLib/OcAudioLib.inf
-  OcBlitLib|OpenCorePkg/Library/OcBlitLib/OcBlitLib.inf
-  OcBootManagementLib|OpenCorePkg/Library/OcBootManagementLib/OcBootManagementLib.inf
-  OcBootServicesTableLib|OpenCorePkg/Library/OcBootServicesTableLib/OcBootServicesTableLib.inf
-  OcCompressionLib|OpenCorePkg/Library/OcCompressionLib/OcCompressionLib.inf
-  OcConfigurationLib|OpenCorePkg/Library/OcConfigurationLib/OcConfigurationLib.inf
-  OcConsoleControlEntryModeGenericLib|OpenCorePkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
-  OcConsoleControlEntryModeLocalLib|OpenCorePkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeLocalLib.inf
-  OcConsoleLib|OpenCorePkg/Library/OcConsoleLib/OcConsoleLib.inf
-  OcCpuLib|OpenCorePkg/Library/OcCpuLib/OcCpuLib.inf
-  OcCryptoLib|OpenCorePkg/Library/OcCryptoLib/OcCryptoLib.inf
-  OcDataHubLib|OpenCorePkg/Library/OcDataHubLib/OcDataHubLib.inf
-  OcDeviceMiscLib|OpenCorePkg/Library/OcDeviceMiscLib/OcDeviceMiscLib.inf
-  OcDevicePathLib|OpenCorePkg/Library/OcDevicePathLib/OcDevicePathLib.inf
-  OcDevicePropertyLib|OpenCorePkg/Library/OcDevicePropertyLib/OcDevicePropertyLib.inf
-  OcDeviceTreeLib|OpenCorePkg/Library/OcDeviceTreeLib/OcDeviceTreeLib.inf
-  OcDirectResetLib|OpenCorePkg/Library/OcDirectResetLib/OcDirectResetLib.inf
-  OcDriverConnectionLib|OpenCorePkg/Library/OcDriverConnectionLib/OcDriverConnectionLib.inf
-  OcFileLib|OpenCorePkg/Library/OcFileLib/OcFileLib.inf
-  OcFirmwarePasswordLib|OpenCorePkg/Library/OcFirmwarePasswordLib/OcFirmwarePasswordLib.inf
-  OcFirmwareVolumeLib|OpenCorePkg/Library/OcFirmwareVolumeLib/OcFirmwareVolumeLib.inf
-  OcFlexArrayLib|OpenCorePkg/Library/OcFlexArrayLib/OcFlexArrayLib.inf
-  OcGuardLib|OpenCorePkg/Library/OcGuardLib/OcGuardLib.inf
-  OcHashServicesLib|OpenCorePkg/Library/OcHashServicesLib/OcHashServicesLib.inf
-  OcHdaDevicesLib|OpenCorePkg/Library/OcHdaDevicesLib/OcHdaDevicesLib.inf
-  OcHeciLib|OpenCorePkg/Library/OcHeciLib/OcHeciLib.inf
-  OcHiiDatabaseLocalLib|OpenCorePkg/Library/OcHiiDatabaseLib/OcHiiDatabaseLocalLib.inf
-  OcInputLib|OpenCorePkg/Library/OcInputLib/OcInputLib.inf
-  OcLegacyThunkLib|OpenCorePkg/Library/OcLegacyThunkLib/OcLegacyThunkLib.inf
-  OcLogAggregatorLib|OpenCorePkg/Library/OcLogAggregatorLib/OcLogAggregatorLib.inf
-  OcMachoLib|OpenCorePkg/Library/OcMachoLib/OcMachoLib.inf
-  OcMacInfoLib|OpenCorePkg/Library/OcMacInfoLib/OcMacInfoLib.inf
-  OcMainLib|OpenCorePkg/Library/OcMainLib/OcMainLib.inf
-  OcMemoryLib|OpenCorePkg/Library/OcMemoryLib/OcMemoryLib.inf
-  OcMiscLib|OpenCorePkg/Library/OcMiscLib/OcMiscLib.inf
-  OcMp3Lib|OpenCorePkg/Library/OcMp3Lib/OcMp3Lib.inf
-  OcOSInfoLib|OpenCorePkg/Library/OcOSInfoLib/OcOSInfoLib.inf
-  OcPciIoLib|OpenCorePkg/Library/OcPciIoLib/OcPciIoLib.inf
-  OcPngLib|OpenCorePkg/Library/OcPngLib/OcPngLib.inf
-  OcRngLib|OpenCorePkg/Library/OcRngLib/OcRngLib.inf
-  OcRtcLib|OpenCorePkg/Library/OcRtcLib/OcRtcLib.inf
-  OcSerializeLib|OpenCorePkg/Library/OcSerializeLib/OcSerializeLib.inf
-  OcSmbiosLib|OpenCorePkg/Library/OcSmbiosLib/OcSmbiosLib.inf
-  OcSmcLib|OpenCorePkg/Library/OcSmcLib/OcSmcLib.inf
-  OcStorageLib|OpenCorePkg/Library/OcStorageLib/OcStorageLib.inf
-  OcStringLib|OpenCorePkg/Library/OcStringLib/OcStringLib.inf
-  OcTemplateLib|OpenCorePkg/Library/OcTemplateLib/OcTemplateLib.inf
-  OcTypingLib|OpenCorePkg/Library/OcTypingLib/OcTypingLib.inf
-  TimerLib|OpenCorePkg/Library/OcTimerLib/OcTimerLib.inf
-  OcUnicodeCollationEngGenericLib|OpenCorePkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngGenericLib.inf
-  OcUnicodeCollationEngLocalLib|OpenCorePkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngLocalLib.inf
-  OcVirtualFsLib|OpenCorePkg/Library/OcVirtualFsLib/OcVirtualFsLib.inf
-  OcWaveLib|OpenCorePkg/Library/OcWaveLib/OcWaveLib.inf
-  OcXmlLib|OpenCorePkg/Library/OcXmlLib/OcXmlLib.inf
-  OcPeCoffExtLib|OpenCorePkg/Library/OcPeCoffExtLib/OcPeCoffExtLib.inf
-  OcVariableLib|OpenCorePkg/Library/OcVariableLib/OcVariableLib.inf
-  OcVariableRuntimeLib|OpenCorePkg/Library/OcVariableRuntimeLib/OcVariableRuntimeLib.inf
+  OcAcpiLib|MaxRegnerPkg/Library/OcAcpiLib/OcAcpiLib.inf
+  OcAfterBootCompatLib|MaxRegnerPkg/Library/OcAfterBootCompatLib/OcAfterBootCompatLib.inf
+  OcApfsLib|MaxRegnerPkg/Library/OcApfsLib/OcApfsLib.inf
+  OcAppleBootPolicyLib|MaxRegnerPkg/Library/OcAppleBootPolicyLib/OcAppleBootPolicyLib.inf
+  OcAppleChunklistLib|MaxRegnerPkg/Library/OcAppleChunklistLib/OcAppleChunklistLib.inf
+  OcAppleDiskImageLib|MaxRegnerPkg/Library/OcAppleDiskImageLib/OcAppleDiskImageLib.inf
+  OcAppleEventLib|MaxRegnerPkg/Library/OcAppleEventLib/OcAppleEventLib.inf
+  OcAppleImageConversionLib|MaxRegnerPkg/Library/OcAppleImageConversionLib/OcAppleImageConversionLib.inf
+  OcAppleImg4Lib|MaxRegnerPkg/Library/OcAppleImg4Lib/OcAppleImg4Lib.inf
+  OcAppleKernelLib|MaxRegnerPkg/Library/OcAppleKernelLib/OcAppleKernelLib.inf
+  OcAppleKeyMapLib|MaxRegnerPkg/Library/OcAppleKeyMapLib/OcAppleKeyMapLib.inf
+  OcAppleKeysLib|MaxRegnerPkg/Library/OcAppleKeysLib/OcAppleKeysLib.inf
+  OcAppleRamDiskLib|MaxRegnerPkg/Library/OcAppleRamDiskLib/OcAppleRamDiskLib.inf
+  OcAppleSecureBootLib|MaxRegnerPkg/Library/OcAppleSecureBootLib/OcAppleSecureBootLib.inf
+  OcAppleUserInterfaceThemeLib|MaxRegnerPkg/Library/OcAppleUserInterfaceThemeLib/OcAppleUserInterfaceThemeLib.inf
+  OcAudioLib|MaxRegnerPkg/Library/OcAudioLib/OcAudioLib.inf
+  OcBlitLib|MaxRegnerPkg/Library/OcBlitLib/OcBlitLib.inf
+  OcBootManagementLib|MaxRegnerPkg/Library/OcBootManagementLib/OcBootManagementLib.inf
+  OcBootServicesTableLib|MaxRegnerPkg/Library/OcBootServicesTableLib/OcBootServicesTableLib.inf
+  OcCompressionLib|MaxRegnerPkg/Library/OcCompressionLib/OcCompressionLib.inf
+  OcConfigurationLib|MaxRegnerPkg/Library/OcConfigurationLib/OcConfigurationLib.inf
+  OcConsoleControlEntryModeGenericLib|MaxRegnerPkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
+  OcConsoleControlEntryModeLocalLib|MaxRegnerPkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeLocalLib.inf
+  OcConsoleLib|MaxRegnerPkg/Library/OcConsoleLib/OcConsoleLib.inf
+  OcCpuLib|MaxRegnerPkg/Library/OcCpuLib/OcCpuLib.inf
+  OcCryptoLib|MaxRegnerPkg/Library/OcCryptoLib/OcCryptoLib.inf
+  OcDataHubLib|MaxRegnerPkg/Library/OcDataHubLib/OcDataHubLib.inf
+  OcDeviceMiscLib|MaxRegnerPkg/Library/OcDeviceMiscLib/OcDeviceMiscLib.inf
+  OcDevicePathLib|MaxRegnerPkg/Library/OcDevicePathLib/OcDevicePathLib.inf
+  OcDevicePropertyLib|MaxRegnerPkg/Library/OcDevicePropertyLib/OcDevicePropertyLib.inf
+  OcDeviceTreeLib|MaxRegnerPkg/Library/OcDeviceTreeLib/OcDeviceTreeLib.inf
+  OcDirectResetLib|MaxRegnerPkg/Library/OcDirectResetLib/OcDirectResetLib.inf
+  OcDriverConnectionLib|MaxRegnerPkg/Library/OcDriverConnectionLib/OcDriverConnectionLib.inf
+  OcFileLib|MaxRegnerPkg/Library/OcFileLib/OcFileLib.inf
+  OcFirmwarePasswordLib|MaxRegnerPkg/Library/OcFirmwarePasswordLib/OcFirmwarePasswordLib.inf
+  OcFirmwareVolumeLib|MaxRegnerPkg/Library/OcFirmwareVolumeLib/OcFirmwareVolumeLib.inf
+  OcFlexArrayLib|MaxRegnerPkg/Library/OcFlexArrayLib/OcFlexArrayLib.inf
+  OcGuardLib|MaxRegnerPkg/Library/OcGuardLib/OcGuardLib.inf
+  OcHashServicesLib|MaxRegnerPkg/Library/OcHashServicesLib/OcHashServicesLib.inf
+  OcHdaDevicesLib|MaxRegnerPkg/Library/OcHdaDevicesLib/OcHdaDevicesLib.inf
+  OcHeciLib|MaxRegnerPkg/Library/OcHeciLib/OcHeciLib.inf
+  OcHiiDatabaseLocalLib|MaxRegnerPkg/Library/OcHiiDatabaseLib/OcHiiDatabaseLocalLib.inf
+  OcInputLib|MaxRegnerPkg/Library/OcInputLib/OcInputLib.inf
+  OcLegacyThunkLib|MaxRegnerPkg/Library/OcLegacyThunkLib/OcLegacyThunkLib.inf
+  OcLogAggregatorLib|MaxRegnerPkg/Library/OcLogAggregatorLib/OcLogAggregatorLib.inf
+  OcMachoLib|MaxRegnerPkg/Library/OcMachoLib/OcMachoLib.inf
+  OcMacInfoLib|MaxRegnerPkg/Library/OcMacInfoLib/OcMacInfoLib.inf
+  OcMainLib|MaxRegnerPkg/Library/OcMainLib/OcMainLib.inf
+  OcMemoryLib|MaxRegnerPkg/Library/OcMemoryLib/OcMemoryLib.inf
+  OcMiscLib|MaxRegnerPkg/Library/OcMiscLib/OcMiscLib.inf
+  OcMp3Lib|MaxRegnerPkg/Library/OcMp3Lib/OcMp3Lib.inf
+  OcOSInfoLib|MaxRegnerPkg/Library/OcOSInfoLib/OcOSInfoLib.inf
+  OcPciIoLib|MaxRegnerPkg/Library/OcPciIoLib/OcPciIoLib.inf
+  OcPngLib|MaxRegnerPkg/Library/OcPngLib/OcPngLib.inf
+  OcRngLib|MaxRegnerPkg/Library/OcRngLib/OcRngLib.inf
+  OcRtcLib|MaxRegnerPkg/Library/OcRtcLib/OcRtcLib.inf
+  OcSerializeLib|MaxRegnerPkg/Library/OcSerializeLib/OcSerializeLib.inf
+  OcSmbiosLib|MaxRegnerPkg/Library/OcSmbiosLib/OcSmbiosLib.inf
+  OcSmcLib|MaxRegnerPkg/Library/OcSmcLib/OcSmcLib.inf
+  OcStorageLib|MaxRegnerPkg/Library/OcStorageLib/OcStorageLib.inf
+  OcStringLib|MaxRegnerPkg/Library/OcStringLib/OcStringLib.inf
+  OcTemplateLib|MaxRegnerPkg/Library/OcTemplateLib/OcTemplateLib.inf
+  OcTypingLib|MaxRegnerPkg/Library/OcTypingLib/OcTypingLib.inf
+  TimerLib|MaxRegnerPkg/Library/OcTimerLib/OcTimerLib.inf
+  OcUnicodeCollationEngGenericLib|MaxRegnerPkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngGenericLib.inf
+  OcUnicodeCollationEngLocalLib|MaxRegnerPkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngLocalLib.inf
+  OcVirtualFsLib|MaxRegnerPkg/Library/OcVirtualFsLib/OcVirtualFsLib.inf
+  OcWaveLib|MaxRegnerPkg/Library/OcWaveLib/OcWaveLib.inf
+  OcXmlLib|MaxRegnerPkg/Library/OcXmlLib/OcXmlLib.inf
+  OcPeCoffExtLib|MaxRegnerPkg/Library/OcPeCoffExtLib/OcPeCoffExtLib.inf
+  OcVariableLib|MaxRegnerPkg/Library/OcVariableLib/OcVariableLib.inf
+  OcVariableRuntimeLib|MaxRegnerPkg/Library/OcVariableRuntimeLib/OcVariableRuntimeLib.inf
   PcdLib|MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
   PciCf8Lib|MdePkg/Library/BasePciCf8Lib/BasePciCf8Lib.inf
   PciCapLib|OvmfPkg/Library/BasePciCapLib/BasePciCapLib.inf
@@ -159,18 +159,18 @@
   ShellLib|ShellPkg/Library/UefiShellLib/UefiShellLib.inf
   SortLib|MdeModulePkg/Library/UefiSortLib/UefiSortLib.inf
   SynchronizationLib|MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
-  UefiApplicationEntryPoint|OpenCorePkg/Library/OcApplicationEntryPoint/UefiApplicationEntryPoint.inf
+  UefiApplicationEntryPoint|MaxRegnerPkg/Library/OcApplicationEntryPoint/UefiApplicationEntryPoint.inf
   UefiBootServicesTableLib|MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
   UefiBootManagerLib|MdeModulePkg/Library/UefiBootManagerLib/UefiBootManagerLib.inf
-  UefiDriverEntryPoint|OpenCorePkg/Library/OcDriverEntryPoint/UefiDriverEntryPoint.inf
-  UefiHiiServicesLib|OpenCorePkg/Library/OcHiiServicesLib/OcHiiServicesLib.inf
+  UefiDriverEntryPoint|MaxRegnerPkg/Library/OcDriverEntryPoint/UefiDriverEntryPoint.inf
+  UefiHiiServicesLib|MaxRegnerPkg/Library/OcHiiServicesLib/OcHiiServicesLib.inf
   UefiImageExtraActionLib|MdePkg/Library/BaseUefiImageExtraActionLibNull/BaseUefiImageExtraActionLibNull.inf
   UefiLib|MdePkg/Library/UefiLib/UefiLib.inf
   UefiRuntimeServicesTableLib|MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
   UefiUsbLib|MdePkg/Library/UefiUsbLib/UefiUsbLib.inf
   VariablePolicyHelperLib|MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib.inf
   VariableFlashInfoLib|MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf
-  ResetSystemLib|OpenCorePkg/Library/OcResetSystemLib/OcResetSystemLib.inf
+  ResetSystemLib|MaxRegnerPkg/Library/OcResetSystemLib/OcResetSystemLib.inf
 
   !if $(NETWORK_TLS_ENABLE) == TRUE
     BaseCryptLib|CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
@@ -200,128 +200,128 @@
   MdeModulePkg/Bus/Pci/XhciDxe/XhciDxe.inf {
     <LibraryClasses>
       !if $(TARGET) == RELEASE
-        DebugLib|OpenCorePkg/Library/OcDebugLibNull/OcDebugLibNull.inf
+        DebugLib|MaxRegnerPkg/Library/OcDebugLibNull/OcDebugLibNull.inf
       !endif
   }
   MdeModulePkg/Bus/Isa/Ps2MouseDxe/Ps2MouseDxe.inf
   MdeModulePkg/Bus/Isa/Ps2KeyboardDxe/Ps2KeyboardDxe.inf
   MdeModulePkg/Bus/Usb/UsbMouseDxe/UsbMouseDxe.inf
   MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
-  OpenCorePkg/Application/BootKicker/BootKicker.inf
-  OpenCorePkg/Application/Bootstrap/Bootstrap.inf {
+  MaxRegnerPkg/Application/BootKicker/BootKicker.inf
+  MaxRegnerPkg/Application/Bootstrap/Bootstrap.inf {
     <LibraryClasses>
       !if $(TARGET) != RELEASE
         # Force onscreen visible logging in DEBUG/NOOPT builds.
-        NULL|OpenCorePkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
+        NULL|MaxRegnerPkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
       !endif
   }
-  OpenCorePkg/Application/ChipTune/ChipTune.inf
-  OpenCorePkg/Application/CleanNvram/CleanNvram.inf
-  OpenCorePkg/Application/CsrUtil/CsrUtil.inf
-  OpenCorePkg/Application/FontTester/FontTester.inf
-  OpenCorePkg/Application/GopPerf/GopPerf.inf
-  OpenCorePkg/Application/GopStop/GopStop.inf
-  OpenCorePkg/Application/KeyTester/KeyTester.inf
-  OpenCorePkg/Application/ListPartitions/ListPartitions.inf
-  OpenCorePkg/Application/MmapDump/MmapDump.inf
-  OpenCorePkg/Application/OpenControl/OpenControl.inf
-  OpenCorePkg/Application/OpenCore/OpenCore.inf {
+  MaxRegnerPkg/Application/ChipTune/ChipTune.inf
+  MaxRegnerPkg/Application/CleanNvram/CleanNvram.inf
+  MaxRegnerPkg/Application/CsrUtil/CsrUtil.inf
+  MaxRegnerPkg/Application/FontTester/FontTester.inf
+  MaxRegnerPkg/Application/GopPerf/GopPerf.inf
+  MaxRegnerPkg/Application/GopStop/GopStop.inf
+  MaxRegnerPkg/Application/KeyTester/KeyTester.inf
+  MaxRegnerPkg/Application/ListPartitions/ListPartitions.inf
+  MaxRegnerPkg/Application/MmapDump/MmapDump.inf
+  MaxRegnerPkg/Application/OpenControl/OpenControl.inf
+  MaxRegnerPkg/Application/MaxRegner/MaxRegner.inf {
     <LibraryClasses>
       !if $(TARGET) != RELEASE
         # Force onscreen visible logging in DEBUG/NOOPT builds.
-        NULL|OpenCorePkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
+        NULL|MaxRegnerPkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
       !endif
   }
-  OpenCorePkg/Application/PavpProvision/PavpProvision.inf
-  OpenCorePkg/Application/ResetSystem/ResetSystem.inf
-  OpenCorePkg/Application/RtcRw/RtcRw.inf
-  OpenCorePkg/Application/TpmInfo/TpmInfo.inf
-  OpenCorePkg/Application/VerifyMemOpt/VerifyMemOpt.inf {
+  MaxRegnerPkg/Application/PavpProvision/PavpProvision.inf
+  MaxRegnerPkg/Application/ResetSystem/ResetSystem.inf
+  MaxRegnerPkg/Application/RtcRw/RtcRw.inf
+  MaxRegnerPkg/Application/TpmInfo/TpmInfo.inf
+  MaxRegnerPkg/Application/VerifyMemOpt/VerifyMemOpt.inf {
     <LibraryClasses>
       BaseMemoryLib|MdePkg/Library/BaseMemoryLibOptDxe/BaseMemoryLibOptDxe.inf
   }
-  OpenCorePkg/Application/ControlMsrE2/ControlMsrE2.inf
-  OpenCorePkg/Debug/GdbSyms/GdbSyms.inf
-  OpenCorePkg/Library/OcAcpiLib/OcAcpiLib.inf
-  OpenCorePkg/Library/OcAfterBootCompatLib/OcAfterBootCompatLib.inf
-  OpenCorePkg/Library/OcApfsLib/OcApfsLib.inf
-  OpenCorePkg/Library/OcAppleBootPolicyLib/OcAppleBootPolicyLib.inf
-  OpenCorePkg/Library/OcAppleChunklistLib/OcAppleChunklistLib.inf
-  OpenCorePkg/Library/OcAppleDiskImageLib/OcAppleDiskImageLib.inf
-  OpenCorePkg/Library/OcAppleEventLib/OcAppleEventLib.inf
-  OpenCorePkg/Library/OcAppleImageConversionLib/OcAppleImageConversionLib.inf
-  OpenCorePkg/Library/OcAppleImg4Lib/OcAppleImg4Lib.inf
-  OpenCorePkg/Library/OcAppleKernelLib/OcAppleKernelLib.inf
-  OpenCorePkg/Library/OcAppleKeyMapLib/OcAppleKeyMapLib.inf
-  OpenCorePkg/Library/OcAppleRamDiskLib/OcAppleRamDiskLib.inf
-  OpenCorePkg/Library/OcAppleSecureBootLib/OcAppleSecureBootLib.inf
-  OpenCorePkg/Library/OcAppleUserInterfaceThemeLib/OcAppleUserInterfaceThemeLib.inf
-  OpenCorePkg/Library/OcAudioLib/OcAudioLib.inf
-  OpenCorePkg/Library/OcBlitLib/OcBlitLib.inf
-  OpenCorePkg/Library/OcBootManagementLib/OcBootManagementLib.inf
-  OpenCorePkg/Library/OcBootServicesTableLib/OcBootServicesTableLib.inf
-  OpenCorePkg/Library/OcCompressionLib/OcCompressionLib.inf
-  OpenCorePkg/Library/OcConfigurationLib/OcConfigurationLib.inf
-  OpenCorePkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
-  OpenCorePkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeLocalLib.inf
-  OpenCorePkg/Library/OcConsoleLib/OcConsoleLib.inf
-  OpenCorePkg/Library/OcCpuLib/OcCpuLib.inf
-  OpenCorePkg/Library/OcCryptoLib/OcCryptoLib.inf
-  OpenCorePkg/Library/OcDataHubLib/OcDataHubLib.inf
-  OpenCorePkg/Library/OcDebugLibSerial/OcDebugLibSerial.inf
-  OpenCorePkg/Library/OcDebugLibProtocol/OcDebugLibProtocol.inf
-  OpenCorePkg/Library/OcDebugLibNull/OcDebugLibNull.inf
-  OpenCorePkg/Library/OcDeviceMiscLib/OcDeviceMiscLib.inf
-  OpenCorePkg/Library/OcDevicePathLib/OcDevicePathLib.inf
-  OpenCorePkg/Library/OcDevicePropertyLib/OcDevicePropertyLib.inf
-  OpenCorePkg/Library/OcDeviceTreeLib/OcDeviceTreeLib.inf
-  OpenCorePkg/Library/OcDirectResetLib/OcDirectResetLib.inf
-  OpenCorePkg/Library/OcDriverConnectionLib/OcDriverConnectionLib.inf
-  OpenCorePkg/Library/OcFileLib/OcFileLib.inf
-  OpenCorePkg/Library/OcFirmwarePasswordLib/OcFirmwarePasswordLib.inf
-  OpenCorePkg/Library/OcFirmwareVolumeLib/OcFirmwareVolumeLib.inf
-  OpenCorePkg/Library/OcFlexArrayLib/OcFlexArrayLib.inf
-  OpenCorePkg/Library/OcGuardLib/OcGuardLib.inf
-  OpenCorePkg/Library/OcHashServicesLib/OcHashServicesLib.inf
-  OpenCorePkg/Library/OcHdaDevicesLib/OcHdaDevicesLib.inf
-  OpenCorePkg/Library/OcHeciLib/OcHeciLib.inf
-  OpenCorePkg/Library/OcHiiDatabaseLib/OcHiiDatabaseLocalLib.inf
-  OpenCorePkg/Library/OcInputLib/OcInputLib.inf
-  OpenCorePkg/Library/OcLogAggregatorLib/OcLogAggregatorLib.inf
-  OpenCorePkg/Library/OcLogAggregatorLibNull/OcLogAggregatorLibNull.inf
-  OpenCorePkg/Library/OcMachoLib/OcMachoLib.inf
-  OpenCorePkg/Library/OcMainLib/OcMainLib.inf
-  OpenCorePkg/Library/OcMemoryLib/OcMemoryLib.inf
-  OpenCorePkg/Library/OcMiscLib/OcMiscLib.inf
-  OpenCorePkg/Library/OcMp3Lib/OcMp3Lib.inf
-  OpenCorePkg/Library/OcOSInfoLib/OcOSInfoLib.inf
-  OpenCorePkg/Library/OcPeCoffExtLib/OcPeCoffExtLib.inf
-  OpenCorePkg/Library/OcPngLib/OcPngLib.inf
-  OpenCorePkg/Library/OcRngLib/OcRngLib.inf
-  OpenCorePkg/Library/OcSerializeLib/OcSerializeLib.inf
-  OpenCorePkg/Library/OcSmbiosLib/OcSmbiosLib.inf
-  OpenCorePkg/Library/OcSmcLib/OcSmcLib.inf
-  OpenCorePkg/Library/OcStorageLib/OcStorageLib.inf
-  OpenCorePkg/Library/OcStringLib/OcStringLib.inf
-  OpenCorePkg/Library/OcTemplateLib/OcTemplateLib.inf
-  OpenCorePkg/Library/OcTimerLib/OcTimerLib.inf
-  OpenCorePkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngGenericLib.inf
-  OpenCorePkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngLocalLib.inf
-  OpenCorePkg/Library/OcPciIoLib/OcPciIoLib.inf
-  OpenCorePkg/Library/OcVirtualFsLib/OcVirtualFsLib.inf
-  OpenCorePkg/Library/OcWaveLib/OcWaveLib.inf
-  OpenCorePkg/Library/OcXmlLib/OcXmlLib.inf
-  OpenCorePkg/Legacy/BootPlatform/BiosVideo/BiosVideo.inf
-  OpenCorePkg/Platform/CrScreenshotDxe/CrScreenshotDxe.inf
-  OpenCorePkg/Platform/OpenCanopy/OpenCanopy.inf
-  OpenCorePkg/Platform/OpenLegacyBoot/OpenLegacyBoot.inf
-  OpenCorePkg/Platform/OpenLinuxBoot/OpenLinuxBoot.inf
-  OpenCorePkg/Platform/OpenNetworkBoot/OpenNetworkBoot.inf
-  OpenCorePkg/Platform/OpenNtfsDxe/OpenNtfsDxe.inf
-  OpenCorePkg/Platform/OpenPartitionDxe/PartitionDxe.inf
-  OpenCorePkg/Platform/OpenRuntime/OpenRuntime.inf
-  OpenCorePkg/Platform/OpenUsbKbDxe/UsbKbDxe.inf
-  OpenCorePkg/Platform/OpenVariableRuntimeDxe/VariableRuntimeDxe.inf {
+  MaxRegnerPkg/Application/ControlMsrE2/ControlMsrE2.inf
+  MaxRegnerPkg/Debug/GdbSyms/GdbSyms.inf
+  MaxRegnerPkg/Library/OcAcpiLib/OcAcpiLib.inf
+  MaxRegnerPkg/Library/OcAfterBootCompatLib/OcAfterBootCompatLib.inf
+  MaxRegnerPkg/Library/OcApfsLib/OcApfsLib.inf
+  MaxRegnerPkg/Library/OcAppleBootPolicyLib/OcAppleBootPolicyLib.inf
+  MaxRegnerPkg/Library/OcAppleChunklistLib/OcAppleChunklistLib.inf
+  MaxRegnerPkg/Library/OcAppleDiskImageLib/OcAppleDiskImageLib.inf
+  MaxRegnerPkg/Library/OcAppleEventLib/OcAppleEventLib.inf
+  MaxRegnerPkg/Library/OcAppleImageConversionLib/OcAppleImageConversionLib.inf
+  MaxRegnerPkg/Library/OcAppleImg4Lib/OcAppleImg4Lib.inf
+  MaxRegnerPkg/Library/OcAppleKernelLib/OcAppleKernelLib.inf
+  MaxRegnerPkg/Library/OcAppleKeyMapLib/OcAppleKeyMapLib.inf
+  MaxRegnerPkg/Library/OcAppleRamDiskLib/OcAppleRamDiskLib.inf
+  MaxRegnerPkg/Library/OcAppleSecureBootLib/OcAppleSecureBootLib.inf
+  MaxRegnerPkg/Library/OcAppleUserInterfaceThemeLib/OcAppleUserInterfaceThemeLib.inf
+  MaxRegnerPkg/Library/OcAudioLib/OcAudioLib.inf
+  MaxRegnerPkg/Library/OcBlitLib/OcBlitLib.inf
+  MaxRegnerPkg/Library/OcBootManagementLib/OcBootManagementLib.inf
+  MaxRegnerPkg/Library/OcBootServicesTableLib/OcBootServicesTableLib.inf
+  MaxRegnerPkg/Library/OcCompressionLib/OcCompressionLib.inf
+  MaxRegnerPkg/Library/OcConfigurationLib/OcConfigurationLib.inf
+  MaxRegnerPkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeGenericLib.inf
+  MaxRegnerPkg/Library/OcConsoleControlEntryModeLib/OcConsoleControlEntryModeLocalLib.inf
+  MaxRegnerPkg/Library/OcConsoleLib/OcConsoleLib.inf
+  MaxRegnerPkg/Library/OcCpuLib/OcCpuLib.inf
+  MaxRegnerPkg/Library/OcCryptoLib/OcCryptoLib.inf
+  MaxRegnerPkg/Library/OcDataHubLib/OcDataHubLib.inf
+  MaxRegnerPkg/Library/OcDebugLibSerial/OcDebugLibSerial.inf
+  MaxRegnerPkg/Library/OcDebugLibProtocol/OcDebugLibProtocol.inf
+  MaxRegnerPkg/Library/OcDebugLibNull/OcDebugLibNull.inf
+  MaxRegnerPkg/Library/OcDeviceMiscLib/OcDeviceMiscLib.inf
+  MaxRegnerPkg/Library/OcDevicePathLib/OcDevicePathLib.inf
+  MaxRegnerPkg/Library/OcDevicePropertyLib/OcDevicePropertyLib.inf
+  MaxRegnerPkg/Library/OcDeviceTreeLib/OcDeviceTreeLib.inf
+  MaxRegnerPkg/Library/OcDirectResetLib/OcDirectResetLib.inf
+  MaxRegnerPkg/Library/OcDriverConnectionLib/OcDriverConnectionLib.inf
+  MaxRegnerPkg/Library/OcFileLib/OcFileLib.inf
+  MaxRegnerPkg/Library/OcFirmwarePasswordLib/OcFirmwarePasswordLib.inf
+  MaxRegnerPkg/Library/OcFirmwareVolumeLib/OcFirmwareVolumeLib.inf
+  MaxRegnerPkg/Library/OcFlexArrayLib/OcFlexArrayLib.inf
+  MaxRegnerPkg/Library/OcGuardLib/OcGuardLib.inf
+  MaxRegnerPkg/Library/OcHashServicesLib/OcHashServicesLib.inf
+  MaxRegnerPkg/Library/OcHdaDevicesLib/OcHdaDevicesLib.inf
+  MaxRegnerPkg/Library/OcHeciLib/OcHeciLib.inf
+  MaxRegnerPkg/Library/OcHiiDatabaseLib/OcHiiDatabaseLocalLib.inf
+  MaxRegnerPkg/Library/OcInputLib/OcInputLib.inf
+  MaxRegnerPkg/Library/OcLogAggregatorLib/OcLogAggregatorLib.inf
+  MaxRegnerPkg/Library/OcLogAggregatorLibNull/OcLogAggregatorLibNull.inf
+  MaxRegnerPkg/Library/OcMachoLib/OcMachoLib.inf
+  MaxRegnerPkg/Library/OcMainLib/OcMainLib.inf
+  MaxRegnerPkg/Library/OcMemoryLib/OcMemoryLib.inf
+  MaxRegnerPkg/Library/OcMiscLib/OcMiscLib.inf
+  MaxRegnerPkg/Library/OcMp3Lib/OcMp3Lib.inf
+  MaxRegnerPkg/Library/OcOSInfoLib/OcOSInfoLib.inf
+  MaxRegnerPkg/Library/OcPeCoffExtLib/OcPeCoffExtLib.inf
+  MaxRegnerPkg/Library/OcPngLib/OcPngLib.inf
+  MaxRegnerPkg/Library/OcRngLib/OcRngLib.inf
+  MaxRegnerPkg/Library/OcSerializeLib/OcSerializeLib.inf
+  MaxRegnerPkg/Library/OcSmbiosLib/OcSmbiosLib.inf
+  MaxRegnerPkg/Library/OcSmcLib/OcSmcLib.inf
+  MaxRegnerPkg/Library/OcStorageLib/OcStorageLib.inf
+  MaxRegnerPkg/Library/OcStringLib/OcStringLib.inf
+  MaxRegnerPkg/Library/OcTemplateLib/OcTemplateLib.inf
+  MaxRegnerPkg/Library/OcTimerLib/OcTimerLib.inf
+  MaxRegnerPkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngGenericLib.inf
+  MaxRegnerPkg/Library/OcUnicodeCollationEngLib/OcUnicodeCollationEngLocalLib.inf
+  MaxRegnerPkg/Library/OcPciIoLib/OcPciIoLib.inf
+  MaxRegnerPkg/Library/OcVirtualFsLib/OcVirtualFsLib.inf
+  MaxRegnerPkg/Library/OcWaveLib/OcWaveLib.inf
+  MaxRegnerPkg/Library/OcXmlLib/OcXmlLib.inf
+  MaxRegnerPkg/Legacy/BootPlatform/BiosVideo/BiosVideo.inf
+  MaxRegnerPkg/Platform/CrScreenshotDxe/CrScreenshotDxe.inf
+  MaxRegnerPkg/Platform/OpenCanopy/OpenCanopy.inf
+  MaxRegnerPkg/Platform/OpenLegacyBoot/OpenLegacyBoot.inf
+  MaxRegnerPkg/Platform/OpenLinuxBoot/OpenLinuxBoot.inf
+  MaxRegnerPkg/Platform/OpenNetworkBoot/OpenNetworkBoot.inf
+  MaxRegnerPkg/Platform/OpenNtfsDxe/OpenNtfsDxe.inf
+  MaxRegnerPkg/Platform/OpenPartitionDxe/PartitionDxe.inf
+  MaxRegnerPkg/Platform/OpenRuntime/OpenRuntime.inf
+  MaxRegnerPkg/Platform/OpenUsbKbDxe/UsbKbDxe.inf
+  MaxRegnerPkg/Platform/OpenVariableRuntimeDxe/VariableRuntimeDxe.inf {
     <PcdsFixedAtBuild>
       gEfiMdeModulePkgTokenSpaceGuid.PcdEmuVariableNvModeEnable|TRUE
       gEfiMdeModulePkgTokenSpaceGuid.PcdMaxVariableSize|0x10000
@@ -333,33 +333,33 @@
       TpmMeasurementLib|MdeModulePkg/Library/TpmMeasurementLibNull/TpmMeasurementLibNull.inf
       VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
       VariablePolicyLib|MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf
-      TimerLib|OpenCorePkg/Library/DuetTimerLib/DuetTimerLib.inf
-      DebugLib|OpenCorePkg/Library/OcDebugLibNull/OcDebugLibNull.inf
-      NULL|OpenCorePkg/Library/OcVariableRuntimeLib/OcVariableRuntimeLib.inf
+      TimerLib|MaxRegnerPkg/Library/DuetTimerLib/DuetTimerLib.inf
+      DebugLib|MaxRegnerPkg/Library/OcDebugLibNull/OcDebugLibNull.inf
+      NULL|MaxRegnerPkg/Library/OcVariableRuntimeLib/OcVariableRuntimeLib.inf
   }
-  OpenCorePkg/Platform/FirmwareSettingsEntry/FirmwareSettingsEntry.inf
-  OpenCorePkg/Platform/ResetNvramEntry/ResetNvramEntry.inf
-  OpenCorePkg/Platform/ToggleSipEntry/ToggleSipEntry.inf
-  OpenCorePkg/Staging/AudioDxe/AudioDxe.inf
-  OpenCorePkg/Staging/EnableGop/EnableGop.inf {
+  MaxRegnerPkg/Platform/FirmwareSettingsEntry/FirmwareSettingsEntry.inf
+  MaxRegnerPkg/Platform/ResetNvramEntry/ResetNvramEntry.inf
+  MaxRegnerPkg/Platform/ToggleSipEntry/ToggleSipEntry.inf
+  MaxRegnerPkg/Staging/AudioDxe/AudioDxe.inf
+  MaxRegnerPkg/Staging/EnableGop/EnableGop.inf {
     <LibraryClasses>
-      DebugLib|OpenCorePkg/Library/OcDebugLibNull/OcDebugLibNull.inf
+      DebugLib|MaxRegnerPkg/Library/OcDebugLibNull/OcDebugLibNull.inf
   }
-  OpenCorePkg/Staging/EnableGop/EnableGopDirect.inf {
+  MaxRegnerPkg/Staging/EnableGop/EnableGopDirect.inf {
     <LibraryClasses>
-      DebugLib|OpenCorePkg/Library/OcDebugLibNull/OcDebugLibNull.inf
+      DebugLib|MaxRegnerPkg/Library/OcDebugLibNull/OcDebugLibNull.inf
   }
-  OpenCorePkg/Staging/OpenHfsPlus/OpenHfsPlus.inf
-  OpenCorePkg/Tests/AcpiTest/AcpiTest.inf
-  OpenCorePkg/Tests/AcpiTest/AcpiTestApp.inf
-  OpenCorePkg/Tests/CryptoTest/CryptoTest.inf
-  OpenCorePkg/Tests/CryptoTest/CryptoTestApp.inf
-  OpenCorePkg/Tests/DataHubTest/DataHubTest.inf
-  OpenCorePkg/Tests/DataHubTest/DataHubTestApp.inf
-  OpenCorePkg/Tests/PropertyTest/PropertyTest.inf
-  OpenCorePkg/Tests/PropertyTest/PropertyTestApp.inf
-  OpenCorePkg/Tests/SmbiosTest/SmbiosTest.inf
-  OpenCorePkg/Tests/SmbiosTest/SmbiosTestApp.inf
+  MaxRegnerPkg/Staging/OpenHfsPlus/OpenHfsPlus.inf
+  MaxRegnerPkg/Tests/AcpiTest/AcpiTest.inf
+  MaxRegnerPkg/Tests/AcpiTest/AcpiTestApp.inf
+  MaxRegnerPkg/Tests/CryptoTest/CryptoTest.inf
+  MaxRegnerPkg/Tests/CryptoTest/CryptoTestApp.inf
+  MaxRegnerPkg/Tests/DataHubTest/DataHubTest.inf
+  MaxRegnerPkg/Tests/DataHubTest/DataHubTestApp.inf
+  MaxRegnerPkg/Tests/PropertyTest/PropertyTest.inf
+  MaxRegnerPkg/Tests/PropertyTest/PropertyTestApp.inf
+  MaxRegnerPkg/Tests/SmbiosTest/SmbiosTest.inf
+  MaxRegnerPkg/Tests/SmbiosTest/SmbiosTestApp.inf
   # UEFI Shell with all commands integrated
   ShellPkg/Application/Shell/Shell.inf {
    <Defines>
@@ -370,7 +370,7 @@
       gEfiMdePkgTokenSpaceGuid.PcdUefiLibMaxPrintBufferSize|16000
     <LibraryClasses>
       # Use custom BootServicesTable
-      UefiBootServicesTableLib|OpenCorePkg/Library/OcBootServicesTableLib/UefiBootServicesTableLib.inf
+      UefiBootServicesTableLib|MaxRegnerPkg/Library/OcBootServicesTableLib/UefiBootServicesTableLib.inf
       # Add the original commands.
       NULL|ShellPkg/Library/UefiShellLevel2CommandsLib/UefiShellLevel2CommandsLib.inf
       NULL|ShellPkg/Library/UefiShellLevel1CommandsLib/UefiShellLevel1CommandsLib.inf
@@ -430,7 +430,7 @@
   gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80000042
   gEfiMdePkgTokenSpaceGuid.PcdFixedDebugPrintErrorLevel|0x80000042
 !endif
-  gOpenCorePkgTokenSpaceGuid.PcdCanaryAllowRdtscFallback|TRUE
+  gMaxRegnerPkgTokenSpaceGuid.PcdCanaryAllowRdtscFallback|TRUE
 
   # ImageLoader settings
   gEfiMdePkgTokenSpaceGuid.PcdImageLoaderRtRelocAllowTargetMismatch|FALSE

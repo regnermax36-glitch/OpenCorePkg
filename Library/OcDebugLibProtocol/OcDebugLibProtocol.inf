@@ -27,7 +27,7 @@
 # VALID_ARCHITECTURES = IA32 X64 IPF EBC
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   UefiCpuPkg/UefiCpuPkg.dec
 
@@ -56,7 +56,7 @@
   gEfiMdePkgTokenSpaceGuid.PcdDebugClearMemoryValue
   gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask
   gEfiMdePkgTokenSpaceGuid.PcdFixedDebugPrintErrorLevel
-  gOpenCorePkgTokenSpaceGuid.PcdDebugLibProtocolBufferEarlyLog
+  gMaxRegnerPkgTokenSpaceGuid.PcdDebugLibProtocolBufferEarlyLog
 
 [Sources]
   DebugHelp.c

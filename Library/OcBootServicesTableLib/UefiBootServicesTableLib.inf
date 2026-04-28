@@ -26,7 +26,7 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
 
 [Protocols]
   gEfiDevicePathProtocolGuid

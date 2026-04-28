@@ -25,9 +25,9 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenDuetPkg.dec
+  MaxRegnerPkg/OpenDuetPkg.dec
   MdeModulePkg/MdeModulePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
 
 [LibraryClasses]
   BaseLib
@@ -67,7 +67,7 @@
 
 [Pcd]
   gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask            ## CONSUMES
-  gOpenCorePkgTokenSpaceGuid.PcdCanaryAllowRdtscFallback   ## CONSUMES
+  gMaxRegnerPkgTokenSpaceGuid.PcdCanaryAllowRdtscFallback   ## CONSUMES
 
 [Depex]
   TRUE

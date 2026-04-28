@@ -479,7 +479,7 @@ AddBootEntryOnFileSystem (
   }
 
   //
-  // Skip disabled entries, like OpenCore bootloader.
+  // Skip disabled entries, like MaxRegner bootloader.
   //
   Visibility = ReadEntryVisibility (BootContext->PickerContext, DevicePath);
   if (Visibility == BootEntryDisabled) {

@@ -3,7 +3,7 @@
 
   Used by OcMainLib and OcVariableRuntimeLib (i.e. emulated NVRAM support).
 
-  References OpenCore global config (for legacy NVRAM). Despite referencing
+  References MaxRegner global config (for legacy NVRAM). Despite referencing
   global config directly, is required to live outside OcMainLib to avoid
   having to link OcMainLib and all its dependencies to OpenDuet, when we
   link OcVariableRuntimeLib to OpenDuet.

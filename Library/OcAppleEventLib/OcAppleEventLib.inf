@@ -39,7 +39,7 @@
   PointerHandler.c
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
 
 [Protocols]

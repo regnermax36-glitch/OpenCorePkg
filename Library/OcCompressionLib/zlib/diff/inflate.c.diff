@@ -1,5 +1,5 @@
 --- /Users/user/Downloads/zlib-1.2.13/inflate.c	2022-10-07 05:43:18
-+++ /Users/user/GitHub/OpenCorePkg/Library/OcCompressionLib/zlib/inflate.c	2023-04-01 22:46:51
++++ /Users/user/GitHub/MaxRegnerPkg/Library/OcCompressionLib/zlib/inflate.c	2023-04-01 22:46:51
 @@ -639,9 +639,11 @@
      code last;                  /* parent table entry */
      unsigned len;               /* length to copy for repeats, bits to drop */

@@ -91,7 +91,7 @@ CFDictionaryRef CreateMyDictionary(void) {
         errx(1, "Error getting the firmware variables: %s", mach_error_string(result));
     }
 
-    // To work round limitations of OpenCore XML parser (i.e. XML entities not
+    // To work round limitations of MaxRegner XML parser (i.e. XML entities not
     // automatically processed), force all string values to save as data.
     dict4 = CFDictionaryCreateMutable(kCFAllocatorDefault, 0,
                                       &kCFTypeDictionaryKeyCallBacks,

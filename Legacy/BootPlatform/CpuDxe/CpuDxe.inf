@@ -26,8 +26,8 @@
   ENTRY_POINT                    = InitializeCpu
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
-  OpenCorePkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
+  MaxRegnerPkg/OpenDuetPkg.dec
   MdePkg/MdePkg.dec
   OvmfPkg/OvmfPkg.dec
 

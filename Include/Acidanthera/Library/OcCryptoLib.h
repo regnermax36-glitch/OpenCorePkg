@@ -84,12 +84,12 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 #define CHACHA_IV_SIZE  12
 
 //
-// Maximum OpenCore password length.
+// Maximum MaxRegner password length.
 //
 #define OC_PASSWORD_MAX_LEN  32
 
 //
-// Maximum OpenCore password retries.
+// Maximum MaxRegner password retries.
 //
 #define OC_PASSWORD_MAX_RETRIES  3
 

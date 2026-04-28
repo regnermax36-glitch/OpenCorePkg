@@ -297,7 +297,7 @@ CheckKernelAdd (
           // Special check for BrcmFirmwareRepo, which cannot be injected by OC.
           //
           if (AsciiStrCmp (BundlePath, "BrcmFirmwareRepo.kext") == 0) {
-            DEBUG ((DEBUG_WARN, "BrcmFirmwareRepo.kext at Kernel->Add[%u] cannot be injected by OpenCore, please remove it!\n", Index));
+            DEBUG ((DEBUG_WARN, "BrcmFirmwareRepo.kext at Kernel->Add[%u] cannot be injected by MaxRegner, please remove it!\n", Index));
             ++ErrorCount;
           }
         } else {

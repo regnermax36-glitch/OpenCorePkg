@@ -27,7 +27,7 @@
 #define OC_CUSTOM_FS_HANDLE  ((EFI_HANDLE)(UINTN) 0x2007C5F5U)
 
 ///
-/// Identifies the DevicePath structure for OpenCore custom entries.
+/// Identifies the DevicePath structure for MaxRegner custom entries.
 ///
 #define OC_CUSTOM_BOOT_DEVICE_PATH_GUID  \
   { 0xd6f263f9, 0x0b19, 0x4670,          \
@@ -43,7 +43,7 @@
 #pragma pack(1)
 
 ///
-/// DevicePath to describe OpenCore custom entries.
+/// DevicePath to describe MaxRegner custom entries.
 ///
 typedef PACKED struct {
   VENDOR_DEVICE_PATH      Hdr;
@@ -263,9 +263,9 @@ InternalFileSystemForHandle (
   );
 
 /**
-  Determines whether DevicePath is an OpenCore custom boot entry.
+  Determines whether DevicePath is an MaxRegner custom boot entry.
 
-  @returns  The OpenCore custom boot entry, or NULL.
+  @returns  The MaxRegner custom boot entry, or NULL.
 **/
 CONST OC_CUSTOM_BOOT_DEVICE_PATH *
 InternalGetOcCustomDevPath (

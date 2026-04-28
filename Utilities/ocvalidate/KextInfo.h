@@ -20,7 +20,7 @@
 #define INDEX_KEXT_VSMC  1U
 
 /**
-  Child kext must be put after Parent kext in OpenCore config->Kernel->Add.
+  Child kext must be put after Parent kext in MaxRegner config->Kernel->Add.
   This means that the index of Child must succeed that of Parent.
 **/
 typedef struct KEXT_PRECEDENCE_ {

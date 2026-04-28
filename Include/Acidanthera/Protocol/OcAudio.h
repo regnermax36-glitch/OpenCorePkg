@@ -38,7 +38,7 @@ typedef struct OC_AUDIO_PROTOCOL_ OC_AUDIO_PROTOCOL;
 #define OC_VOICE_OVER_AUDIO_BASE_TYPE_OPEN_CORE  "OCEFIAudio"
 
 /**
-  Custom OpenCore audio files.
+  Custom MaxRegner audio files.
 **/
 #define  OC_VOICE_OVER_AUDIO_FILE_ABORT_TIMEOUT         "AbortTimeout"
 #define  OC_VOICE_OVER_AUDIO_FILE_CHOOSE_OS             "ChooseOS"

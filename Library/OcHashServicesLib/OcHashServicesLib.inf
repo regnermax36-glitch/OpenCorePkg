@@ -34,7 +34,7 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
 
 [Guids]
   gEfiHashAlgorithmMD5Guid            ## CONSUMES

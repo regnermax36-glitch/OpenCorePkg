@@ -26,11 +26,11 @@
 /**
   Load NVRAM from storage, applying legacy filter and overwrite settings.
 
-  @param[in]  StorageContext      OpenCore storage context.
+  @param[in]  StorageContext      MaxRegner storage context.
                                   Saved for used by any subsequent SaveNvram call.
-  @param[in]  LegacyMap           OpenCore legacy NVRAM map, stating which variables are allowed to be read/written.
+  @param[in]  LegacyMap           MaxRegner legacy NVRAM map, stating which variables are allowed to be read/written.
                                   Saved for used by any subsequent SaveNvram call.
-  @param[in]  LegacyOverwrite     OpenCore NVRAM LegacyOverwrite setting.
+  @param[in]  LegacyOverwrite     MaxRegner NVRAM LegacyOverwrite setting.
 
   @retval EFI_INVALID_PARAMETER   StorageContext or NvramConfig is NULL.
   @retval EFI_ALREADY_STARTED     Has been called already.
