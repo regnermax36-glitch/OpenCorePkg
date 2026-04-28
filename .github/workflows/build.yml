@@ -38,7 +38,7 @@ jobs:
           src=$(/usr/bin/curl -LfsS https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
 
       - run: ./build_duet.tool
-      - run: ./build_oc.tool
+      - run: ./build_mr.tool
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4
@@ -72,7 +72,7 @@ jobs:
       - name: ./build_duet.tool
         run: docker compose run build-duet
 
-      - name: ./build_oc.tool
+      - name: ./build_mr.tool
         run: docker compose run build-oc
 
       - name: Upload to Artifacts
@@ -99,7 +99,7 @@ jobs:
       - name: ./build_duet.tool
         run: docker compose run build-duet
 
-      - name: ./build_oc.tool
+      - name: ./build_mr.tool
         run: docker compose run build-oc
 
       - name: Upload to Artifacts
@@ -126,7 +126,7 @@ jobs:
       - name: ./build_duet.tool
         run: docker compose run build-duet
 
-      - name: ./build_oc.tool
+      - name: ./build_mr.tool
         run: docker compose run build-oc
 
       - name: Upload to Artifacts
@@ -174,7 +174,7 @@ jobs:
           src=$(curl -LfsS https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh) && eval "$src" || exit 1
 
       - run: ./build_duet.tool
-      - run: ./build_oc.tool
+      - run: ./build_mr.tool
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4
