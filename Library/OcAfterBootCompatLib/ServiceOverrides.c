@@ -941,7 +941,7 @@ InternalEfiBootRtGetKcgOffset (
 
   //
   // Load a copy of EfiBootRt to retrieve its information structure. EfiBootRt
-  // must be loaded with the OpenCore image loader as it is not signed. This is
+  // must be loaded with the MaxRegner image loader as it is not signed. This is
   // not a security issue as it is implicitly signed via EfiBoot.
   //
   Status = OcImageLoaderLoad (
@@ -979,7 +979,7 @@ InternalEfiBootRtGetKcgOffset (
   LoadedImage->LoadOptionsSize = sizeof (EfiBootRtLoadOptions);
   //
   // The calls to these services are correct despite calling OcImageLoaderLoad()
-  // directly, as they will be overridden versions that support OpenCore loaded
+  // directly, as they will be overridden versions that support MaxRegner loaded
   // images.
   //
   Status = BootCompat->ServicePtrs.StartImage (EfiBootRtCopyHandle, NULL, NULL);
@@ -1069,7 +1069,7 @@ OcLoadImage (
 
   //
   // Anything but EfiBootRt can be loaded transparently. EfiBootRt must be
-  // loaded with the OpenCore image loader as it is not signed. This is not a
+  // loaded with the MaxRegner image loader as it is not signed. This is not a
   // security issue as it is implicitly signed via EfiBoot.
   //
   if (!IsEfiBootRt) {
@@ -1283,7 +1283,7 @@ OcStartImage (
     BootCompat->ServiceState.FwRuntime->GetCurrent (&Config);
 
     //
-    // Support for ReadOnly and WriteOnly variables is OpenCore & Lilu security basics.
+    // Support for ReadOnly and WriteOnly variables is MaxRegner & Lilu security basics.
     // For now always enable it.
     //
     Config.RestrictedVariables = TRUE;
@@ -1294,7 +1294,7 @@ OcStartImage (
     Config.ProtectSecureBoot = BootCompat->Settings.ProtectSecureBoot;
 
     //
-    // Enable Boot#### variable redirection if OpenCore requested it.
+    // Enable Boot#### variable redirection if MaxRegner requested it.
     // Do NOT disable it once enabled for stability reasons.
     //
     DataSize = sizeof (Config.BootVariableRedirect);
@@ -1365,7 +1365,7 @@ OcStartImage (
 
   Notes:
     - Most OSes attempt to call ExitBootServices more than once if it fails initially
-      (similar to OpenCore ForceExitBootServices)
+      (similar to MaxRegner ForceExitBootServices)
       - Therefore, OcExitBootServices may get called more than once
       - However this should never be relied upon for correct operation
     - Any logging within this call but before original ExitBootServices is attempted

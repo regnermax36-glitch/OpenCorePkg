@@ -1,5 +1,5 @@
 ## @file
-#  OpenCore primary application.
+#  MaxRegner primary application.
 #
 #  Copyright (c) 2019, vit9696. All rights reserved.<BR>
 #
@@ -14,7 +14,7 @@
 
 [Defines]
   INF_VERSION                         = 0x00010005
-  BASE_NAME                           = OpenCore
+  BASE_NAME                           = MaxRegner
   FILE_GUID                           = 9E1F2D62-016E-4CE7-BF5B-6A47286AE984
   MODULE_TYPE                         = UEFI_APPLICATION
   VERSION_STRING                      = 1.0
@@ -35,10 +35,10 @@
 #
 
 [Sources]
-  OpenCore.c
+  MaxRegner.c
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   UefiCpuPkg/UefiCpuPkg.dec

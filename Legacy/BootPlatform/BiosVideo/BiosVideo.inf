@@ -23,8 +23,8 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenDuetPkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   OvmfPkg/OvmfPkg.dec
 
 [LibraryClasses]

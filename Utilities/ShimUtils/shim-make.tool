@@ -3,7 +3,7 @@
 # Copyright (c) 2023 Mike Beaton. All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 #
-# Makes user build of shim which launches OpenCore.efi and includes specified vendor certificate lists.
+# Makes user build of shim which launches MaxRegner.efi and includes specified vendor certificate lists.
 # Builds on macOS using Ubuntu multipass or on Linux directly (Ubuntu & Fedora tested).
 #
 # To debug shim (e.g. within OVMF) make with
@@ -91,7 +91,7 @@ usage() {
     echo ")"
     echo "  ./${SELFNAME} install '${EXAMPLE_ESP}' (installs made files to ESP mounted at '${EXAMPLE_ESP}')"
     echo
-    echo "After installation shimx64.efi and mmx64.efi must be signed by user ISK; OpenCore.efi must have an .sbat section added and be signed by user ISK."
+    echo "After installation shimx64.efi and mmx64.efi must be signed by user ISK; MaxRegner.efi must have an .sbat section added and be signed by user ISK."
 }
 
 mount_path () {
@@ -264,12 +264,12 @@ elif [ "$1" = "clean" ] ; then
 elif [ "$1" = "make" ] ; then
     echo "Making..."
     shift
-    shim_command "${SHIM}" make DEFAULT_LOADER="\\\\\\\\OpenCore.efi" OVERRIDE_SECURITY_POLICY=1 "$@"
+    shim_command "${SHIM}" make DEFAULT_LOADER="\\\\\\\\MaxRegner.efi" OVERRIDE_SECURITY_POLICY=1 "$@"
     exit 0
 elif [ "$1" = "install" ] ; then
     echo "Installing..."
     rm -rf "${ROOT:?}"/usr
-    shim_command "${SHIM}" DESTDIR="'${ROOT}'" EFIDIR='OC' OSLABEL='OpenCore' make install
+    shim_command "${SHIM}" DESTDIR="'${ROOT}'" EFIDIR='OC' OSLABEL='MaxRegner' make install
     if [ ! "$2" = "" ] ; then
         echo "Installing to ESP ${2}..."
         cp "${ROOT}"/boot/efi/EFI/OC/* "${2}"/EFI/OC || exit 1

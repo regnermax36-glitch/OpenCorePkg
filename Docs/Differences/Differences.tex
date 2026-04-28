@@ -150,7 +150,7 @@
 
        \sffamily
 
-       \textbf{OpenCore}
+       \textbf{MaxRegner}
 
        \vspace{0.2in}
 
@@ -176,14 +176,14 @@
 \section{Introduction}\label{introduction}
 
 This document provides information on the format of the
-\href{https://github.com/acidanthera/OpenCorePkg}{OpenCore} user
+\href{https://github.com/acidanthera/MaxRegnerPkg}{MaxRegner} user
 configuration file used to set up the correct functioning of the macOS
 operating system. It is to be read as the official clarification of expected
-OpenCore behaviour. All deviations, if found in published OpenCore releases,
+MaxRegner behaviour. All deviations, if found in published MaxRegner releases,
 shall be considered to be documentation or implementation issues which should be
 reported via the \href{https://github.com/acidanthera/bugtracker}{Acidanthera Bugtracker}.
 An errata sheet is available in
-\href{https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Errata/Errata.pdf}{OpenCorePkg repository}.
+\href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Docs/Errata/Errata.pdf}{MaxRegnerPkg repository}.
 
 This document is structured as a specification and is not meant to provide a step-by-step
 guide to configuring an end-user Board Support Package (BSP). The intended audience
@@ -196,18 +196,18 @@ Third-party articles, utilities, books, and similar, may be more useful for a wi
 they could provide guide-like material. However, they are subject to their authors' preferences,
 misinterpretations of this document, and unavoidable obsolescence.
 In cases of using such sources, such as \href{https://dortania.github.io}{Dortania}'s
-\href{https://dortania.github.io/OpenCore-Install-Guide}{OpenCore Install Guide}
+\href{https://dortania.github.io/MaxRegner-Install-Guide}{MaxRegner Install Guide}
 and \href{https://dortania.github.io/getting-started}{related material},
 please refer back to this document on every decision made and re-evaluate potential implications.
 
 Please note that regardless of the sources used, users are required to fully understand every
-OpenCore configuration option, and the principles behind them, before posting issues to the
+MaxRegner configuration option, and the principles behind them, before posting issues to the
 \href{https://github.com/acidanthera/bugtracker}{Acidanthera Bugtracker}.
 
 \emph{Note}: Creating this document would not have been possible without the invaluable
 contributions from other people: Andrey1970, Goldfish64, dakanji, PMheart, and several others,
 with the full list available in
-\href{https://github.com/acidanthera/OpenCorePkg/commits/master/Docs}{OpenCorePkg history}.
+\href{https://github.com/acidanthera/MaxRegnerPkg/commits/master/Docs}{MaxRegnerPkg history}.
 
 \subsection{Generic Terms}\label{generic-terms}
 
@@ -283,9 +283,9 @@ with the full list available in
 \begin{itemize}
 
 \item
-  \texttt{OC\ config} --- OpenCore Configuration file in \texttt{plist}
+  \texttt{OC\ config} --- MaxRegner Configuration file in \texttt{plist}
   format named \texttt{config.plist}. It provides an extensible way
-  to configure OpenCore and is structured to be separated into multiple
+  to configure MaxRegner and is structured to be separated into multiple
   named sections situated under the root \texttt{plist\ dictionary}. These
   sections may have \texttt{plist\ array} or
   \texttt{plist\ dictionary} types and are described in corresponding
@@ -341,7 +341,7 @@ with the full list available in
 \subsection{Configuration Processing}\label{configuration-processing}
 
 The \texttt{OC\ config} file is guaranteed to be processed at least once if found.
-Subject to the OpenCore bootstrapping mechanism, the presence of multiple
+Subject to the MaxRegner bootstrapping mechanism, the presence of multiple
 \texttt{OC\ config} files may lead to the reading of any of them. It is
 permissible for no \texttt{OC\ Config} file to be present on disk. In such cases,
 if the implementation does not abort the boot process, all values shall follow the
@@ -457,7 +457,7 @@ Root configuration entries consist of the following:
 
 Basic validation of an \texttt{OC\ config} file is possible using
 the \texttt{ocvalidate} utility. Please note that the version of \texttt{ocvalidate}
-used must match the OpenCore release and that notwithstanding this, it may not
+used must match the MaxRegner release and that notwithstanding this, it may not
 detect all configuration issues present in an \texttt{OC\ config} file.
 
 \emph{Note}: To maintain system integrity, properties typically have predefined values even
@@ -515,7 +515,7 @@ should not be relied on.
           child { node [optional] {Tool.efi}}
         }
         child [missing] {}
-        child { node [selected] {OpenCore.efi}}
+        child { node [selected] {MaxRegner.efi}}
         child { node {config.plist}}
         child { node [optional] {vault.plist}}
         child { node [optional] {vault.sig}}
@@ -554,7 +554,7 @@ should not be relied on.
     child [missing] {}
     child [missing] {}
     child { node [optional] {boot}}
-    child { node [optional] {opencore-YYYY-MM-DD-HHMMSS.txt}}
+    child { node [optional] {maxregner-YYYY-MM-DD-HHMMSS.txt}}
     child { node [optional] {panic-YYYY-MM-DD-HHMMSS.txt}}
     child { node [optional] {SysReport}}
     child { node [optional] {NVRAM}
@@ -577,16 +577,16 @@ Available entries include:
 \tightlist
 \item
   \texttt{BOOTx64.efi} or \texttt{BOOTIa32.efi} \\
-  Initial bootstrap loaders, which load \texttt{OpenCore.efi}. \texttt{BOOTx64.efi}
+  Initial bootstrap loaders, which load \texttt{MaxRegner.efi}. \texttt{BOOTx64.efi}
   is loaded by the firmware by default consistent with the UEFI specification. However,
-  it may also be renamed and put in a custom location to allow OpenCore coexist alongside
+  it may also be renamed and put in a custom location to allow MaxRegner coexist alongside
   operating systems, such as Windows, that use \texttt{BOOTx64.efi} files as their loaders.
   Refer to the \texttt{LauncherOption} property for details.
 \item
   \texttt{boot} \\
   Duet bootstrap loader, which initialises the UEFI environment on legacy BIOS firmware
-  and loads \texttt{OpenCore.efi} similarly to other bootstrap loaders. A modern Duet
-  bootstrap loader will default to \texttt{OpenCore.efi} on the same partition when
+  and loads \texttt{MaxRegner.efi} similarly to other bootstrap loaders. A modern Duet
+  bootstrap loader will default to \texttt{MaxRegner.efi} on the same partition when
   present.
 \item
   \texttt{ACPI} \\
@@ -610,12 +610,12 @@ Available entries include:
   \texttt{Tools} \\
   Directory used for storing supplemental tools.
 \item
-  \texttt{OpenCore.efi} \\
+  \texttt{MaxRegner.efi} \\
   Main booter application responsible for operating system loading. The directory
-  \texttt{OpenCore.efi} resides in is called the \texttt{root directory}, which is
-  set to \texttt{EFI\textbackslash OC} by default. When launching \texttt{OpenCore.efi}
+  \texttt{MaxRegner.efi} resides in is called the \texttt{root directory}, which is
+  set to \texttt{EFI\textbackslash OC} by default. When launching \texttt{MaxRegner.efi}
   directly or through a custom launcher however, other directories containing
-  \texttt{OpenCore.efi} files are also supported.
+  \texttt{MaxRegner.efi} files are also supported.
 \item
   \texttt{config.plist} \\
   \texttt{OC Config}.
@@ -630,16 +630,16 @@ Available entries include:
   Directory containing system reports generated by \texttt{SysReport} option.
 \item
   \texttt{nvram.plist} \\
-  OpenCore variable import file.
+  MaxRegner variable import file.
 \item
   \texttt{nvram.fallback} \\
-  OpenCore variable import fallback file.
+  MaxRegner variable import fallback file.
 \item
   \texttt{nvram.used} \\
-  Renamed previous OpenCore variable import file after switch to fallback file.
+  Renamed previous MaxRegner variable import file after switch to fallback file.
 \item
-  \texttt{opencore-YYYY-MM-DD-HHMMSS.txt} \\
-  OpenCore log file.
+  \texttt{maxregner-YYYY-MM-DD-HHMMSS.txt} \\
+  MaxRegner log file.
 \item
   \texttt{panic-YYYY-MM-DD-HHMMSS.txt} \\
   Kernel panic log file.
@@ -647,11 +647,11 @@ Available entries include:
 
 \emph{Note}: It is not guaranteed that paths longer than
 \texttt{OC\_STORAGE\_SAFE\_PATH\_MAX} (192 characters including
-the \texttt{\\0}-terminator) will be accessible within OpenCore.
+the \texttt{\\0}-terminator) will be accessible within MaxRegner.
 
 \subsection{Installation and Upgrade}\label{configuration-install}
 
-To install OpenCore, replicate the
+To install MaxRegner, replicate the
 \hyperref[configuration-structure]{Configuration Structure} described
 in the previous section in the EFI volume of a GPT partition. While
 corresponding sections of this document provide some information
@@ -659,8 +659,8 @@ regarding external resources such as ACPI tables, UEFI drivers,
 or kernel extensions (kexts), completeness of the matter is out of
 the scope of this document. Information about kernel extensions may
 be found in a separate
-\href{https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md}{Kext List}
-document available in the OpenCore repository. Vaulting information is provided in
+\href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Docs/Kexts.md}{Kext List}
+document available in the MaxRegner repository. Vaulting information is provided in
 the \hyperref[miscsecurityprops]{Security Properties} section of this document.
 
 The \texttt{OC\ config} file, as with any property list file, can be edited with
@@ -673,16 +673,16 @@ is a lightweight, cross-platform and open-source alternative.
 It is strongly recommended to avoid configuration creation tools that are aware of the
 internal configuration structure as this may result in invalid configurations (since the
 structure gets constantly updated). If such tools are to be used despite this warning,
-ensure that only stable versions of OpenCore explicitly supported by such tools are used.
+ensure that only stable versions of MaxRegner explicitly supported by such tools are used.
 In such cases, the use of open-source implementations with transparent binary generation
-(such as \href{https://github.com/ic005k/QtOpenCoreConfig}{OCAT}) is encouraged, given
+(such as \href{https://github.com/ic005k/QtMaxRegnerConfig}{OCAT}) is encouraged, given
 that other tools may contain malware. In addition, configurations created for a specific
 hardware setup should never be used on different hardware setups.
 
 For BIOS booting, a third-party UEFI environment provider is required and
 \texttt{OpenDuetPkg} is one such UEFI environment provider for legacy systems.
-To run OpenCore on such a legacy system, \texttt{OpenDuetPkg} can be installed
-with a dedicated tool --- BootInstall (bundled with OpenCore).
+To run MaxRegner on such a legacy system, \texttt{OpenDuetPkg} can be installed
+with a dedicated tool --- BootInstall (bundled with MaxRegner).
 \href{https://github.com/corpnewt/gibMacOS}{Third-party utilities} can be used
 to perform this on systems other than macOS.
 
@@ -693,7 +693,7 @@ modifications across all published updates).
 
 \subsection{Contribution}\label{configuration-comp}
 
-OpenCore can be compiled as a standard
+MaxRegner can be compiled as a standard
 \href{https://github.com/tianocore/tianocore.github.io/wiki/EDK-II}{EDK II}
 package and requires the
 \href{https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags}{EDK II Stable}
@@ -729,11 +729,11 @@ An example command sequence is as follows:
 git clone --depth=1 https://github.com/acidanthera/audk UDK
 cd UDK
 git submodule update --init --recommend-shallow
-rm -rf OpenCorePkg
-git clone --depth=1 https://github.com/acidanthera/OpenCorePkg
+rm -rf MaxRegnerPkg
+git clone --depth=1 https://github.com/acidanthera/MaxRegnerPkg
 . ./edksetup.sh
 make -C BaseTools
-build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
+build -a X64 -b RELEASE -t XCODE5 -p MaxRegnerPkg/MaxRegnerPkg.dsc
 \end{lstlisting}
 
 For IDE usage Xcode projects are available in the root of the repositories. Another
@@ -748,16 +748,16 @@ Add \texttt{compile\_flags.txt} file with similar content to the UDK root:
 -I/UefiPackages/MdeModulePkg
 -I/UefiPackages/MdeModulePkg/Include
 -I/UefiPackages/MdeModulePkg/Include/X64
--I/UefiPackages/OpenCorePkg/Include/AMI
--I/UefiPackages/OpenCorePkg/Include/Acidanthera
--I/UefiPackages/OpenCorePkg/Include/Apple
--I/UefiPackages/OpenCorePkg/Include/Apple/X64
--I/UefiPackages/OpenCorePkg/Include/Duet
--I/UefiPackages/OpenCorePkg/Include/Generic
--I/UefiPackages/OpenCorePkg/Include/Intel
--I/UefiPackages/OpenCorePkg/Include/Microsoft
--I/UefiPackages/OpenCorePkg/Include/Nvidia
--I/UefiPackages/OpenCorePkg/Include/VMware
+-I/UefiPackages/MaxRegnerPkg/Include/AMI
+-I/UefiPackages/MaxRegnerPkg/Include/Acidanthera
+-I/UefiPackages/MaxRegnerPkg/Include/Apple
+-I/UefiPackages/MaxRegnerPkg/Include/Apple/X64
+-I/UefiPackages/MaxRegnerPkg/Include/Duet
+-I/UefiPackages/MaxRegnerPkg/Include/Generic
+-I/UefiPackages/MaxRegnerPkg/Include/Intel
+-I/UefiPackages/MaxRegnerPkg/Include/Microsoft
+-I/UefiPackages/MaxRegnerPkg/Include/Nvidia
+-I/UefiPackages/MaxRegnerPkg/Include/VMware
 -I/UefiPackages/OvmfPkg/Include
 -I/UefiPackages/ShellPkg/Include
 -I/UefiPackages/UefiCpuPkg/Include
@@ -780,10 +780,10 @@ Add \texttt{compile\_flags.txt} file with similar content to the UDK root:
 
 \emph{Note}: \texttt{/UefiPackages} in the sample file denotes an absolute path.
 
-\textbf{Warning}: Tool developers modifying \texttt{config.plist} or any other OpenCore
-files must ensure that their tools check the \texttt{opencore-version} NVRAM variable
+\textbf{Warning}: Tool developers modifying \texttt{config.plist} or any other MaxRegner
+files must ensure that their tools check the \texttt{maxregner-version} NVRAM variable
 (see the \hyperref[miscdebugprops]{Debug Properties} section below) and warn users
-if the version listed is unsupported or prerelease. The OpenCore configuration may change
+if the version listed is unsupported or prerelease. The MaxRegner configuration may change
 across releases and such tools shall ensure that they carefully follow this document. Failure
 to do so may result in such tools being considered to be malware and blocked by any means.
 
@@ -796,7 +796,7 @@ submissions, third-party contributors should initially raise issues to the
 \href{https://github.com/acidanthera/bugtracker}{Acidanthera Bugtracker}
 for feedback before submitting patches.
 
-\textbf{Organisation}. The codebase is contained in the \texttt{OpenCorePkg} repository,
+\textbf{Organisation}. The codebase is contained in the \texttt{MaxRegnerPkg} repository,
 which is the primary EDK II package.
 \begin{itemize}
 \tightlist
@@ -876,7 +876,7 @@ is available, and inline for \texttt{static} variables and functions.
 The codebase incorporates EDK II debugging and few custom features to improve the experience.
 \begin{itemize}
 \tightlist
-\item Use module prefixes, 2-5 letters followed by a colon (\texttt{:}), for debug messages. For \texttt{OpenCorePkg}
+\item Use module prefixes, 2-5 letters followed by a colon (\texttt{:}), for debug messages. For \texttt{MaxRegnerPkg}
 use \texttt{OC:}, for libraries and drivers use their own unique prefixes.
 \item Do not use dots (\texttt{.}) in the end of debug messages and separate \texttt{EFI\_STATUS}, printed by
 \texttt{\%r}, with a hyphen (e.g. \texttt{OCRAM: Allocation of \%u bytes failed - \%r\textbackslash n}).
@@ -895,7 +895,7 @@ and \texttt{DEBUG\_WARN} for all other human visible errors, \texttt{RELEASE} bu
 \end{itemize}
 
 The \href{https://git-scm.com/docs/git-bisect}{\texttt{git-bisect}} functionality may be useful when trying
-to find problematic changes. Unofficial sources of \texttt{per-commit} OpenCore binary builds,
+to find problematic changes. Unofficial sources of \texttt{per-commit} MaxRegner binary builds,
 such as \href{https://dortania.github.io/builds}{Dortania}, may also be useful.
 
 \section{ACPI}\label{acpi}
@@ -908,7 +908,7 @@ The \href{https://uefi.org/specifications}{ACPI specification} defines
 standard tables (e.g.~\texttt{DSDT}, \texttt{SSDT}, \texttt{FACS}, \texttt{DMAR})
 and various methods (e.g. \texttt{\_DSM}, \texttt{\_PRW}) for implementation.
 Modern hardware needs few changes to maintain ACPI compatibility and some
-options for such changes are provided as part of OpenCore.
+options for such changes are provided as part of MaxRegner.
 
 To compile and disassemble ACPI tables, the \href{https://github.com/acpica/acpica}{iASL compiler}
 developed by \href{https://www.acpica.org}{ACPICA} can be used. A GUI front-end to iASL compiler
@@ -936,12 +936,12 @@ where the original method is patched in the original table and is implemented in
 the patched table.
 
 There are several sources of ACPI tables and workarounds. Commonly used
-ACPI tables are provided with OpenCore, VirtualSMC, VoodooPS2, and WhateverGreen
+ACPI tables are provided with MaxRegner, VirtualSMC, VoodooPS2, and WhateverGreen
 releases. Besides those, several third-party instructions may be found on
 the AppleLife \href{https://applelife.ru/forums/xakintosh.67}{Laboratory}
 and \href{https://applelife.ru/forums/dsdt.129}{DSDT} subforums
 (e.g. \href{https://applelife.ru/posts/498967}{Battery register splitting} guide).
-A slightly more user-friendly explanation of some tables included with OpenCore
+A slightly more user-friendly explanation of some tables included with MaxRegner
 can also be found in \href{https://dortania.github.io}{Dortania}'s
 \href{https://dortania.github.io/Getting-Started-With-ACPI}{Getting started with ACPI} guide.
 For more exotic cases, there are several alternatives such as
@@ -1716,7 +1716,7 @@ To view their current state, use the \texttt{pmset -g} command in Terminal.
   macOS when \texttt{SecureBootModel} is set to \texttt{Disabled}.
 
   \emph{Note 1}: The quirk is never applied during the Apple secure boot path for
-  newer macOS. The Apple secure boot path in OpenCore includes its own separate
+  newer macOS. The Apple secure boot path in MaxRegner includes its own separate
   mitigations for \texttt{boot.efi} \texttt{W\^{}X} issues.
 
   \emph{Note 2}: When enabled, and when not processing for Apple secure boot, this quirk
@@ -1741,14 +1741,14 @@ To view their current state, use the \texttt{pmset -g} command in Terminal.
   \texttt{ForceBooterSignature}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Set macOS \texttt{boot-signature} to OpenCore launcher.
+  \textbf{Description}: Set macOS \texttt{boot-signature} to MaxRegner launcher.
 
   Booter signature, essentially a SHA-1 hash of the loaded image, is used by Mac EFI
   to verify the authenticity of the bootloader when waking from hibernation. This
-  option forces macOS to use OpenCore launcher SHA-1 hash as a booter signature to let
-  OpenCore shim hibernation wake on Mac EFI firmware.
+  option forces macOS to use MaxRegner launcher SHA-1 hash as a booter signature to let
+  MaxRegner shim hibernation wake on Mac EFI firmware.
 
-  \emph{Note}: OpenCore launcher path is determined from \texttt{LauncherPath} property.
+  \emph{Note}: MaxRegner launcher path is determined from \texttt{LauncherPath} property.
 
 \item
   \texttt{ForceExitBootServices}\\
@@ -1817,7 +1817,7 @@ To view their current state, use the \texttt{pmset -g} command in Terminal.
   \emph{Note 1}: On VMware, the need for this quirk may be determined by the appearance of the
   ``Your Mac OS guest might run unreliably with more than one virtual core.'' message.
 
-  \emph{Note 2}: This quirk is needed for correct operation if OpenCore is chainloaded from GRUB
+  \emph{Note 2}: This quirk is needed for correct operation if MaxRegner is chainloaded from GRUB
   with BIOS Secure Boot enabled.
 
 \item
@@ -2895,7 +2895,7 @@ Kernel and kext changes apply with the following effective order:
   \texttt{AML} with tool \texttt{iASL}. For the patched \texttt{DMAR} table to be \hyperref[acpipropsadd]{added},
   the original one should be \hyperref[acpipropsdelete]{deleted}.
   More details can be found at
-  \href{https://github.com/acidanthera/OpenCorePkg/commit/24414555f2c07e06a3674ec7a2aa1ce4860bbcc7#commitcomment-70530145}{comment on commit 2441455}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/commit/24414555f2c07e06a3674ec7a2aa1ce4860bbcc7#commitcomment-70530145}{comment on commit 2441455}.
 
 \item
   \texttt{ForceSecureBootScheme}\\
@@ -3134,7 +3134,7 @@ to install and troubleshoot such macOS installations.
     \item \texttt{arch} argument in image arguments (e.g. when launched
     via UEFI Shell) or in \texttt{boot-args} variable overrides any compatibility
     checks and forces the specified architecture, completing this algorithm.
-    \item OpenCore build architecture restricts capabilities to \texttt{i386}
+    \item MaxRegner build architecture restricts capabilities to \texttt{i386}
       and \texttt{i386-user32} mode for the 32-bit firmware variant.
     \item Determined EfiBoot version restricts architecture choice:
       \begin{itemize}
@@ -3164,7 +3164,7 @@ to install and troubleshoot such macOS installations.
   product type (client vs server), macOS point release, and amount of RAM. The detection
   of all these is complicated and impractical, as several point releases had implementation
   flaws resulting in a failure to properly execute the server detection in the first place.
-  For this reason when \texttt{Auto} is set, OpenCore on Mac OS X~10.6 falls back
+  For this reason when \texttt{Auto} is set, MaxRegner on Mac OS X~10.6 falls back
   to the \texttt{x86\_64} architecture when it is supported by the board, as
   on Mac OS X~10.7. The 32-bit \texttt{KernelArch} options can still be configured
   explicitly however.
@@ -3209,7 +3209,7 @@ to install and troubleshoot such macOS installations.
   if slower variants are available for debugging and stability reasons. That is, by
   specifying \texttt{Mkext}, \texttt{Prelinked} will be disabled for e.g. 10.6 but not for 10.7.
 
-  The list of available kernel caching types and its current support in OpenCore is listed below.
+  The list of available kernel caching types and its current support in MaxRegner is listed below.
 
   \begin{center}
   \begin{tabular}{|p{0.67in}|c|c|c|c|c|c|c|}
@@ -3245,17 +3245,17 @@ to install and troubleshoot such macOS installations.
 
 \subsection{Introduction}\label{miscintro}
 
-This section contains miscellaneous configuration options affecting OpenCore operating system
+This section contains miscellaneous configuration options affecting MaxRegner operating system
 loading behaviour in addition to other options that do not readily fit into other sections.
 
-OpenCore broadly follows the ``bless'' model, also known as the ``Apple Boot Policy''. The primary purpose of
+MaxRegner broadly follows the ``bless'' model, also known as the ``Apple Boot Policy''. The primary purpose of
 the ``bless'' model is to allow embedding boot options within the file system (and be accessible through a
 specialised driver) as well as supporting a broader range of predefined boot paths as compared to the
 removable media list set out in the UEFI specification.
 
-Partitions can only booted by OpenCore when they meet the requirements of a predefined \texttt{Scan policy}.
+Partitions can only booted by MaxRegner when they meet the requirements of a predefined \texttt{Scan policy}.
 This policy sets out which specific file systems a partition must have, and which specific device types
-a partition must be located on, to be made available by OpenCore as a boot option.
+a partition must be located on, to be made available by MaxRegner as a boot option.
 Refer to the \texttt{ScanPolicy} property for details.
 
 The scan process starts with enumerating all available partitions, filtered based on the \texttt{Scan policy}.
@@ -3286,7 +3286,7 @@ The algorithm to determine boot options behaves as follows:
   % Scan policy restrictions are actually checked here as we want the function to be self-contained
   % for non-scan based startup.
   \item Perform fixups (e.g. NVMe subtype correction) and expansion (e.g. for Boot Camp) of the device path.
-  \item On failure, if it is an OpenCore custom entry device path, pre-construct the corresponding custom entry and succeed.
+  \item On failure, if it is an MaxRegner custom entry device path, pre-construct the corresponding custom entry and succeed.
   \item Obtain the device handle by locating the device path of the resulting device path (ignore it on failure).
   \item Locate the device handle in the list of partition handles (ignore it if missing).
   % To determine device path type we can use LocateDevicePath RemainingDevicePath argument.
@@ -3308,7 +3308,7 @@ The algorithm to determine boot options behaves as follows:
   \begin{itemize}
   \item If the partition handle is marked as \textit{unused}, execute ``bless'' primary option list retrieval. \\
     In case a \texttt{BlessOverride} list is set, both standard and custom ``bless'' paths will be found.
-  \item On the OpenCore boot partition, exclude OpenCore bootstrap files using header checks.
+  \item On the MaxRegner boot partition, exclude MaxRegner bootstrap files using header checks.
   \item Register the resulting entries as primary options and determine their types if found. \\
   The option will become auxiliary for some types (e.g. Apple HFS recovery).
   % Looking up primary and alternate handles could be done per handle to make sure the list is ordered.
@@ -3341,23 +3341,23 @@ are removed by macOS updates. It is supported but not recommended to place a \te
 non-macOS root location (such as the last location shown above), because it will hide all entries on the drive.
 
 The \texttt{.contentVisibility} file, when present, may optionally target only specific instances
-of OpenCore. Its contents are \texttt{[\{Instance-List\}:](Disabled|Auxiliary)}.
+of MaxRegner. Its contents are \texttt{[\{Instance-List\}:](Disabled|Auxiliary)}.
 If a colon (\texttt{:}) is present, the preceding \texttt{Instance-List} it is a comma separated
 list of \texttt{InstanceIdentifier} values (example: \texttt{OCA,OCB:Disabled}).
 When this list is present, the specified visibility is only applied if the
-\texttt{InstanceIdentifier} of the current instance of OpenCore is present in the list.
-When the list is not present, the specified visibility is applied for all instances of OpenCore.
+\texttt{InstanceIdentifier} of the current instance of MaxRegner is present in the list.
+When the list is not present, the specified visibility is applied for all instances of MaxRegner.
 
-\emph{Note 1}: For any instance of OpenCore with no \texttt{InstanceIdentifier} value, the specified visibility
+\emph{Note 1}: For any instance of MaxRegner with no \texttt{InstanceIdentifier} value, the specified visibility
 from a \texttt{.contentVisibility} file with an \texttt{Instance-List} will never be applied.
 
 \emph{Note 2}: Visibilities with a visibility list will be treated as invalid, and so ignored, in earlier
-versions of OpenCore - which may be useful when comparing behaviour of older and newer versions.
+versions of MaxRegner - which may be useful when comparing behaviour of older and newer versions.
 
 \emph{Note 3}: Avoid extraneous spaces in the \texttt{.contentVisibility} file: these will not be treated as
 whitespace, but as part of the adjacent token.
 
-The display order of the boot options in the OpenCore picker and the boot process
+The display order of the boot options in the MaxRegner picker and the boot process
 are determined separately from the scanning algorithm.
 
 The display order is as follows:
@@ -3369,7 +3369,7 @@ The display order is as follows:
 \item Options will be listed in file system handle firmware order to maintain an established order across
   reboots regardless of the operating system chosen for loading.
 \item Custom entries, tools, and system entries will be added after all other options.
-\item Auxiliary options will only be displayed upon entering ``Extended Mode'' in the OpenCore picker
+\item Auxiliary options will only be displayed upon entering ``Extended Mode'' in the MaxRegner picker
 (typically by pressing the \texttt{Space} key).
 \end{itemize}
 
@@ -3386,7 +3386,7 @@ The boot process is as follows:
 \emph{Note 1}: This process will only work reliably when the \texttt{RequestBootVarRouting}
 option is enabled or the firmware does not control UEFI boot options (\texttt{OpenDuetPkg} or
 custom BDS). When \texttt{LauncherOption} is not enabled, other operating systems may
-overwrite OpenCore settings and this property should therefore be enabled when planning
+overwrite MaxRegner settings and this property should therefore be enabled when planning
 to use other operating systems.
 
 \emph{Note 2}: UEFI variable boot options boot arguments will be removed, if present, as
@@ -3394,7 +3394,7 @@ they may contain arguments that can compromise the operating system, which is un
 when secure boot is enabled.
 
 \emph{Note 3}: Some operating systems, such as Windows, may create a boot option and mark it as
-the topmost option upon first boot or after NVRAM resets from within OpenCore. When this happens,
+the topmost option upon first boot or after NVRAM resets from within MaxRegner. When this happens,
 the default boot entry choice will remain changed until the next manual reconfiguration.
 
 \subsection{Properties}\label{miscprops}
@@ -3411,7 +3411,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   absolute UEFI paths to customised bootloaders such as
   \texttt{\textbackslash EFI\textbackslash debian\textbackslash grubx64.efi}
   for the Debian bootloader. This allows non-standard boot paths to be automatically
-  discovered by the OpenCore picker. Designwise, they are equivalent to predefined blessed paths, such as
+  discovered by the MaxRegner picker. Designwise, they are equivalent to predefined blessed paths, such as
   \texttt{\textbackslash System\textbackslash Library\textbackslash CoreServices\textbackslash boot.efi}
   or \texttt{\textbackslash EFI\textbackslash Microsoft\textbackslash Boot\textbackslash bootmgfw.efi},
   but unlike predefined bless paths, they have the highest priority.
@@ -3432,7 +3432,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{Entries}\\
   \textbf{Type}: \texttt{plist\ array}\\
   \textbf{Failsafe}: Empty\\
-  \textbf{Description}: Add boot entries to OpenCore picker.
+  \textbf{Description}: Add boot entries to MaxRegner picker.
 
   To be filled with \texttt{plist\ dict} values, describing each load entry.
   Refer to the \hyperref[miscentryprops]{Entry Properties} section below for details.
@@ -3451,7 +3451,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   Values are listed and described in the \hyperref[miscserialprops]{Serial Properties} and \hyperref[miscserialcustprops]{Serial Custom Properties} section below.
 
   By enabling \texttt{Init}, this section ensures that the serial port is initialised when it is not done by firmware.
-  In order for OpenCore to print logs to the serial port, bit \texttt{3} (i.e. serial logging) for \texttt{Target}
+  In order for MaxRegner to print logs to the serial port, bit \texttt{3} (i.e. serial logging) for \texttt{Target}
   under section \texttt{Misc->Debug} must be set.
 
   When debugging with serial ports, \texttt{BaseSerialPortLib16550} only recognises internal ones
@@ -3468,7 +3468,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{Tools}\label{misctools}\\
   \textbf{Type}: \texttt{plist\ array}\\
   \textbf{Failsafe}: Empty\\
-  \textbf{Description}: Add tool entries to the OpenCore picker.
+  \textbf{Description}: Add tool entries to the MaxRegner picker.
 
   To be filled with \texttt{plist\ dict} values, describing each load entry.
   Refer to the \hyperref[miscentryprops]{Entry Properties} section below for details.
@@ -3543,7 +3543,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \end{itemize}
 
   \emph{Note}: If the firmware can handle hibernation itself (valid for Mac EFI firmware),
-  then \texttt{None} should be specified to hand-off hibernation state as is to OpenCore.
+  then \texttt{None} should be specified to hand-off hibernation state as is to MaxRegner.
 
 \item
   \texttt{HibernateSkipsPicker}\\
@@ -3585,10 +3585,10 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{InstanceIdentifier}\\
   \textbf{Type}: \texttt{plist\ string}\\
   \textbf{Failsafe}: Empty\\
-  \textbf{Description}: An optional identifier for the current instance of OpenCore.
+  \textbf{Description}: An optional identifier for the current instance of MaxRegner.
 
   This should typically be a short alphanumeric string. The current use of this value is
-  to optionally target \texttt{.contentVisibility} files to specific instances of OpenCore,
+  to optionally target \texttt{.contentVisibility} files to specific instances of MaxRegner,
   as explained in the \hyperref[bootalgorithm]{Boot Algorithm} section.
 
 \item
@@ -3618,14 +3618,14 @@ the default boot entry choice will remain changed until the next manual reconfig
     \begin{itemize}
   \tightlist
     \item This variant is useful when relying on \texttt{ForceBooterSignature} quirk and
-    OpenCore launcher path management happens through \texttt{bless} utilities without
-    involving OpenCore.
+    MaxRegner launcher path management happens through \texttt{bless} utilities without
+    involving MaxRegner.
   \end{itemize} \medskip
   \end{itemize}
 
   This option allows integration with third-party operating system installation and upgrades
   (which may overwrite the \texttt{\textbackslash EFI\textbackslash BOOT\textbackslash BOOTx64.efi}
-  file). The BOOTx64.efi file is no longer used for bootstrapping OpenCore if a custom option is created.
+  file). The BOOTx64.efi file is no longer used for bootstrapping MaxRegner if a custom option is created.
   The custom path used for bootstrapping can be specified by using the \texttt{LauncherPath} option.
 
   \emph{Note 1}: Some types of firmware may have NVRAM implementation flaws, no boot option
@@ -3634,37 +3634,37 @@ the default boot entry choice will remain changed until the next manual reconfig
   \href{https://github.com/acidanthera/bugtracker/issues/1222}{acidanthera/bugtracker\#1222}
   for some known issues affecting Haswell and other boards.
 
-  \emph{Note 2}: While NVRAM resets executed from OpenCore would not typically erase the boot option
-  created in \texttt{Bootstrap}, executing NVRAM resets prior to loading OpenCore will erase the boot
-  option. Therefore, for significant implementation updates, such as was the case with OpenCore 0.6.4,
+  \emph{Note 2}: While NVRAM resets executed from MaxRegner would not typically erase the boot option
+  created in \texttt{Bootstrap}, executing NVRAM resets prior to loading MaxRegner will erase the boot
+  option. Therefore, for significant implementation updates, such as was the case with MaxRegner 0.6.4,
   an NVRAM reset should be executed with \texttt{Bootstrap} disabled, after which it can be re-enabled.
 
   \emph{Note 3}: Some versions of Intel Visual BIOS (e.g. on Intel NUC) have an unfortunate bug whereby if any boot
   option is added referring to a path on a USB drive, from then on that is the only boot option which will be shown
-  when any USB drive is inserted. If OpenCore is started from a USB drive on this firmware with
-  \texttt{LauncherOption} set to \texttt{Full} or \texttt{Short}, this applies and only the OpenCore boot entry will be
+  when any USB drive is inserted. If MaxRegner is started from a USB drive on this firmware with
+  \texttt{LauncherOption} set to \texttt{Full} or \texttt{Short}, this applies and only the MaxRegner boot entry will be
   seen afterwards, when any other USB is inserted (this highly non-standard BIOS behaviour affects other software as well).
   The best way to avoid this is to leave \texttt{LauncherOption} set to \texttt{Disabled} or \texttt{System} on any
-  version of OpenCore which will be started from a USB drive on this firmware. If the problem has already
+  version of MaxRegner which will be started from a USB drive on this firmware. If the problem has already
   occurred the quickest reliable fix is:
   \begin{itemize}
   \tightlist
     \item Enable the system UEFI Shell in Intel Visual BIOS
-    \item With power off, insert an OpenCore USB
+    \item With power off, insert an MaxRegner USB
     \item Power up and select the system UEFI Shell
-    \item Since the system shell does not include \texttt{bcfg}, use the system shell to start OpenCore's OpenShell
+    \item Since the system shell does not include \texttt{bcfg}, use the system shell to start MaxRegner's OpenShell
     (e.g. by entering the command \texttt{FS2:\textbackslash EFI\textbackslash OC\textbackslash Tools\textbackslash OpenShell.efi} ,
-    but you will need to work out which drive is correct for OpenCore and modify the drive number \texttt{FS\#:} accordingly)
+    but you will need to work out which drive is correct for MaxRegner and modify the drive number \texttt{FS\#:} accordingly)
     \item Within OpenShell, use \texttt{bcfg boot dump} to display the NVRAM boot options and then use \texttt{bcfg boot rm \#}
-    (where \texttt{\#} is the number of the OpenCore boot entry) to remove the OpenCore entry
+    (where \texttt{\#} is the number of the MaxRegner boot entry) to remove the MaxRegner entry
   \end{itemize}
-  It is alternatively possible to start OpenShell directly from the OpenCore boot menu, if you have
-  a working configured OpenCore for the system. In that case, and if OpenCore has \texttt{RequestBootVarRouting} enabled, it will be
+  It is alternatively possible to start OpenShell directly from the MaxRegner boot menu, if you have
+  a working configured MaxRegner for the system. In that case, and if MaxRegner has \texttt{RequestBootVarRouting} enabled, it will be
   necessary to run the command \texttt{\textbackslash EFI\textbackslash OC\textbackslash Tools\textbackslash OpenControl.efi disable}
   before using \texttt{bcfg}. (After \texttt{OpenControl disable}, it is necessary to either reboot or run \texttt{OpenControl restore},
   before booting an operating system.)
   It is also possible to use \texttt{efibootmgr} within Linux to remove the offending entry, if you have a working
-  version of Linux on the machine. Linux must be started either not via OpenCore, or via OpenCore with \texttt{RequestBootVarRouting} disabled
+  version of Linux on the machine. Linux must be started either not via MaxRegner, or via MaxRegner with \texttt{RequestBootVarRouting} disabled
   for this to work.
 
 \item
@@ -3673,29 +3673,29 @@ the default boot entry choice will remain changed until the next manual reconfig
   \textbf{Failsafe}: \texttt{Default}\\
   \textbf{Description}: Launch path for the \texttt{LauncherOption} property.
 
-  \texttt{Default} points to \texttt{OpenCore.efi}. User specified paths,
+  \texttt{Default} points to \texttt{MaxRegner.efi}. User specified paths,
   e.g. \texttt{\textbackslash EFI\textbackslash SomeLauncher.efi},
   can be used to provide custom loaders, which are supposed to
-  load \texttt{OpenCore.efi} themselves.
+  load \texttt{MaxRegner.efi} themselves.
 
 \item
   \texttt{PickerAttributes}\\
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{0}\\
-  \textbf{Description}: Sets specific attributes for the OpenCore picker.
+  \textbf{Description}: Sets specific attributes for the MaxRegner picker.
 
-  Different OpenCore pickers may be configured through the attribute mask containing
-  OpenCore-reserved (\texttt{BIT0}\textasciitilde\texttt{BIT15}) and OEM-specific
+  Different MaxRegner pickers may be configured through the attribute mask containing
+  MaxRegner-reserved (\texttt{BIT0}\textasciitilde\texttt{BIT15}) and OEM-specific
   (\texttt{BIT16}\textasciitilde\texttt{BIT31}) values.
 
-  Current OpenCore values include:
+  Current MaxRegner values include:
 
   \begin{itemize}
   \tightlist
   \item \texttt{0x0001} --- \texttt{OC\_ATTR\_USE\_VOLUME\_ICON}, provides custom icons
     for boot entries:
 
-    OpenCore will attempt loading a volume icon by searching
+    MaxRegner will attempt loading a volume icon by searching
     as follows, and will fallback to the default icon on failure:
     \begin{itemize}
     \tightlist
@@ -3718,7 +3718,7 @@ the default boot entry choice will remain changed until the next manual reconfig
     above with OpenCanopy as a preferred alternative to Apple's approach. \medskip
 
     \emph{Note 2}: Be aware that using a volume icon on any drive overrides the normal
-    OpenCore picker behaviour for that drive of selecting the appropriate icon depending
+    MaxRegner picker behaviour for that drive of selecting the appropriate icon depending
     on whether the drive is internal or external. \medskip
 
   \item \texttt{0x0002} --- \texttt{OC\_ATTR\_USE\_DISK\_LABEL\_FILE}, use custom
@@ -3736,7 +3736,7 @@ the default boot entry choice will remain changed until the next manual reconfig
     for certain icon categories to match the theme style. For example, this could force
     displaying the builtin Time Machine icon. Requires \texttt{OC\_ATTR\_USE\_VOLUME\_ICON}.
   \item \texttt{0x0010} --- \texttt{OC\_ATTR\_USE\_POINTER\_CONTROL}, enables pointer control
-  in the OpenCore picker when available. For example, this could make use of mouse or trackpad to
+  in the MaxRegner picker when available. For example, this could make use of mouse or trackpad to
   control UI elements.
   \item \texttt{0x0020} --- \texttt{OC\_ATTR\_SHOW\_DEBUG\_DISPLAY}, enable display of additional
   timing and debug information, in Builtin picker in \texttt{DEBUG} and \texttt{NOOPT}
@@ -3800,7 +3800,7 @@ the default boot entry choice will remain changed until the next manual reconfig
     \medskip
   \item \texttt{0x0100} --- \texttt{OC\_ATTR\_USE\_REVERSED\_UI}, reverse position of Shutdown and
   Restart buttons, affects OpenCanopy and builtin picker. The reversed setting matches older macOS,
-  and since it was the previous default in OpenCore it may better match some custom backgrounds.
+  and since it was the previous default in MaxRegner it may better match some custom backgrounds.
   Only applicable when \texttt{OC\_ATTR\_USE\_MINIMAL\_UI} is not set.
   \item \texttt{0x0200} --- \texttt{OC\_ATTR\_REDUCE\_MOTION}, reduce password and menu animation
   in \texttt{OpenCanopy}, leaving only animations which communicate information not otherwise
@@ -3814,12 +3814,12 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{PickerAudioAssist}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Enable screen reader by default in the OpenCore picker.
+  \textbf{Description}: Enable screen reader by default in the MaxRegner picker.
 
   For the macOS bootloader, screen reader preference is set in the \texttt{preferences.efires}
   archive in the \texttt{isVOEnabled.int32} file and is controlled by the operating system.
-  For OpenCore screen reader support, this option is an independent equivalent.
-  Toggling screen reader support in both the OpenCore picker and the macOS bootloader
+  For MaxRegner screen reader support, this option is an independent equivalent.
+  Toggling screen reader support in both the MaxRegner picker and the macOS bootloader
   FileVault 2 login window can also be done by using the \texttt{Command} + \texttt{F5} key
   combination.
 
@@ -3839,7 +3839,7 @@ the default boot entry choice will remain changed until the next manual reconfig
 
   \begin{itemize}
   \tightlist
-  \item \texttt{Builtin} --- boot management is handled by OpenCore, a simple
+  \item \texttt{Builtin} --- boot management is handled by MaxRegner, a simple
   text-only user interface is used.
   \item \texttt{External} --- an external boot management protocol is used
   if available. Otherwise, the \texttt{Builtin} mode is used.
@@ -3848,11 +3848,11 @@ the default boot entry choice will remain changed until the next manual reconfig
   \end{itemize}
 
   Upon success, the \texttt{External} mode may entirely disable all boot management
-  in OpenCore except for policy enforcement. In the \texttt{Apple} mode, it may
+  in MaxRegner except for policy enforcement. In the \texttt{Apple} mode, it may
   additionally bypass policy enforcement. Refer to the \hyperref[ueficanopy]{OpenCanopy}
   plugin for an example of a custom user interface.
 
-  The OpenCore built-in picker contains a set of actions chosen during the boot process.
+  The MaxRegner built-in picker contains a set of actions chosen during the boot process.
   The list of supported actions is similar to Apple BDS and typically can be accessed by
   holding \texttt{action hotkeys} during the boot process.
 
@@ -3860,10 +3860,10 @@ the default boot entry choice will remain changed until the next manual reconfig
 
   \begin{itemize}
   \tightlist
-  \item \texttt{Default} --- this is the default option, and it lets the built-in OpenCore
+  \item \texttt{Default} --- this is the default option, and it lets the built-in MaxRegner
   picker load the default boot option as specified in the
   \href{https://support.apple.com/HT202796}{Startup Disk} preference pane.
-  \item \texttt{ShowPicker} --- this option forces the OpenCore picker to be displayed. This can
+  \item \texttt{ShowPicker} --- this option forces the MaxRegner picker to be displayed. This can
   typically be achieved by holding the \texttt{OPT} key during boot. Setting \texttt{ShowPicker} to
   \texttt{true} will make \texttt{ShowPicker} the default option.
   \item \texttt{BootApple} --- this options performs booting to the first Apple
@@ -3879,9 +3879,9 @@ the default boot entry choice will remain changed until the next manual reconfig
   required for key handling. However, not all of the key handling functions can be implemented on several
   types of firmware.
 
-  \emph{Note 2}: In addition to \texttt{OPT}, OpenCore supports using both the \texttt{Escape}
-  and \texttt{Zero} keys to enter the OpenCore picker when \texttt{ShowPicker} is disabled.
-  \texttt{Escape} exists to support co-existence with the Apple picker (including OpenCore \texttt{Apple}
+  \emph{Note 2}: In addition to \texttt{OPT}, MaxRegner supports using both the \texttt{Escape}
+  and \texttt{Zero} keys to enter the MaxRegner picker when \texttt{ShowPicker} is disabled.
+  \texttt{Escape} exists to support co-existence with the Apple picker (including MaxRegner \texttt{Apple}
   picker mode) and to support firmware that fails to report held \texttt{OPT} key, as on some PS/2 keyboards.
   In addition, \texttt{Zero} is provided to support systems on which \texttt{Escape} is already assigned to
   some other pre-boot firmware feature. In systems which do not require \texttt{KeySupport}, pressing and
@@ -3890,17 +3890,17 @@ the default boot entry choice will remain changed until the next manual reconfig
   with a long enough \texttt{KeyForgetThreshold}. If pressing and holding the key is not successful to reliably
   enter the picker, multiple repeated keypresses may be tried instead.
 
-  \emph{Note 3}: On Macs with problematic GOP, it may be difficult to re-bless OpenCore if its bless status
+  \emph{Note 3}: On Macs with problematic GOP, it may be difficult to re-bless MaxRegner if its bless status
   is lost. The \texttt{BootKicker} utility can be used to work around this problem, if set up as a Tool
-  in OpenCore with \texttt{FullNvramAccess} enabled. It will launch the Apple picker,
+  in MaxRegner with \texttt{FullNvramAccess} enabled. It will launch the Apple picker,
   which allows selection of an item to boot next (with \texttt{Enter}), or next and from then on until
   the next change (with \texttt{CTRL+Enter}). Note that after the selection is made, the system
   \emph{will reboot} before the chosen entry is booted. While this behaviour might seem surprising,
-  it can be used both to switch which OpenCore installation is blessed, with \texttt{CTRL+Enter},
-  e.g. from a recovery OpenCore installation on CD (selected with the \texttt{C} key on boot) back
-  to the main installation of OpenCore on the hard drive, if this is lost after an NVRAM reset. It can
+  it can be used both to switch which MaxRegner installation is blessed, with \texttt{CTRL+Enter},
+  e.g. from a recovery MaxRegner installation on CD (selected with the \texttt{C} key on boot) back
+  to the main installation of MaxRegner on the hard drive, if this is lost after an NVRAM reset. It can
   also be used, even when the native picker cannot be shown normally (unsupported GPU), to do a one-shot
-  boot without OpenCore, e.g. to another OS or tool, or to an earlier version of macOS.
+  boot without MaxRegner, e.g. to another OS or tool, or to an earlier version of macOS.
 
 \item
   \texttt{PickerVariant}\\
@@ -3937,7 +3937,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{PollAppleHotKeys}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Enable \texttt{modifier hotkey} handling in the OpenCore picker.
+  \textbf{Description}: Enable \texttt{modifier hotkey} handling in the MaxRegner picker.
 
   In addition to \texttt{action hotkeys}, which are partially described in the \texttt{PickerMode}
   section and are typically handled by Apple BDS, modifier keys handled by the operating system
@@ -3946,7 +3946,7 @@ the default boot entry choice will remain changed until the next manual reconfig
 
   On certain firmware, using modifier keys may be problematic due to driver incompatibilities.
   To workaround this problem, this option allows registering certain hotkeys in a more permissive
-  manner from within the OpenCore picker. Such extensions include support for tapping on key
+  manner from within the MaxRegner picker. Such extensions include support for tapping on key
   combinations before selecting the boot item, and for reliable detection of the \texttt{Shift} key
   when selecting the boot item, in order to work around the fact that hotkeys which are continuously
   held during boot cannot be reliably detected on many PS/2 keyboards.
@@ -3974,7 +3974,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \textbf{Type}: \texttt{plist\ integer}, 32 bit\\
   \textbf{Failsafe}: \texttt{0}\\
   \textbf{Description}: Delay in microseconds executed before handling
-  the OpenCore picker startup and \texttt{action hotkeys}.
+  the MaxRegner picker startup and \texttt{action hotkeys}.
 
   Introducing a delay may give extra time to hold the right \texttt{action hotkey}
   sequence to, for instance, boot into recovery mode. On most systems, the appearance
@@ -3987,7 +3987,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   of slower startup, an even longer delay of half to one second (\texttt{500000-1000000})
   may be used to create behaviour similar to a real Mac, where the chime itself can be used
   as a signal for when hotkeys can be pressed. The boot chime is inevitably later in the boot
-  sequence in OpenCore than on Apple hardware, due to the fact that non-native drivers
+  sequence in MaxRegner than on Apple hardware, due to the fact that non-native drivers
   have to be loaded and connected first. Configuring the boot chime and adding this longer
   additional delay can also be useful in systems where fast boot time and/or slow monitor signal
   synchronisation may cause the boot logo not to be shown at all on some boots or reboots.
@@ -3996,7 +3996,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{Timeout}\\
   \textbf{Type}: \texttt{plist\ integer}, 32 bit\\
   \textbf{Failsafe}: \texttt{0}\\
-  \textbf{Description}: Timeout in seconds in the OpenCore picker before
+  \textbf{Description}: Timeout in seconds in the MaxRegner picker before
   automatic booting of the default boot entry. Set to \texttt{0} to disable.
 
 \end{enumerate}
@@ -4009,7 +4009,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{AppleDebug}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Enable writing the \texttt{boot.efi} debug log to the OpenCore log.
+  \textbf{Description}: Enable writing the \texttt{boot.efi} debug log to the MaxRegner log.
 
   \emph{Note}: This option only applies to 10.15.4 and newer.
 
@@ -4017,12 +4017,12 @@ the default boot entry choice will remain changed until the next manual reconfig
   \texttt{ApplePanic}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Save macOS kernel panic output to the OpenCore root partition.
+  \textbf{Description}: Save macOS kernel panic output to the MaxRegner root partition.
 
   The file is saved as \texttt{panic-YYYY-MM-DD-HHMMSS.txt}. It is strongly
   recommended to set the \texttt{keepsyms=1} boot argument to see debug symbols
   in the panic log. In cases where it is not present, the \texttt{kpdescribe.sh}
-  utility (bundled with OpenCore) may be used to partially recover the stacktrace.
+  utility (bundled with MaxRegner) may be used to partially recover the stacktrace.
 
   Development and debug kernels produce more useful kernel panic logs.
   Consider downloading and installing the \texttt{KernelDebugKit} from
@@ -4031,7 +4031,7 @@ the default boot entry choice will remain changed until the next manual reconfig
   Use the \texttt{uname -a} command to ensure that the current loaded
   kernel is a development (or a debug) kernel.
 
-  In cases where the OpenCore kernel panic saving mechanism is not used, kernel panic
+  In cases where the MaxRegner kernel panic saving mechanism is not used, kernel panic
   logs may still be found in the \texttt{/Library/Logs/DiagnosticReports} directory.
 
   Starting with macOS Catalina, kernel panics are stored in JSON format and thus
@@ -4096,7 +4096,7 @@ cat Kernel.panic | grep macOSProcessedStackshotData |
   For instance, \texttt{+OCCPU,OCA,OCB} means only \texttt{OCCPU}, \texttt{OCA}, \texttt{OCB} should be
   logged, while \texttt{-OCCPU,OCA,OCB} indicates these modules should be filtered out (i.e. not logged).
   Since there may be lines in the log with no valid prefix (i.e. log lines which are not generated by
-  parts of OpenCore, but by other loaded drivers) then the special module name question mark (\texttt{?})
+  parts of MaxRegner, but by other loaded drivers) then the special module name question mark (\texttt{?})
   can be included in the list to include (with positive filtering) or exclude (with negative filtering)
   these non-standard lines. When no \texttt{+} or \texttt{-} symbol is specified, positive filtering
   (\texttt{+}) will be used. \texttt{*} alone as the option value indicates all modules being logged.
@@ -4171,11 +4171,11 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log |
   As a result, they may not be able to always free space after variable deletion. Do not
   enable \texttt{non-volatile} NVRAM logging on such devices unless specifically required.
 
-  While the OpenCore boot log already contains basic version information including build type
-  and date, this information may also be found in the \texttt{opencore-version} NVRAM variable
+  While the MaxRegner boot log already contains basic version information including build type
+  and date, this information may also be found in the \texttt{maxregner-version} NVRAM variable
   even when boot logging is disabled.
 
-  File logging will create a file named \texttt{opencore-YYYY-MM-DD-HHMMSS.txt} (in UTC) under
+  File logging will create a file named \texttt{maxregner-YYYY-MM-DD-HHMMSS.txt} (in UTC) under
   the EFI volume root with log contents (the upper case letter sequence is replaced with date
   and time from the firmware). Please be warned that some file system drivers present in
   firmware are not reliable and may corrupt data when writing files through UEFI. Log
@@ -4211,7 +4211,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log |
   \item \texttt{OCPAVP} --- PavpProvision
   \item \texttt{OCRST} --- ResetSystem
   \item \texttt{OCUI} --- OpenCanopy
-  \item \texttt{OC} --- OpenCore main, also OcMainLib
+  \item \texttt{OC} --- MaxRegner main, also OcMainLib
   \item \texttt{OLB} --- OpenLegacyBoot
   \item \texttt{VMOPT} --- VerifyMemOpt
   \end{itemize}
@@ -4326,7 +4326,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log |
   \texttt{Name}\\
   \textbf{Type}: \texttt{plist\ string}\\
   \textbf{Failsafe}: Empty\\
-  \textbf{Description}: Human readable entry name displayed in the OpenCore picker.
+  \textbf{Description}: Human readable entry name displayed in the MaxRegner picker.
 
 \item
   \texttt{Path}\\
@@ -4381,7 +4381,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log |
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
   \textbf{Description}: Allow \texttt{CTRL+Enter} and \texttt{CTRL+Index} handling
-  to set the default boot option in the OpenCore picker.
+  to set the default boot option in the MaxRegner picker.
 
   \emph{Note 1}: May be used in combination
   with \texttt{Shift+Enter} or \texttt{Shift+Index} when \texttt{PollAppleHotKeys} is
@@ -4389,7 +4389,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log |
 
   \emph{Note 2}: In order to support systems with unresponsive modifiers during preboot
   (which includes \texttt{V1} and \texttt{V2} \texttt{KeySupport} mode on some firmware)
-  OpenCore also allows holding the \texttt{=/+} key in order to trigger `set default' mode.
+  MaxRegner also allows holding the \texttt{=/+} key in order to trigger `set default' mode.
 
 \item
   \texttt{ApECID}\\
@@ -4461,7 +4461,7 @@ diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
   \texttt{sudo fdesetup authrestart}. It is also used when installing operating system updates.
 
   VirtualSMC performs authenticated restarts by splitting and saving disk encryption keys between
-  NVRAM and RTC, which despite being removed as soon as OpenCore starts, may be
+  NVRAM and RTC, which despite being removed as soon as MaxRegner starts, may be
   considered a security risk and thus is optional.
 
 \item
@@ -4524,12 +4524,12 @@ diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
   \begin{itemize}
   \tightlist
     \item \texttt{0x01} --- Expose the printable booter path as a UEFI variable.
-    \item \texttt{0x02} --- Expose the OpenCore version as a UEFI variable.
-    \item \texttt{0x04} --- Expose the OpenCore version in the OpenCore picker menu title.
+    \item \texttt{0x02} --- Expose the MaxRegner version as a UEFI variable.
+    \item \texttt{0x04} --- Expose the MaxRegner version in the MaxRegner picker menu title.
     \item \texttt{0x08} --- Expose OEM information as a set of UEFI variables.
   \end{itemize}
 
-  The exposed booter path points to OpenCore.efi or its booter depending on the load order.
+  The exposed booter path points to MaxRegner.efi or its booter depending on the load order.
   To obtain the booter path, use the following command in macOS:
 \begin{lstlisting}[label=nvrampath, style=ocbash]
 nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path
@@ -4541,11 +4541,11 @@ u=$(nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path | sed 's/.*GPT,\([^,]*\
   if [ "$u" != "" ]; then sudo diskutil mount $u ; fi
 \end{lstlisting}
 
-  To obtain the current OpenCore version, use the following command in macOS:
+  To obtain the current MaxRegner version, use the following command in macOS:
 \begin{lstlisting}[label=nvramver, style=ocbash]
-nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
+nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:maxregner-version
 \end{lstlisting}
-  If the OpenCore version is not exposed the variable will contain
+  If the MaxRegner version is not exposed the variable will contain
   \texttt{UNK-000-0000-00-00} sequence.
 
   To obtain OEM information, use the following commands in macOS:
@@ -4771,7 +4771,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   # SMBIOS Type2 ProductNam
   \texttt{Vault}\\
   \textbf{Type}: \texttt{plist\ string}\\
   \textbf{Failsafe}: \texttt{Secure}\\
-  \textbf{Description}: Enables the OpenCore vaulting mechanism.
+  \textbf{Description}: Enables the MaxRegner vaulting mechanism.
 
   Valid values:
 
@@ -4786,59 +4786,59 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   # SMBIOS Type2 ProductNam
   integrity checking but also attempts to build a trusted bootchain.
   \end{itemize}
 
-  The \texttt{vault.plist} file should contain SHA-256 hashes for all files used by OpenCore.
+  The \texttt{vault.plist} file should contain SHA-256 hashes for all files used by MaxRegner.
   The presence of this file is highly recommended to ensure that unintentional file modifications
   (including filesystem corruption) do not go unnoticed. To create this file automatically, use the
-  \href{https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVault}{\texttt{create\_vault.sh}}
+  \href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Utilities/CreateVault}{\texttt{create\_vault.sh}}
   script. Notwithstanding the underlying file system, the path names and cases between \texttt{config.plist}
   and \texttt{vault.plist} must match.
 
   The \texttt{vault.sig} file should contain a raw 256 byte RSA-2048 signature from a SHA-256
   hash of \texttt{vault.plist}. The signature is verified against the public key embedded
-  into \texttt{OpenCore.efi}.
+  into \texttt{MaxRegner.efi}.
 
   To embed the public key, either one of the following should be performed:
 
   \begin{itemize}
   \tightlist
-  \item Provide public key during the \texttt{OpenCore.efi} compilation in
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Library/OcMainLib/OpenCoreVault.c}{\texttt{OpenCoreVault.c}} file.
-  \item Binary patch \texttt{OpenCore.efi} replacing zeroes with the public key
+  \item Provide public key during the \texttt{MaxRegner.efi} compilation in
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Library/OcMainLib/MaxRegnerVault.c}{\texttt{MaxRegnerVault.c}} file.
+  \item Binary patch \texttt{MaxRegner.efi} replacing zeroes with the public key
   between \texttt{=BEGIN OC VAULT=} and \texttt{==END OC VAULT==} ASCII markers.
   \end{itemize}
 
   The RSA public key 520 byte format description can be found in Chromium OS documentation.
   To convert the public key from X.509 certificate or from PEM file use
-  \href{https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVault}{RsaTool}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Utilities/CreateVault}{RsaTool}.
 
 
-  The steps to binary patch \texttt{OpenCore.efi} are:
+  The steps to binary patch \texttt{MaxRegner.efi} are:
 
   \begin{itemize}
   \tightlist
   \item Create \texttt{vault.plist}.
   \item Create a new RSA key (always do this to avoid loading old configuration).
-  \item Embed RSA key into \texttt{OpenCore.efi}.
+  \item Embed RSA key into \texttt{MaxRegner.efi}.
   \item Create \texttt{vault.sig}.
   \end{itemize}
 
-  A script to do this is privided in OpenCore releases:
+  A script to do this is privided in MaxRegner releases:
 \begin{lstlisting}[label=createvault, style=ocbash]
 /Utilities/CreateVault/sign.command /Volumes/EFI/EFI/OC
 \end{lstlisting}
 
   \emph{Note 1}: While it may appear obvious, an external
-  method is required to verify \texttt{OpenCore.efi} and \texttt{BOOTx64.efi} for
+  method is required to verify \texttt{MaxRegner.efi} and \texttt{BOOTx64.efi} for
   secure boot path. For this, it is recommended to enable UEFI SecureBoot
-  using a custom certificate and to sign \texttt{OpenCore.efi} and \texttt{BOOTx64.efi}
+  using a custom certificate and to sign \texttt{MaxRegner.efi} and \texttt{BOOTx64.efi}
   with a custom key. More details on customising secure boot on modern firmware
   can be found in the \href{https://habr.com/post/273497/}{Taming UEFI SecureBoot}
   paper (in Russian).
 
   \emph{Note 2}:  Regardless of this option, \texttt{vault.plist} is always used when
   present, and both \texttt{vault.plist} and \texttt{vault.sig} are used and required
-  when a public key is embedded into \texttt{OpenCore.efi}, and errors will abort the
-  boot process in either case. Setting this option allows OpenCore to warn the user if
+  when a public key is embedded into \texttt{MaxRegner.efi}, and errors will abort the
+  boot process in either case. Setting this option allows MaxRegner to warn the user if
   the configuration is not as required to achieve an expected higher security level.
 
 \end{enumerate}
@@ -4861,7 +4861,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   # SMBIOS Type2 ProductNam
   \textbf{Failsafe}: \texttt{false}\\
   \textbf{Description}: Perform serial port initialisation.
 
-  This option will perform serial port initialisation within OpenCore prior to enabling
+  This option will perform serial port initialisation within MaxRegner prior to enabling
   (any) debug logging.
 
   Refer to the \hyperref[troubleshootingdebug]{\texttt{Debugging}} section for details.
@@ -4950,7 +4950,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   # SMBIOS Type2 ProductNam
   for more details.
 
   \emph{Note 2}: This option can be set by running the
-  \href{https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/FindSerialPort}{\texttt{FindSerialPort}} tool.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Utilities/FindSerialPort}{\texttt{FindSerialPort}} tool.
 
 \item
   \texttt{RegisterAccessWidth}\\
@@ -5205,7 +5205,7 @@ improvements:
   e.g. \texttt{ru-RU:252} for Russian locale and ABC keyboard. Also accepts short forms:
   \texttt{ru:252} or \texttt{ru:0} (U.S. keyboard, compatible with 10.9). Full decoded
   keyboard list from \texttt{AppleKeyboardLayouts-L.dat} can be found
-  \href{https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts}{here}. Using non-latin keyboard on 10.14
+  \href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Utilities/AppleKeyboardLayouts}{here}. Using non-latin keyboard on 10.14
   will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended in case 10.14 is needed.
 \item
   \texttt{7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode}
@@ -5329,7 +5329,7 @@ troubleshooting:
 
   In 10.15, debugging support was defective up to the 10.15.4 release due to
   refactoring issues as well as the introduction of a
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleDebugLog.h}{new debug protocol}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/Protocol/AppleDebugLog.h}{new debug protocol}.
   Some of the arguments and their values below may not be valid for versions prior
   to 10.15.4. The list of known arguments is covered below:
 
@@ -5407,7 +5407,7 @@ troubleshooting:
   \end{itemize}
 
   \emph{Note}: Enable the \texttt{AppleDebug} option to display verbose output from \texttt{boot.efi}
-  on modern macOS versions. This will save the log to the general OpenCore log file. For versions before
+  on modern macOS versions. This will save the log to the general MaxRegner log file. For versions before
   10.15.4, set \texttt{bootercfg} to \texttt{log=1}. This will print verbose output onscreen.
 \item \texttt{7C436110-AB2A-4BBB-A880-FE41995C9F82:bootercfg-once}
   \break
@@ -5421,7 +5421,7 @@ troubleshooting:
   \break
   Enable performance log saving in \texttt{boot.efi}. Performance log is saved to physical
   memory and is pointed to by the \texttt{efiboot-perf-record-data} and \texttt{efiboot-perf-record-size}
-  variables. Starting from 10.15.4, it can also be saved to the OpenCore log by setting the
+  variables. Starting from 10.15.4, it can also be saved to the MaxRegner log by setting the
   \texttt{AppleDebug} option.
 \item
   \texttt{7C436110-AB2A-4BBB-A880-FE41995C9F82:fmm-computer-name}
@@ -5502,7 +5502,7 @@ troubleshooting:
 Platform information consists of several identification fields
 generated or filled manually to be compatible with macOS services. The
 base part of the configuration may be obtained from
-\href{https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels}{\texttt{AppleModels}},
+\href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/AppleModels}{\texttt{AppleModels}},
 which itself generates a set of interfaces based on a database
 in \href{https://yaml.org/spec/1.2/spec.html}{YAML} format. These fields
 are written to three destinations:
@@ -5512,7 +5512,7 @@ are written to three destinations:
 \item
   \href{https://www.dmtf.org/standards/smbios}{SMBIOS}
 \item
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Intel/Protocol/DataHub.h}{Data
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Intel/Protocol/DataHub.h}{Data
   Hub}
 \item
   NVRAM
@@ -5708,7 +5708,7 @@ from \href{https://github.com/acidanthera/dmidecode/releases}{Acidanthera/dmidec
     the visual representation of the values.
   \end{itemize}
 
-  OpenCore always sets a recent SMBIOS version (currently 3.2) when generating
+  MaxRegner always sets a recent SMBIOS version (currently 3.2) when generating
   the modified DMI tables. If \texttt{UseRawUuidEncoding} is enabled, the \texttt{Big Endian}
   format is used to store the \texttt{SystemUUID} data. Otherwise, the \texttt{Little Endian}
   format is used.
@@ -6351,7 +6351,7 @@ from \href{https://github.com/acidanthera/dmidecode/releases}{Acidanthera/dmidec
   compatibility. This value could look like
   \texttt{MM71.88Z.0234.B00.1809171422} in older firmware and is
   described in
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Guid/BiosId.h}{BiosId.h}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/Guid/BiosId.h}{BiosId.h}.
   In newer firmware, it should look like \texttt{236.0.0.0.0} or
   \texttt{220.230.16.0.0\ (iBridge:\ 16.16.2542.0.0,0)}. iBridge version
   is read from \texttt{BridgeOSVersion} variable, and is only present on
@@ -6471,7 +6471,7 @@ Apple ROM Version
   \textbf{SMBIOS}: \texttt{APPLE\_SMBIOS\_TABLE\_TYPE128} -
   \texttt{FirmwareFeatures} and \texttt{ExtendedFirmwareFeatures}\\
   \textbf{Description}: 64-bit firmware features bitmask. Refer to
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h}{AppleFeatures.h}
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h}{AppleFeatures.h}
   for details. Lower 32 bits match \texttt{FirmwareFeatures}. Upper
   64 bits match \texttt{ExtendedFirmwareFeatures}.
 \item
@@ -6483,7 +6483,7 @@ Apple ROM Version
   \texttt{ExtendedFirmwareFeaturesMask}\\
   \textbf{Description}: Supported bits of extended firmware features
   bitmask. Refer to
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h}{AppleFeatures.h}
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h}{AppleFeatures.h}
   for details. Lower 32 bits match \texttt{FirmwareFeaturesMask}.
   Upper 64 bits match \texttt{ExtendedFirmwareFeaturesMask}.
 \item
@@ -6493,7 +6493,7 @@ Apple ROM Version
   \textbf{SMBIOS}: \texttt{APPLE\_SMBIOS\_TABLE\_TYPE133} -
   \texttt{PlatformFeature}\\
   \textbf{Description}: Platform features bitmask (Missing on older Macs). Refer to
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h}{AppleFeatures.h} for details.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h}{AppleFeatures.h} for details.
 \item
   \texttt{ProcessorType}\\
   \textbf{Type}: \texttt{plist\ integer}, 16-bit\\
@@ -6509,7 +6509,7 @@ Apple ROM Version
   \href{https://github.com/acidanthera/dmidecode}{\texttt{dmidecode}} output.
   For a full list of available values and their limitations (the value will
   only apply if the CPU core count matches), refer to the Apple SMBIOS definitions header
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h}{here}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h}{here}.
 \item
   \texttt{SmcVersion}\\
   \textbf{Type}: \texttt{plist\ data}, 16 bytes\\
@@ -6567,7 +6567,7 @@ Apple ROM Version
   \textbf{SMBIOS}: System Information (Type 1) --- Serial Number\\
   \textbf{Description}: Product serial number in defined format. Known
   formats are described in
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macserial/FORMAT.md}{macserial}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Utilities/macserial/FORMAT.md}{macserial}.
 \item
   \texttt{SystemUUID}\\
   \textbf{Type}: \texttt{plist\ string}, GUID\\
@@ -6603,30 +6603,30 @@ Loading an incompatible driver may lead the system to unbootable state or
 even cause permanent firmware damage. Some of the known drivers are listed below:
 
 \begin{longtable}{p{1.65in}p{5.25in}}
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{AudioDxe}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{AudioDxe}}\textbf{*}
 & \hyperref[uefiaudio]{HDA audio support driver} in UEFI firmware for most Intel and some other analog audio controllers.
   Staging driver, refer to \href{https://github.com/acidanthera/bugtracker/issues/740}{acidanthera/bugtracker\#740}
   for known issues in AudioDxe. \\
 \href{https://github.com/acidanthera/OcBinaryData}{\texttt{btrfs\_x64}}
 & Open source BTRFS file system driver, required for booting with \hyperref[uefilinux]{OpenLinuxBoot}
   from a file system which is now quite commonly used with Linux. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{BiosVideo}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{BiosVideo}}\textbf{*}
 & CSM video driver implementing graphics output protocol based on VESA and legacy
   BIOS interfaces. Used for UEFI firmware with fragile GOP support (e.g. low resolution).
   Requires \texttt{ReconnectGraphicsOnConnect}. Included in OpenDuet out of the box. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{CrScreenshotDxe}}\textbf{*}
-& Screenshot making driver saving images to the root of OpenCore partition (ESP) or
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{CrScreenshotDxe}}\textbf{*}
+& Screenshot making driver saving images to the root of MaxRegner partition (ESP) or
   any available writeable filesystem upon pressing \texttt{F10}.
   Accepts optional driver argument \texttt{-{}-enable-mouse-click} to additionally take
   screenshot on mouse click. (It is recommended to enable this option only if a keypress
   would prevent a specific screenshot, and disable it again after use.)
   This is a modified version of \href{https://github.com/LongSoft/CrScreenshotDxe}{\texttt{CrScreenshotDxe}}
   driver by \href{https://github.com/NikolajSchlej}{Nikolaj Schlej}. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{EnableGop\{Direct\}}}\textbf{*}
-& Early beta release firmware-embeddable driver providing pre-OpenCore non-native GPU support
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{EnableGop\{Direct\}}}\textbf{*}
+& Early beta release firmware-embeddable driver providing pre-MaxRegner non-native GPU support
   on MacPro5,1. Installation instructions can be found in the
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Staging/EnableGop/README.md}{\texttt{Utilities/EnableGop}}
-  directory of the OpenCore release zip file - proceed with caution. \\
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Staging/EnableGop/README.md}{\texttt{Utilities/EnableGop}}
+  directory of the MaxRegner release zip file - proceed with caution. \\
 \href{https://github.com/acidanthera/OcBinaryData}{\texttt{ExFatDxe}}
 & Proprietary ExFAT file system driver for Bootcamp support commonly found in Apple
   firmware. For Sandy Bridge and earlier CPUs, the \texttt{ExFatDxeLegacy} driver should be
@@ -6634,8 +6634,8 @@ even cause permanent firmware damage. Some of the known drivers are listed below
 \href{https://github.com/acidanthera/OcBinaryData}{\texttt{ext4\_x64}}
 & Open source EXT4 file system driver, required for booting with \hyperref[uefilinux]{OpenLinuxBoot}
   from the file system most commonly used with Linux. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{FirmwareSettings}}\textbf{*}
-& \hyperref[firmwaresettings]{OpenCore plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{FirmwareSettings}}\textbf{*}
+& \hyperref[firmwaresettings]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
   to add an entry to the boot picker menu which reboots into UEFI firmware settings,
   when this is supported by the firmware. \\
 \href{https://github.com/acidanthera/OcBinaryData}{\texttt{HfsPlus}}
@@ -6648,7 +6648,7 @@ even cause permanent firmware damage. Some of the known drivers are listed below
   such as UEFI Shell, may need this driver to work properly. \\
 \href{https://github.com/acidanthera/audk}{\texttt{EnhancedFatDxe}}
 & FAT filesystem driver from \texttt{FatPkg}. This driver is embedded in all
-  UEFI firmware and cannot be used from OpenCore. Several types of firmware
+  UEFI firmware and cannot be used from MaxRegner. Several types of firmware
   have defective FAT support implementation that may lead to corrupted filesystems
   on write attempts. Embedding this driver within the firmware may be required in case
   writing to the EFI partition is needed during the boot process. \\
@@ -6656,36 +6656,36 @@ even cause permanent firmware damage. Some of the known drivers are listed below
 & NVMe support driver from \texttt{MdeModulePkg}. This driver is included in most
   firmware starting with the Broadwell generation. For Haswell and earlier, embedding it
   within the firmware may be more favourable in case a NVMe SSD drive is installed. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenCanopy}}\textbf{*}
-& \hyperref[ueficanopy]{OpenCore plugin} implementing graphical interface. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenRuntime}}\textbf{*}
-& \hyperref[uefiruntime]{OpenCore plugin} implementing \texttt{OC\_FIRMWARE\_RUNTIME} protocol. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenLegacyBoot}}\textbf{*}
-& \hyperref[legacyboot]{OpenCore plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
-  to allow detection and booting of legacy operating systems from OpenCore on Macs, OpenDuet
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenCanopy}}\textbf{*}
+& \hyperref[ueficanopy]{MaxRegner plugin} implementing graphical interface. \\
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenRuntime}}\textbf{*}
+& \hyperref[uefiruntime]{MaxRegner plugin} implementing \texttt{OC\_FIRMWARE\_RUNTIME} protocol. \\
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenLegacyBoot}}\textbf{*}
+& \hyperref[legacyboot]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
+  to allow detection and booting of legacy operating systems from MaxRegner on Macs, OpenDuet
   and systems with a CSM. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenLinuxBoot}}\textbf{*}
-& \hyperref[uefilinux]{OpenCore plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
-  to allow direct detection and booting of Linux distributions from OpenCore, without
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenLinuxBoot}}\textbf{*}
+& \hyperref[uefilinux]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
+  to allow direct detection and booting of Linux distributions from MaxRegner, without
   chainloading via GRUB. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenNetworkBoot}}\textbf{*}
-& \hyperref[uefinetboot]{OpenCore plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
-  to show available PXE and HTTP(S) boot options on the OpenCore boot menu. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenNtfsDxe}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenNetworkBoot}}\textbf{*}
+& \hyperref[uefinetboot]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
+  to show available PXE and HTTP(S) boot options on the MaxRegner boot menu. \\
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenNtfsDxe}}\textbf{*}
 & New Technologies File System (NTFS) read-only driver.
   NTFS is the primary file system for Microsoft Windows versions that are based on Windows NT. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenUsbKbDxe}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenUsbKbDxe}}\textbf{*}
 & USB keyboard driver adding support for \texttt{AppleKeyMapAggregator} protocols
   on top of a custom USB keyboard driver implementation. This is an alternative to
   builtin \texttt{KeySupport}, which may work better or worse depending on the firmware. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenPartitionDxe}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenPartitionDxe}}\textbf{*}
 & Partition management driver with Apple Partitioning Scheme support.
   This driver can be used to support loading older DMG recoveries such as OS X 10.9
   using Apple Partitioning Scheme, or for loading other macOS Installers where these were
   created using the Apple Partitioning Scheme (creating macOS Installers using GPT avoids
   the need for this). OpenDuet already includes this driver. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenVariableRuntimeDxe}}\textbf{*}
-& \hyperref[emunvram]{OpenCore plugin} offering emulated NVRAM support. OpenDuet already
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenVariableRuntimeDxe}}\textbf{*}
+& \hyperref[emunvram]{MaxRegner plugin} offering emulated NVRAM support. OpenDuet already
 includes this driver. \\
 \href{https://github.com/acidanthera/audk}{\texttt{Ps2KeyboardDxe}}\textbf{*}
 & PS/2 keyboard driver from \texttt{MdeModulePkg}. \texttt{OpenDuetPkg} and some types of firmware
@@ -6696,16 +6696,16 @@ includes this driver. \\
 & PS/2 mouse driver from \texttt{MdeModulePkg}. Some very old laptop firmware
   may not include this driver but it is necessary for the touchpad to work
   in UEFI graphical interfaces such as \texttt{OpenCanopy}. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenHfsPlus}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenHfsPlus}}\textbf{*}
 & HFS file system driver with bless support. This driver is an alternative to
   a closed source \texttt{HfsPlus} driver commonly found in Apple firmware. While
   it is feature complete, it is approximately 3~times slower and is yet to undergo
   a security audit. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{ResetNvramEntry}}\textbf{*}
-& \hyperref[uefiresetnvram]{OpenCore plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{ResetNvramEntry}}\textbf{*}
+& \hyperref[uefiresetnvram]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
   to add a configurable \texttt{Reset NVRAM} entry to the boot picker menu. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{ToggleSipEntry}}\textbf{*}
-& \hyperref[uefitogglesip]{OpenCore plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{ToggleSipEntry}}\textbf{*}
+& \hyperref[uefitogglesip]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
   to add a configurable \texttt{Toggle SIP} entry to the boot picker menu. \\
 \href{https://github.com/acidanthera/audk}{\texttt{UsbMouseDxe}}\textbf{*}
 & USB mouse driver from \texttt{MdeModulePkg}. Some virtual machine firmware
@@ -6717,9 +6717,9 @@ includes this driver. \\
   or legacy systems, it may be used to support external USB 3.0 PCI cards.
 \end{longtable}
 
-Driver marked with \textbf{*} are bundled with OpenCore.
+Driver marked with \textbf{*} are bundled with MaxRegner.
 To compile the drivers from UDK (EDK II) the same command used for
-OpenCore compilation can be taken, but choose a corresponding package:
+MaxRegner compilation can be taken, but choose a corresponding package:
 \begin{lstlisting}[label=compileudk, style=ocbash]
 git clone https://github.com/acidanthera/audk UDK
 cd UDK
@@ -6732,7 +6732,7 @@ build -a X64 -b RELEASE -t XCODE5 -p MdeModulePkg/MdeModulePkg.dsc
 \subsection{Tools and Applications}\label{uefitools}
 
 Standalone tools may help to debug firmware and hardware. Some of the known tools are listed below.
-While some tools can be launched from within OpenCore (Refer to the \hyperref[misctools]{Tools} subsection
+While some tools can be launched from within MaxRegner (Refer to the \hyperref[misctools]{Tools} subsection
 for more details), most should be run separately either directly or from \texttt{Shell}.
 
 To boot into OpenShell or any other tool directly save \texttt{OpenShell.efi}
@@ -6759,41 +6759,41 @@ sudo bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \
 Some of the known tools are listed below (builtin tools are marked with \textbf{*}):
 
 \begin{tabular}{p{1.3in}p{5.55in}}
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{BootKicker}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{BootKicker}}\textbf{*}
 & Display Apple BootPicker menu (for Macs with compatible firmware). \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{ChipTune}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{ChipTune}}\textbf{*}
 & Test BeepGen protocol and generate audio signals of different style and length. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{CleanNvram}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{CleanNvram}}\textbf{*}
 & Reset NVRAM alternative bundled as a standalone tool. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{CsrUtil}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{CsrUtil}}\textbf{*}
 & Simple implementation of SIP-related features of Apple \texttt{csrutil}. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{FontTester}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{FontTester}}\textbf{*}
 & Render the console font pages which the \texttt{Builtin} renderer provides. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{GopStop}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{GopStop}}\textbf{*}
 & Test GraphicsOutput protocol with a
-  \href{https://github.com/acidanthera/OpenCorePkg/tree/master/Application/GopStop}{simple scenario}. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{KeyTester}}\textbf{*}
+  \href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Application/GopStop}{simple scenario}. \\
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{KeyTester}}\textbf{*}
 & Test keyboard input in \texttt{SimpleText} mode. \\
 \href{https://www.memtest86.com}{\texttt{MemTest86}}
 & Memory testing utility. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenControl}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenControl}}\textbf{*}
 & Unlock and lock back NVRAM protection for other tools to be able to get full NVRAM access
-  when launching from OpenCore. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{OpenShell}}\textbf{*}
-& OpenCore-configured \href{http://github.com/tianocore/edk2}{\texttt{UEFI Shell}} for compatibility
+  when launching from MaxRegner. \\
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenShell}}\textbf{*}
+& MaxRegner-configured \href{http://github.com/tianocore/edk2}{\texttt{UEFI Shell}} for compatibility
   with a broad range of firmware. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{PavpProvision}}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{PavpProvision}}
 & Perform EPID provisioning (requires certificate data configuration). \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{ResetSystem}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{ResetSystem}}\textbf{*}
 & Utility to perform system reset. Takes reset type as an argument:
   \texttt{coldreset}, \texttt{firmware}, \texttt{shutdown}, \texttt{warmreset}.
   Defaults to \texttt{coldreset}. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{RtcRw}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{RtcRw}}\textbf{*}
 & Utility to read and write RTC (CMOS) memory. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{ControlMsrE2}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{ControlMsrE2}}\textbf{*}
 & Check \texttt{CFG Lock} (MSR \texttt{0xE2} write protection) consistency
 across all cores and change such hidden options on selected platforms. \\
-\href{https://github.com/acidanthera/OpenCorePkg}{\texttt{TpmInfo}}\textbf{*}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{TpmInfo}}\textbf{*}
 & Check Intel PTT (Platform Trust Technology) capability on the platform,
 which allows using fTPM 2.0 if enabled. The tool does not check whether fTPM 2.0
 is actually enabled.
@@ -6801,9 +6801,9 @@ is actually enabled.
 
 \subsection{OpenCanopy}\label{ueficanopy}
 
-OpenCanopy is a graphical OpenCore user interface that runs in
+OpenCanopy is a graphical MaxRegner user interface that runs in
 \texttt{External} \texttt{PickerMode} and relies on
-\href{https://github.com/acidanthera/OpenCorePkg}{OpenCorePkg} \texttt{OcBootManagementLib}
+\href{https://github.com/acidanthera/MaxRegnerPkg}{MaxRegnerPkg} \texttt{OcBootManagementLib}
 similar to the builtin text interface.
 
 OpenCanopy requires graphical resources located in \texttt{Resources} directory to run.
@@ -6878,15 +6878,15 @@ and \href{https://github.com/usr-sse2/fonverter}{fonverter} to export it to bina
 
 \subsection{OpenRuntime}\label{uefiruntime}
 
-\texttt{OpenRuntime} is an OpenCore plugin implementing \texttt{OC\_FIRMWARE\_RUNTIME} protocol.
-This protocol implements multiple features required for OpenCore that are otherwise not possible
-to implement in OpenCore itself as they are needed to work in runtime, i.e. during operating system
+\texttt{OpenRuntime} is an MaxRegner plugin implementing \texttt{OC\_FIRMWARE\_RUNTIME} protocol.
+This protocol implements multiple features required for MaxRegner that are otherwise not possible
+to implement in MaxRegner itself as they are needed to work in runtime, i.e. during operating system
 functioning. Feature highlights:
 
 \begin{itemize}
   \item NVRAM namespaces, allowing to isolate operating systems from accessing select
   variables (e.g. \texttt{RequestBootVarRouting} or \texttt{ProtectSecureBoot}).
-  \item Read-only and write-only NVRAM variables, enhancing the security of OpenCore,
+  \item Read-only and write-only NVRAM variables, enhancing the security of MaxRegner,
   Lilu, and Lilu plugins, such as VirtualSMC, which implements \texttt{AuthRestart} support.
   \item NVRAM isolation, allowing to protect all variables from being written from
   an untrusted operating system (e.g. \texttt{DisableVariableWrite}).
@@ -6895,7 +6895,7 @@ functioning. Feature highlights:
 \end{itemize}
 
 \subsection{OpenLegacyBoot}\label{legacyboot}
-OpenLegacyBoot is an OpenCore plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
+OpenLegacyBoot is an MaxRegner plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
 It aims to detect and boot legacy installed operating systems on supported systems, such as
 OpenDuet and Mac models capable of legacy booting.
 
@@ -6907,7 +6907,7 @@ Usage:
   \texttt{Drivers} section.
   \item Install Windows or another legacy operating system as normal if this has not been done earlier -- OpenLegacyBoot is
   not involved in this stage and may be unable to boot from installation media such as a USB device.
-  \item Reboot into OpenCore: the installed legacy operating system should appear and boot directly from OpenCore
+  \item Reboot into MaxRegner: the installed legacy operating system should appear and boot directly from MaxRegner
   when selected.
 \end{itemize}
 
@@ -6931,7 +6931,7 @@ options for the driver may be specified in \texttt{UEFI/Drivers/Arguments}:
 
 \subsection{OpenLinuxBoot}\label{uefilinux}
 
-OpenLinuxBoot is an OpenCore plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
+OpenLinuxBoot is an MaxRegner plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
 It aims to automatically detect and boot most Linux distros without additional configuration.
 
 Usage is as follows:
@@ -6942,13 +6942,13 @@ Usage is as follows:
   \texttt{Drivers} section.
   \item Make sure \texttt{RequestBootVarRouting} and \texttt{LauncherOption} are enabled in \texttt{config.plist};
   it is also recommended to enable \texttt{HideAuxiliary} in order to hide older Linux kernels except when required
-  (they are added as auxiliary entries and so may then be shown by pressing the \texttt{Spacebar} key in the OpenCore boot menu).
+  (they are added as auxiliary entries and so may then be shown by pressing the \texttt{Spacebar} key in the MaxRegner boot menu).
   \item Install Linux as normal if this has not been done earlier -- OpenLinuxBoot is not involved in this stage.
-  \item Reboot into OpenCore: the installed Linux distribution should just appear and boot directly from OpenCore
+  \item Reboot into MaxRegner: the installed Linux distribution should just appear and boot directly from MaxRegner
   when selected, which it does without chainloading via GRUB.
 \end{itemize}
 
-If OpenCore has already been manually set up to boot Linux, e.g. via \texttt{BlessOverride} or via \texttt{Entries} then
+If MaxRegner has already been manually set up to boot Linux, e.g. via \texttt{BlessOverride} or via \texttt{Entries} then
 then these settings may be removed so that the Linux distribution is not displayed twice in the boot menu.
 
 It is recommended to install Linux with its default bootloader, even though this will not be actively used
@@ -6972,9 +6972,9 @@ supported - this is because it is not believed that there is currently a stand-a
 Be aware of the \texttt{SyncRuntimePermissions} quirk, which may need to be set to avoid early boot
 failure (typically halting with a black screen) of the Linux kernel, due to a firmware bug of some
 firmware released after 2017. When present and not mitigated by this quirk, this affects booting
-via OpenCore with or without OpenLinuxBoot.
+via MaxRegner with or without OpenLinuxBoot.
 
-After installing OpenLinuxBoot, it is recommended to compare the options shown in the OpenCore debug
+After installing OpenLinuxBoot, it is recommended to compare the options shown in the MaxRegner debug
 log when booting (or attempting to boot) a given distro against the options seen using the shell command
 \texttt{cat /proc/cmdline} when the same distro has been booted via its native bootloader.
 In general (for safety and security of the running distro) these options should match, and if they do not
@@ -6999,7 +6999,7 @@ Note however that the following differences are normal and do not need to be fix
 
 If using OpenLinuxBoot with Secure Boot, users may wish to install
 a user built, user signed Shim bootloader giving SBAT and MOK integration, as explained in
-\href{https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/ShimUtils}{OpenCore ShimUtils}.
+\href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Utilities/ShimUtils}{MaxRegner ShimUtils}.
 
 \subsubsection{Configuration}
 
@@ -7053,7 +7053,7 @@ options for the driver may be specified in \texttt{UEFI/Drivers/Arguments}:
     when \texttt{loader/entries} files are not found.
     \item \texttt{0x00000200} (bit \texttt{9}) --- \texttt{LINUX\_BOOT\_USE\_LATEST},
     When a Linux entry generated by OpenLinuxBoot is selected as the default boot entry
-    in OpenCore, automatically switch to the latest kernel when a new version is installed. \medskip
+    in MaxRegner, automatically switch to the latest kernel when a new version is installed. \medskip
 
     When this option is set, an internal menu entry id is shared between kernel versions from the same install
     of Linux. Linux boot options are always sorted highest kernel version first, so this means that
@@ -7186,31 +7186,31 @@ with the boot menu.
 
 \subsection{OpenNetworkBoot}\label{uefinetboot}
 
-OpenNetworkBoot is an OpenCore plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
-It enables PXE and HTTP(S) Boot options in the OpenCore menu if these
+OpenNetworkBoot is an MaxRegner plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
+It enables PXE and HTTP(S) Boot options in the MaxRegner menu if these
 are supported by the underlying firmware, or if the required network boot drivers
-have been loaded using OpenCore.
+have been loaded using MaxRegner.
 
 It has additional support for loading \texttt{.dmg} files and their associated
 \texttt{.chunklist} file over HTTP(S) Boot, allowing macOS recovery to be
 started over HTTP(S) Boot: if either extension is seen in the HTTP(S) Boot URI
 then the other file of the pair is automatically loaded as well, and both are
-passed to OpenCore to verify and boot from the DMG file.
+passed to MaxRegner to verify and boot from the DMG file.
 
 PXE Boot is already supported on most firmware, so in most cases PXE Boot entries
 should appear as soon as the driver is loaded. Using the additional network boot
-drivers provided with OpenCore, when needed, HTTP(S) Boot should be available on
+drivers provided with MaxRegner, when needed, HTTP(S) Boot should be available on
 most firmware even if not natively supported.
 
 Detailed information about the available network boot drivers and how to configure
 PXE and HTTP(S) Boot is provided on
-\href{https://github.com/acidanthera/OpenCorePkg/blob/master/Platform/OpenNetworkBoot/README.md}{this page}.
+\href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Platform/OpenNetworkBoot/README.md}{this page}.
 
 The below configuration options may be specified in the \texttt{Arguments} section for this driver.
 
 \emph{Note}: There is no problem if configuration options within \texttt{<Arguments>...</Arguments>} are given on
 multiple lines, and option values enclosed within quotes can also span multiple lines. This applies to all drivers
-which use OpenCore argument parsing, and can be particularly convenient when multiple long options such as \texttt{uri},
+which use MaxRegner argument parsing, and can be particularly convenient when multiple long options such as \texttt{uri},
 \texttt{static4} and particularly \texttt{enroll-cert} may be needed.  
 
 \begin{itemize}
@@ -7304,14 +7304,14 @@ which use OpenCore argument parsing, and can be particularly convenient when mul
 
   \emph{Note 2}: This setting will normally cause a static IP to be assigned during pre-boot, even in vendor-provided
   network stacks. However, due to a quirk of the design of PXE and HTTP boot, any such static assignment will then be
-  ignored and DHCP used instead, during network boot. The OpenCore network stack (specifically \texttt{HttpBootDxe.efi})
+  ignored and DHCP used instead, during network boot. The MaxRegner network stack (specifically \texttt{HttpBootDxe.efi})
   is unusual in that it will allow HTTP boot from a static IP address, as long as an HTTP boot URI has also been specified,
   using the \texttt{uri} option for this driver (or e.g. in the OVMF admin screens if using OVMF, or similar options
   where present in other firmeare). If HTTP boot from static
   IP is required, then any pre-existing vendor-specific version of \texttt{HttpBootDxe.efi} will need to be unloaded
-  (see \texttt{UEFI} \texttt{Unload} option) and the OpenCore version used instead.
+  (see \texttt{UEFI} \texttt{Unload} option) and the MaxRegner version used instead.
 
-  \emph{Note 3}: If \texttt{Ip4Dxe} is loaded before OpenCore then any setting here will only take effect after one
+  \emph{Note 3}: If \texttt{Ip4Dxe} is loaded before MaxRegner then any setting here will only take effect after one
   reboot (during which network boot is not attempted). If \texttt{Ip4Dxe} is loaded after \texttt{OpenNetworkBoot}
   the setting will take effect immediately.
   \medskip
@@ -7366,7 +7366,7 @@ certificates as those seen in the firmware UI. In other cases of vendor customis
 HTTPS Boot firmware, the certificates managed by this driver will be
 separate from those managed by firmware.
 
-When using the debug version of this driver, the OpenCore debug log includes \texttt{NETB:} entries
+When using the debug version of this driver, the MaxRegner debug log includes \texttt{NETB:} entries
 that show which certificates are enrolled and removed by these options, and which
 certificates are present after all certificate configuration options have been processed.
 
@@ -7374,7 +7374,7 @@ certificates are present after all certificate configuration options have been p
 
 In addition to the \hyperref[uefilinux]{OpenLinuxBoot} and \hyperref[uefinetboot]{OpenNetworkBoot} plugins,
 the following \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
-plugins are made available to add optional, configurable boot entries to the OpenCore boot picker.
+plugins are made available to add optional, configurable boot entries to the MaxRegner boot picker.
 
 \subsubsection{ResetNvramEntry}\label{uefiresetnvram}
 
@@ -7389,7 +7389,7 @@ bug, which makes them unbootable after performing NVRAM reset. Refer to
 for details.
 
 \emph{Note 2}: If \texttt{LauncherOption} is set to \texttt{Full} or \texttt{Short} then the
-OpenCore boot entry is protected. Resetting NVRAM will normally erase any other boot options
+MaxRegner boot entry is protected. Resetting NVRAM will normally erase any other boot options
 not specified via \texttt{BlessOverride}, for example Linux installations to custom locations
 and not using the \texttt{OpenLinuxBoot} driver, or user-specified UEFI boot menu entries.
 To obtain reset NVRAM functionality which does not remove other boot options, it is possible
@@ -7414,8 +7414,8 @@ The following configuration options may be specified in the \texttt{Arguments} s
   \emph{Note 1}: Due to using system NVRAM reset, this option is not compatible with the \texttt{-{}-preserve-boot}
   option and will override it, therefore all BIOS boot entries will be removed. \medskip
 
-  \emph{Note 2}: Due to using system NVRAM reset, the OpenCore boot option
-  cannot be preserved and OpenCore will have to either be reselected in the native boot picker or
+  \emph{Note 2}: Due to using system NVRAM reset, the MaxRegner boot option
+  cannot be preserved and MaxRegner will have to either be reselected in the native boot picker or
   re-blessed. \medskip
 
   \emph{Note 3}: On non-Apple hardware, this option will still set this variable but the
@@ -7424,7 +7424,7 @@ The following configuration options may be specified in the \texttt{Arguments} s
 
 \subsubsection{ToggleSipEntry}\label{uefitogglesip}
 
-Provides a boot entry for enabling and disabling System Integrity Protection (SIP) in OpenCore picker.
+Provides a boot entry for enabling and disabling System Integrity Protection (SIP) in MaxRegner picker.
 
 While macOS is running, SIP involves multiple configured software protection systems, however
 all the information about which of these protections to enable is stored in the single Apple NVRAM variable
@@ -7459,7 +7459,7 @@ protection when genuinely needed - it should be re-enabled again afterwards.
 
 \emph{Note 2}: The default value for disabling SIP with this boot entry is \texttt{0x27F}.
 For comparison, \texttt{csrutil disable} with no other arguments on macOS Big Sur and Monterey
-sets \texttt{0x7F}, and on Catalina it sets \texttt{0x77}. The OpenCore default value of \texttt{0x27F}
+sets \texttt{0x7F}, and on Catalina it sets \texttt{0x77}. The MaxRegner default value of \texttt{0x27F}
 is a variant of the Big Sur and Monterey value, chosen as follows:
 \begin{itemize}
 \tightlist
@@ -7521,7 +7521,7 @@ the driver within the \texttt{UEFI/Drivers} section:
   Applies if the audio device can be made to work in macOS, but shows no sign of being detected by AudioDxe
   (e.g. when including \texttt{DEBUG\_INFO} in \texttt{DisplayLevel} and using a DEBUG build of AudioDxe,
   no controller and codec layout information is displayed during the \texttt{Connecting drivers...}
-  phase of OpenCore log). \medskip
+  phase of MaxRegner log). \medskip
 
   \item \texttt{-{}-gpio-setup} - Default value is \texttt{0} (GPIO setup disabled) if argument is not provided,
   or \texttt{7} (all GPIO setup stages stages enabled) if the argument is provided with no value. \medskip
@@ -7594,7 +7594,7 @@ Provides in-memory emulated NVRAM implementation. This can be useful on systems 
 (e.g. MacPro5,1, see discussion linked from this \href{https://forums.macrumors.com/posts/30945127}{forum post})
 or incompatible NVRAM implementations. This driver is included by default in OpenDuet.
 
-In addition to installing emulated NVRAM, this driver additionally installs an OpenCore compatible
+In addition to installing emulated NVRAM, this driver additionally installs an MaxRegner compatible
 protocol enabling the following:
 
 \begin{itemize}
@@ -7603,7 +7603,7 @@ protocol enabling the following:
   if it is present and \texttt{NVRAM/nvram.plist} is missing) on boot
   \item The Reset NVRAM option installed by the \texttt{ResetNvramEntry} driver removes the above files instead
   of affecting underlying NVRAM
-  \item \texttt{CTRL+Enter} in the OpenCore bootpicker updates or creates \texttt{NVRAM/nvram.plist}
+  \item \texttt{CTRL+Enter} in the MaxRegner bootpicker updates or creates \texttt{NVRAM/nvram.plist}
 \end{itemize}
 
 Recommended configuration settings for this driver:
@@ -7628,11 +7628,11 @@ Recommended configuration settings for this driver:
     \item For simpler testing (allows arbitrary test variables), and future-proofing against
     changes in the variables required by macOS updates, use \texttt{<string>*</string>} settings, as
     described in notes below.
-    \item For increased security, populate sections with known required keys only, as shown in OpenCore's
+    \item For increased security, populate sections with known required keys only, as shown in MaxRegner's
     sample \texttt{.plist} files.
   \end{itemize}
   \item \texttt{ExposeSensitiveData} with at least bit \texttt{0x1} set to make \texttt{boot-path}
-  variable containing the OpenCore EFI partition UUID available to the \texttt{Launchd.command} script.
+  variable containing the MaxRegner EFI partition UUID available to the \texttt{Launchd.command} script.
 \end{itemize}
 
 Variable loading happens prior to the NVRAM \texttt{Delete} (and \texttt{Add}) phases. Unless
@@ -7641,10 +7641,10 @@ Variables allowed for loading and for saving with \texttt{CTRL+Enter} must be sp
 
 In order to allow changes to NVRAM within macOS to be captured and saved,
 an additional script must be installed. An example of such script can be found in
-\href{https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/LogoutHook/Launchd.command}{\texttt{Utilities/LogoutHook/Launchd.command}}.
+\href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Utilities/LogoutHook/Launchd.command}{\texttt{Utilities/LogoutHook/Launchd.command}}.
 
 \emph{Note 1}: This driver requires working FAT write support in firmware, and sufficient free
-space on the OpenCore EFI partition for up to three saved NVRAM files.
+space on the MaxRegner EFI partition for up to three saved NVRAM files.
 
 \emph{Note 2}: The \texttt{nvram.plist} (and \texttt{nvram.fallback} if present) files must have a
 root \texttt{plist\ dictionary} type and contain two fields:
@@ -7669,7 +7669,7 @@ to be saved. Using this permissive policy is also future-proof against any chang
 which need to be passed from macOS update setup to the \texttt{macOS Installer} stage, in order for
 it to succeed.
 Nevertheless, once emulated NVRAM is set up, only allowing known strictly required variables
-(as shown in OpenCore's sample \texttt{.plist} files) is considerably more secure. See also the
+(as shown in MaxRegner's sample \texttt{.plist} files) is considerably more secure. See also the
 following warning about the overall security of loading NVRAM variables from a non-vaulted file.
 
 \textbf{Warning}: The ability to load NVRAM from a file on disk can be dangerous, as it
@@ -7680,7 +7680,7 @@ may cause bricked hardware).
 
 \subsubsection{Managing macOS updates when using emulated NVRAM}
 
-OpenCore combined with \texttt{OpenVariableRuntimeDxe} will only use a given saved \texttt{nvram.plist} file once,
+MaxRegner combined with \texttt{OpenVariableRuntimeDxe} will only use a given saved \texttt{nvram.plist} file once,
 if it is used to launch a \texttt{macOS Installer} boot entry. After that the used settings are moved to \texttt{nvram.used}
 and fallback settings, if any, from \texttt{nvram.fallback} are used instead. \texttt{Launchd.command} itself
 always copies the previous NVRAM settings to fallback, each time it saves new settings.
@@ -7725,7 +7725,7 @@ for additional options.
 reinstalled, as a different strategy is required in order for NVRAM to be saved successfully.
 
 \emph{Note 3}: In macOS Sonoma the following additional constraints apply to the ESP partition on which
-OpenCore is installed, in order for the \texttt{Launchd.command} script to work successfully:
+MaxRegner is installed, in order for the \texttt{Launchd.command} script to work successfully:
 
 \begin{itemize}
 \tightlist
@@ -7756,7 +7756,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   in the \hyperref[uefiaudioprops]{\texttt{Audio Properties}} section below.
 
   Unless documented otherwise (e.g. \texttt{ResetTrafficClass}) settings in this section
-  are for UEFI audio support only (e.g. OpenCore generated boot chime and audio assist) and are
+  are for UEFI audio support only (e.g. MaxRegner generated boot chime and audio assist) and are
   unrelated to any configuration needed for OS audio support (e.g. \texttt{AppleALC}).
 
   UEFI audio support provides a way for upstream protocols to interact with the
@@ -7774,23 +7774,23 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
 
   \begin{itemize}
   \tightlist
-  \item Audio type can be \texttt{OCEFIAudio} for OpenCore audio files or
+  \item Audio type can be \texttt{OCEFIAudio} for MaxRegner audio files or
     \texttt{AXEFIAudio} for macOS bootloader audio files.
   \item Audio localisation is a two letter language code (e.g. \texttt{en})
   with an exception for Chinese, Spanish, and Portuguese. Refer to
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h}{\texttt{APPLE\_VOICE\_OVER\_LANGUAGE\_CODE} definition}
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h}{\texttt{APPLE\_VOICE\_OVER\_LANGUAGE\_CODE} definition}
   for the list of all supported localisations.
   \item Audio path is the base filename corresponding to a file identifier. For macOS bootloader audio paths refer to
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h}{\texttt{APPLE\_VOICE\_OVER\_AUDIO\_FILE} definition}.
-  For OpenCore audio paths refer to
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcAudio.h}{\texttt{OC\_VOICE\_OVER\_AUDIO\_FILE} definition}.
-  The only exception is OpenCore boot chime file, which is \texttt{OCEFIAudio\_VoiceOver\_Boot.mp3}.
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h}{\texttt{APPLE\_VOICE\_OVER\_AUDIO\_FILE} definition}.
+  For MaxRegner audio paths refer to
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Acidanthera/Protocol/OcAudio.h}{\texttt{OC\_VOICE\_OVER\_AUDIO\_FILE} definition}.
+  The only exception is MaxRegner boot chime file, which is \texttt{OCEFIAudio\_VoiceOver\_Boot.mp3}.
   \end{itemize}
 
-  Audio localisation is determined separately for macOS bootloader and OpenCore.
+  Audio localisation is determined separately for macOS bootloader and MaxRegner.
   For macOS bootloader it is set in \texttt{preferences.efires} archive in
   \texttt{systemLanguage.utf8} file and is controlled by the operating system.
-  For OpenCore the value of \texttt{prev-lang:kbd} variable is used.
+  For MaxRegner the value of \texttt{prev-lang:kbd} variable is used.
   When native audio localisation of a particular file is missing, English language
   (\texttt{en}) localisation is used. Sample audio files can be found in
   \href{https://github.com/acidanthera/OcBinaryData}{OcBinaryData repository}.
@@ -7936,8 +7936,8 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Failsafe}: \texttt{false}\\
   \textbf{Description}: Load APFS drivers for newly connected devices.
 
-  Permits APFS USB hot plug which enables loading APFS drivers, both at OpenCore
-  startup and during OpenCore picker display. Disable if not required.
+  Permits APFS USB hot plug which enables loading APFS drivers, both at MaxRegner
+  startup and during MaxRegner picker display. Disable if not required.
 
 \item
   \texttt{MinDate}\\
@@ -7954,12 +7954,12 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \begin{itemize}
     \tightlist
     \item \texttt{0} --- require the default supported release date of APFS
-    in OpenCore. The default release date will increase with time and thus
+    in MaxRegner. The default release date will increase with time and thus
     this setting is recommended. Currently set to 2021/01/01.
     \item \texttt{-1} --- permit any release date to load (strongly discouraged).
     \item Other --- use custom minimal APFS release date, e.g. \texttt{20200401}
-    for 2020/04/01. APFS release dates can be found in OpenCore boot log
-    and \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h}{\texttt{OcApfsLib}}.
+    for 2020/04/01. APFS release dates can be found in MaxRegner boot log
+    and \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h}{\texttt{OcApfsLib}}.
   \end{itemize}
 
 \item
@@ -7977,13 +7977,13 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \begin{itemize}
     \tightlist
     \item \texttt{0} --- require the default supported version of APFS
-    in OpenCore. The default version will increase with time and thus
+    in MaxRegner. The default version will increase with time and thus
     this setting is recommended. Currently set to allow macOS Big Sur and newer
     (\texttt{1600000000000000}).
     \item \texttt{-1} --- permit any version to load (strongly discouraged).
     \item Other --- use custom minimal APFS version, e.g. \texttt{1412101001000000}
-    from macOS Catalina 10.15.4. APFS versions can be found in OpenCore boot log
-    and \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h}{\texttt{OcApfsLib}}.
+    from macOS Catalina 10.15.4. APFS versions can be found in MaxRegner boot log
+    and \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h}{\texttt{OcApfsLib}}.
   \end{itemize}
 
 \end{enumerate}
@@ -7996,27 +7996,27 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{AppleEvent}\\
   \textbf{Type}: \texttt{plist\ string}\\
   \textbf{Failsafe}: \texttt{Auto}\\
-  \textbf{Description}: Determine whether the OpenCore builtin or the OEM Apple Event protocol is used.
+  \textbf{Description}: Determine whether the MaxRegner builtin or the OEM Apple Event protocol is used.
 
   This option determines whether the OEM Apple Event protocol is used (where available), or
-  whether OpenCore's reversed engineered and updated re-implementation is used. In general
-  OpenCore's re-implementation should be preferred, since it contains updates such as noticeably
+  whether MaxRegner's reversed engineered and updated re-implementation is used. In general
+  MaxRegner's re-implementation should be preferred, since it contains updates such as noticeably
   improved fine mouse cursor movement and configurable key repeat delays.
 
   \begin{itemize}
   \tightlist
   \item \texttt{Auto} --- Use the OEM Apple Event implementation if available, connected and
-  recent enough to be used, otherwise use the OpenCore re-implementation.
-  On non-Apple hardware, this will use the OpenCore builtin implementation.
+  recent enough to be used, otherwise use the MaxRegner re-implementation.
+  On non-Apple hardware, this will use the MaxRegner builtin implementation.
   On some Macs such as Classic Mac Pros, this will prefer the Apple implementation but on both older and
-  newer Mac models than these, this option will typically use the OpenCore re-implementation instead.
+  newer Mac models than these, this option will typically use the MaxRegner re-implementation instead.
   On older Macs, this is because the implementation available is too old to be used while on newer Macs,
   it is because of optimisations added by Apple which do not connect the Apple Event protocol
   except when needed -- e.g. except when the Apple boot picker is explicitly started.
   Due to its somewhat unpredictable results, this option is not typically recommended.
-  \item \texttt{Builtin} ---  Always use OpenCore's updated re-implementation of the Apple Event protocol.
+  \item \texttt{Builtin} ---  Always use MaxRegner's updated re-implementation of the Apple Event protocol.
   Use of this setting is recommended even on Apple hardware, due to
-  improvements (better fine mouse control, configurable key delays) made in the OpenCore re-implementation
+  improvements (better fine mouse control, configurable key delays) made in the MaxRegner re-implementation
   of the protocol.
   \item \texttt{OEM} --- Assume Apple's protocol will be available at driver connection. On all Apple hardware
   where a recent enough Apple OEM version of the protocol is available -- whether or not connected automatically
@@ -8029,7 +8029,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{CustomDelays}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Enable custom key repeat delays when using the OpenCore re-implementation
+  \textbf{Description}: Enable custom key repeat delays when using the MaxRegner re-implementation
   of the Apple Event protocol.
   Has no effect when using the OEM Apple implementation (see \texttt{AppleEvent} setting).
 
@@ -8047,7 +8047,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   Apple’s own implementation of AppleEvent prevents keyboard input during graphics applications from appearing
   on the basic console input stream.
 
-  With the default setting of \texttt{false}, OpenCore's builtin implementation of AppleEvent replicates this behaviour.
+  With the default setting of \texttt{false}, MaxRegner's builtin implementation of AppleEvent replicates this behaviour.
 
   On non-Apple hardware this can stop keyboard input working in graphics-based applications such as Windows BitLocker
   which use non-Apple key input methods.
@@ -8055,7 +8055,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   The recommended setting on all hardware is \texttt{true}.
 
   \emph{Note}: AppleEvent's default behaviour is intended to prevent unwanted queued keystrokes from appearing
-  after exiting graphics-based UEFI applications; this issue is already handled separately within OpenCore.
+  after exiting graphics-based UEFI applications; this issue is already handled separately within MaxRegner.
 
   \begin{itemize}
   \tightlist
@@ -8068,7 +8068,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{50} (500ms before first key repeat)\\
   \textbf{Description}: Configures the initial delay before keyboard key repeats in the
-  OpenCore re-implementation of the Apple Event protocol, in units of 10ms.
+  MaxRegner re-implementation of the Apple Event protocol, in units of 10ms.
 
   The Apple OEM default value is \texttt{50} (500ms).
 
@@ -8091,7 +8091,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{KeySubsequentDelay}\\
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{5} (50ms between subsequent key repeats)\\
-  \textbf{Description}: Configures the gap between keyboard key repeats in the OpenCore re-implementation
+  \textbf{Description}: Configures the gap between keyboard key repeats in the MaxRegner re-implementation
   of the Apple Event protocol, in units of 10ms.
 
   The Apple OEM default value is \texttt{5} (50ms).
@@ -8124,7 +8124,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \begin{itemize}
     \tightlist
     \item Setting \texttt{KeyInitialDelay} to \texttt{0} cancels the Apple Event initial repeat
-    delay (when using the OpenCore builtin Apple Event implementation with \texttt{CustomDelays} enabled),
+    delay (when using the MaxRegner builtin Apple Event implementation with \texttt{CustomDelays} enabled),
     therefore the only long delay you will see is the the non-configurable and non-avoidable initial
     long delay introduced by the BIOS key support on these machines.
     \item Key-smoothing parameter \texttt{KeyForgetThreshold}
@@ -8141,7 +8141,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{0}\\
   \textbf{Description}: Configure pointer dwell-clicking single left click timeout in
-  milliseconds in the OpenCore re-implementation of the Apple Event protocol.
+  milliseconds in the MaxRegner re-implementation of the Apple Event protocol.
   Has no effect when using the OEM Apple implementation (see \texttt{AppleEvent} setting).
 
   When the timeout expires, a single left click is issued at the current position.
@@ -8152,7 +8152,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{0}\\
   \textbf{Description}: Configure pointer dwell-clicking single left double click timeout in
-  milliseconds in the OpenCore re-implementation of the Apple Event protocol.
+  milliseconds in the MaxRegner re-implementation of the Apple Event protocol.
   Has no effect when using the OEM Apple implementation (see \texttt{AppleEvent} setting).
 
   When the timeout expires, a single left double click is issued at the current position.
@@ -8163,7 +8163,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{0}\\
   \textbf{Description}: Configure pointer dwell-clicking tolerance radius in pixels in the
-  OpenCore re-implementation of the Apple Event protocol.
+  MaxRegner re-implementation of the Apple Event protocol.
   Has no effect when using the OEM Apple implementation (see \texttt{AppleEvent} setting).
 
   The radius is scaled by \texttt{UIScale}. When the pointer leaves this radius, the timeouts for \texttt{PointerDwellClickTimeout}
@@ -8203,7 +8203,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Failsafe}: \texttt{0}\\
   \textbf{Description}: Configure maximum pointer polling period in ms.
 
-  This is the maximum period the OpenCore builtin AppleEvent driver polls
+  This is the maximum period the MaxRegner builtin AppleEvent driver polls
   pointer devices (e.g. mice, trackpads) for motion events. The period
   is increased up to this value as long as the devices do not respond
   in time. The current implementation defaults to 80 ms. Setting
@@ -8222,7 +8222,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Failsafe}: \texttt{0}\\
   \textbf{Description}: Configure minimal pointer polling period in ms.
 
-  This is the minimal period the OpenCore builtin AppleEvent driver polls
+  This is the minimal period the MaxRegner builtin AppleEvent driver polls
   pointer devices (e.g. mice, trackpads) for motion events. The current
   implementation defaults to 10 ms. Setting \texttt{0} leaves this
   default unchanged.
@@ -8233,7 +8233,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{PointerSpeedDiv}\\
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{1}\\
-  \textbf{Description}: Configure pointer speed divisor in the OpenCore re-implementation
+  \textbf{Description}: Configure pointer speed divisor in the MaxRegner re-implementation
   of the Apple Event protocol.
   Has no effect when using the OEM Apple implementation (see \texttt{AppleEvent} setting).
 
@@ -8248,7 +8248,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{PointerSpeedMul}\\
   \textbf{Type}: \texttt{plist\ integer}\\
   \textbf{Failsafe}: \texttt{1}\\
-  \textbf{Description}: Configure pointer speed multiplier in the OpenCore re-implementation
+  \textbf{Description}: Configure pointer speed multiplier in the MaxRegner re-implementation
   of the Apple Event protocol.
   Has no effect when using the OEM Apple implementation (see \texttt{AppleEvent} setting).
 
@@ -8477,7 +8477,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{Arguments}\\
   \textbf{Type}: \texttt{plist\ string}\\
   \textbf{Failsafe}: Empty\\
-  \textbf{Description}: Some OpenCore plugins accept optional additional arguments
+  \textbf{Description}: Some MaxRegner plugins accept optional additional arguments
   which may be specified as a string here.
 
 \item
@@ -8497,7 +8497,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{LoadEarly}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Load the driver early in the OpenCore boot process, before NVRAM setup.
+  \textbf{Description}: Load the driver early in the MaxRegner boot process, before NVRAM setup.
 
   \emph{Note}: Do not enable this option unless specifically recommended to do so for a
   given driver and purpose.
@@ -8682,8 +8682,8 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
 \item
   \texttt{ConsoleFont}\\
   \textbf{Type}: \texttt{plist\ string}\\
-  \textbf{Failsafe}: Empty (use OpenCore builtin console font)\\
-  \textbf{Description}: Specify the console font to use for OpenCore \texttt{Builtin} text renderer.
+  \textbf{Failsafe}: Empty (use MaxRegner builtin console font)\\
+  \textbf{Description}: Specify the console font to use for MaxRegner \texttt{Builtin} text renderer.
 
   The font file must be located in \texttt{EFI/OC/Resources/Font/\{font-name\}.hex} and must
   be 8x16 resolution. Various console fonts can be found online in either \texttt{.bdf} or
@@ -8700,7 +8700,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
     \item \href{https://terminus-font.sourceforge.net/}{Terminus} --- A font with extensive character
     support suitable for applications such as the above.
     \item TerminusCore --- A lightly modified version of the Terminus font, making some glyphs
-    (\texttt{@KMRSTVWimrsw}) more similar to the free ISO Latin font used in XNU and OpenCore.
+    (\texttt{@KMRSTVWimrsw}) more similar to the free ISO Latin font used in XNU and MaxRegner.
   \end{itemize}
 
   \texttt{Terminus} and \texttt{TerminusCore} are provided under the SIL Open Font License, Version 1.1.
@@ -8751,7 +8751,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{Max} will try to pull the largest available resolution from the connected
   display's EDID.
 
-  \emph{Note}: This option depends on the \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h}{\texttt{OC\_FORCE\_RESOLUTION\_PROTOCOL}}
+  \emph{Note}: This option depends on the \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h}{\texttt{OC\_FORCE\_RESOLUTION\_PROTOCOL}}
   protocol being present. This protocol is currently only supported by \texttt{OpenDuetPkg}. The
   \texttt{OpenDuetPkg} implementation currently only supports Intel iGPUs and certain ATI GPUs.
 
@@ -8823,9 +8823,9 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
 
   UEFI firmware typically supports \texttt{ConsoleControl} with two
   rendering modes: \texttt{Graphics} and \texttt{Text}. Some types of firmware
-  do not provide a native \texttt{ConsoleControl} and rendering modes. OpenCore
+  do not provide a native \texttt{ConsoleControl} and rendering modes. MaxRegner
   and macOS expect text to only be shown in \texttt{Text} mode but
-  graphics to be drawn in any mode, and this is how the OpenCore \texttt{Builtin}
+  graphics to be drawn in any mode, and this is how the MaxRegner \texttt{Builtin}
   renderer behaves. Since this is not required by the UEFI specification, behaviour
   of the system \texttt{ConsoleControl} protocol, when it exists, may vary.
 
@@ -8868,7 +8868,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   not produce text based on the new resolution.
 
   \emph{Note}: On several boards this logic may result in black screen when launching
-  OpenCore from Shell and thus it is optional. In versions prior to 0.5.2 this option
+  MaxRegner from Shell and thus it is optional. In versions prior to 0.5.2 this option
   was mandatory and not configurable. Please do not use this unless required.
 
 \item
@@ -9029,17 +9029,17 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Description}: Replaces Apple audio protocols with builtin
   versions.
 
-  Apple audio protocols allow OpenCore and the macOS bootloader to play
+  Apple audio protocols allow MaxRegner and the macOS bootloader to play
   sounds and signals for screen reading or audible error reporting.
   Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
   is only provided natively by Gibraltar machines (T2), however versions of macOS
-  which support VoiceOver will see and use the implementation provided by OpenCore,
+  which support VoiceOver will see and use the implementation provided by MaxRegner,
   on screens such as FileVault 2 unlock. VoiceOver is not supported before
   macOS High Sierra (10.13). Older macOS versions use the AppleHDA protocol
   (which is not currently implemented) instead.
 
   Only one set of audio protocols can be available at a time, so this setting should
-  be enabled in order to enable audio playback in the OpenCore user interface on Mac
+  be enabled in order to enable audio playback in the MaxRegner user interface on Mac
   systems implementing some of these protocols.
 
   \emph{Note}: The backend audio driver needs to be configured in \texttt{UEFI Audio}
@@ -9256,7 +9256,7 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Description}: Enable Intel virtual machine extensions.
 
   \emph{Note}: Required to allow virtualization in Windows on some Mac hardware. VMX
-  is enabled or disabled and locked by BIOS before OpenCore starts on most
+  is enabled or disabled and locked by BIOS before MaxRegner starts on most
   firmware. Use BIOS to enable virtualization where possible.
 
 \item
@@ -9276,14 +9276,14 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \texttt{ForceOcWriteFlash}\\
   \textbf{Type}: \texttt{plist\ boolean}\\
   \textbf{Failsafe}: \texttt{false}\\
-  \textbf{Description}: Enables writing to flash memory for all OpenCore-managed NVRAM system variables.
+  \textbf{Description}: Enables writing to flash memory for all MaxRegner-managed NVRAM system variables.
 
   \emph{Note}: This value should be disabled on most types of firmware but is
   left configurable to account for firmware that may have issues with volatile
   variable storage overflows or similar. Boot issues across multiple OSes can be
   observed on e.g. Lenovo Thinkpad T430 and T530 without this quirk. Apple
   variables related to Secure Boot and hibernation are exempt from this for
-  security reasons. Furthermore, some OpenCore variables are exempt for
+  security reasons. Furthermore, some MaxRegner variables are exempt for
   different reasons, such as the boot log due to an available user option, and
   the TSC frequency due to timing issues. When toggling this option, a NVRAM
   reset may be required to ensure full functionality.
@@ -9344,10 +9344,10 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   with the help of \texttt{RequestBootVarRouting} quirk we achieve multiple goals:
   \begin{itemize}
   \tightlist
-  \item Operating systems are jailed and only controlled by OpenCore boot
+  \item Operating systems are jailed and only controlled by MaxRegner boot
   environment to enhance security.
-  \item Operating systems do not mess with OpenCore boot priority, and guarantee
-  fluent updates and hibernation wakes for cases that require reboots with OpenCore
+  \item Operating systems do not mess with MaxRegner boot priority, and guarantee
+  fluent updates and hibernation wakes for cases that require reboots with MaxRegner
   in the middle.
   \item Potentially incompatible boot entries, such as macOS entries, are not deleted
   or corrupted in any way.
@@ -9426,8 +9426,8 @@ OpenCore is installed, in order for the \texttt{Launchd.command} script to work 
   \textbf{Failsafe}: \texttt{false}\\
   \textbf{Description}: Request Linux Shim to keep protocol installed for subsequent image loads.
 
-  This option is only required if chaining OpenCore from Shim. It must be set in order to allow
-  OpenCore to launch items which are verified by certificates present in Shim, but not in the
+  This option is only required if chaining MaxRegner from Shim. It must be set in order to allow
+  MaxRegner to launch items which are verified by certificates present in Shim, but not in the
   system Secure Boot database.
 
 \item
@@ -9599,7 +9599,7 @@ However, as this may not always be accurate, the latest versions are listed belo
     (\href{https://mega.nz/folder/z5YUhYTb#gA\_IRY5KMuYpnNCg7kR3ug}{MEGA Mirror}),
     assuming Mac OS X~10.6 is legally owned. Refer to the \texttt{DIGEST.txt} file
     for details. Note that these are the earliest tested
-    versions of Mac OS X~10.6 with OpenCore.
+    versions of Mac OS X~10.6 with MaxRegner.
 \end{itemize}
 
   Model checking may also be erased by editing \texttt{OSInstall.mpkg}
@@ -9638,7 +9638,7 @@ hdiutil convert ReadWrite.dmg -format UDZO -o ReadOnly.dmg
     and requires \texttt{i386} kernel extensions and patches.
   \item This macOS version uses the first (V1) version of \texttt{prelinkedkernel},
     which has kext symbol tables corrupted by the kext tools. This nuance
-    renders \texttt{prelinkedkernel} kext injection impossible in OpenCore.
+    renders \texttt{prelinkedkernel} kext injection impossible in MaxRegner.
     \texttt{Mkext} kext injection will still work without noticeable
     performance drain and will be chosen automatically when
     \texttt{KernelCache} is set to \texttt{Auto}.
@@ -9655,7 +9655,7 @@ hdiutil convert ReadWrite.dmg -format UDZO -o ReadOnly.dmg
 \begin{lstlisting}[label=hex105, style=ocbash]
 exit ( $CPUs{$hostCPU} ? 0 : 1 );
 \end{lstlisting}
-    Note that this image is the earliest tested version of Mac OS X~10.5 with OpenCore.
+    Note that this image is the earliest tested version of Mac OS X~10.5 with MaxRegner.
 \end{itemize}
 
 \subsubsection{Mac OS X 10.4}\label{legacy104}
@@ -9675,7 +9675,7 @@ exit ( $CPUs{$hostCPU} ? 0 : 1 );
     (\href{https://mega.nz/folder/D3ASzLzA\#7sjYXE2X09f6aGjol\_C7dg}{MEGA Mirror}),
     assuming Mac OS X~10.4 is legally owned. Refer to the \texttt{DIGEST.txt} file
     for details. Note that these are the earliest tested
-    versions of Mac OS X~10.4 with OpenCore.
+    versions of Mac OS X~10.4 with MaxRegner.
   \item Due to lack of \texttt{createinstallmedia} utility and because the DMG installer
     is a volume image, not of a disk image (with a partition table), it is necessary
     to either restore the DMG file to a partition on a GPT-formatted media or convert
@@ -9699,10 +9699,10 @@ hdiutil detach disk{X} && hdiutil detach disk{Y}
 
 \subsection{UEFI Secure Boot}\label{uefisecureboot}
 
-OpenCore is designed to provide a secure boot chain between firmware
+MaxRegner is designed to provide a secure boot chain between firmware
 and operating system. On most x86 platforms trusted loading is implemented
 via \href{https://en.wikipedia.org/wiki/UEFI_Secure_Boot}{UEFI Secure Boot} model.
-Not only OpenCore fully supports this model, but it also extends its capabilities
+Not only MaxRegner fully supports this model, but it also extends its capabilities
 to ensure sealed configuration via \hyperref[securevaulting]{vaulting} and
 provide trusted loading to the operating systems using custom verification,
 such as \hyperref[secureapplesb]{Apple Secure Boot}. Proper secure boot chain
@@ -9730,13 +9730,13 @@ requires several steps and careful configuration of certain settings as explaine
   tools that provide administrative access to the computer, such as UEFI Shell.
 \item Vault the configuration as explained \hyperref[securevaulting]{Vaulting}
   section.
-\item Sign all OpenCore binaries (\texttt{BOOTX64.efi}, \texttt{BOOTIa32.efi},
-  \texttt{OpenCore.efi}, custom launchers) used on this system with
+\item Sign all MaxRegner binaries (\texttt{BOOTX64.efi}, \texttt{BOOTIa32.efi},
+  \texttt{MaxRegner.efi}, custom launchers) used on this system with
   the same private key.
 \item Sign all third-party operating system (not made by Microsoft or Apple)
   bootloaders if needed. For Linux there is an option to install
   a user built, user signed Shim bootloader giving SBAT and MOK integration,
-  as explained in the \texttt{/Utilities/ShimUtils} directory of OpenCore
+  as explained in the \texttt{/Utilities/ShimUtils} directory of MaxRegner
   source or releases.
 \item Enable UEFI Secure Boot in firmware preferences and install the
   certificate with a private key. Details on how to generate a certificate
@@ -9766,7 +9766,7 @@ requires several steps and careful configuration of certain settings as explaine
   to be operating system agnostic, i.e. apply equally regardless of the OS booted.
   This enables Boot Camp software experience on Windows.
   \item macOS requires the first partition to be EFI System Partition, and does
-  not support the default Windows layout. While OpenCore does have a
+  not support the default Windows layout. While MaxRegner does have a
   \href{https://github.com/acidanthera/bugtracker/issues/327}{workaround}
   for this, it is highly recommend not to rely on it and install properly.
   \item Windows may need to be reactivated. To avoid it consider
@@ -9875,18 +9875,18 @@ The operation has completed successfully.
 
 \subsection{Debugging}\label{troubleshootingdebug}
 
-Similar to other projects working with hardware OpenCore supports auditing and debugging.
+Similar to other projects working with hardware MaxRegner supports auditing and debugging.
 The use of \texttt{NOOPT} or \texttt{DEBUG} build modes instead of \texttt{RELEASE}
 can produce a lot more debug output. With \texttt{NOOPT} source level debugging with
 GDB or IDA Pro is also available. For GDB check
-\href{https://github.com/acidanthera/OpenCorePkg/tree/master/Debug}{OpenCore Debug}
+\href{https://github.com/acidanthera/MaxRegnerPkg/tree/master/Debug}{MaxRegner Debug}
 page. For IDA Pro, version 7.3 or newer is needed, and
 \href{https://www.hex-rays.com/products/ida/support/tutorials/index.shtml}{Debugging the XNU Kernel with IDA Pro}
 may also help.
 
 To obtain the log during boot serial port debugging can be used. Serial port
 debugging is enabled in \texttt{Target}, e.g. \texttt{0xB} for onscreen with serial. To
-initialise serial within OpenCore use \texttt{Init} configuration option under \texttt{Misc->Serial} with other values properly set.
+initialise serial within MaxRegner use \texttt{Init} configuration option under \texttt{Misc->Serial} with other values properly set.
 For macOS the best choice is CP2102-based UART devices. Connect motherboard \texttt{TX}
 to USB UART \texttt{RX}, and motherboard \texttt{GND} to USB UART \texttt{GND}. Use
 \texttt{screen} utility to get the output, or download GUI software, such as
@@ -9910,7 +9910,7 @@ than 1 meter to avoid output corruption. To additionally enable XNU kernel seria
   Obtaining the actual error message is usually adequate. For this, ensure that:
   \begin{itemize}
   \tightlist
-  \item A \texttt{DEBUG} or \texttt{NOOPT} version of OpenCore is used.
+  \item A \texttt{DEBUG} or \texttt{NOOPT} version of MaxRegner is used.
   \item Logging is enabled (\texttt{1}) and shown onscreen (\texttt{2}):
   \texttt{Misc} $\rightarrow$ \texttt{Debug} $\rightarrow$ \texttt{Target}
   $=$ \texttt{3}.
@@ -9930,8 +9930,8 @@ than 1 meter to avoid output corruption. To additionally enable XNU kernel seria
   \end{itemize}
 
   If there is no obvious error, check the available workarounds in the \texttt{Quirks} sections
-  one by one. For early boot troubleshooting, for instance, when OpenCore menu does not appear,
-  using \texttt{UEFI Shell} (bundled with OpenCore) may help to see
+  one by one. For early boot troubleshooting, for instance, when MaxRegner menu does not appear,
+  using \texttt{UEFI Shell} (bundled with MaxRegner) may help to see
   early debug messages.
 
 \item
@@ -9954,7 +9954,7 @@ than 1 meter to avoid output corruption. To additionally enable XNU kernel seria
 \item
   \textbf{How do I customise boot entries?}
 
-  OpenCore follows standard Apple Bless model and extracts the entry name
+  MaxRegner follows standard Apple Bless model and extracts the entry name
   from \texttt{.contentDetails} and \texttt{.disk\_label.contentDetails} files in the
   booter directory if present. These files contain an ASCII string with an entry title,
   which may then be customised by the user.
@@ -9962,27 +9962,27 @@ than 1 meter to avoid output corruption. To additionally enable XNU kernel seria
 \item
   \textbf{How do I choose the default boot entry?}
 
-  OpenCore uses the primary UEFI boot option to select the default entry. This choice
+  MaxRegner uses the primary UEFI boot option to select the default entry. This choice
   can be altered from UEFI Setup, with the macOS
   \href{https://support.apple.com/HT202796}{Startup Disk} preference, or the Windows
   \href{https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-in-windows-or-macos-bcmp29b8ac66/mac}{Boot Camp} Control Panel.
-  Since choosing OpenCore's \texttt{BOOTx64.EFI} as a primary boot option limits this
+  Since choosing MaxRegner's \texttt{BOOTx64.EFI} as a primary boot option limits this
   functionality in addition to several types of firmware deleting incompatible boot options,
   potentially including those created by macOS, users are strongly encouraged to use the
   \texttt{RequestBootVarRouting} quirk, which will preserve the selection made in
-  the operating system within the OpenCore variable space. Note, that \texttt{RequestBootVarRouting}
+  the operating system within the MaxRegner variable space. Note, that \texttt{RequestBootVarRouting}
   requires a separate driver for functioning.
 
 \item \label{reinstallmacos}
   \textbf{What is the simplest way to install macOS?}
 
   Copy online recovery image (\texttt{*.dmg} and \texttt{*.chunklist} files)
-  to \texttt{com.apple.recovery.boot} directory on a FAT32 partition with OpenCore.
-  Load the OpenCore picker and choose the entry, it will have a \texttt{(dmg)} suffix.
+  to \texttt{com.apple.recovery.boot} directory on a FAT32 partition with MaxRegner.
+  Load the MaxRegner picker and choose the entry, it will have a \texttt{(dmg)} suffix.
   Custom name may be created by providing \texttt{.contentDetails} file.
 
   To download recovery online
-  \href{https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py}{macrecovery.py}
+  \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Utilities/macrecovery/macrecovery.py}{macrecovery.py}
   can be used.
 
   For offline installation refer to

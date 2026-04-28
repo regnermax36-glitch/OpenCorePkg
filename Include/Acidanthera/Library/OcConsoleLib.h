@@ -38,7 +38,7 @@ typedef enum {
   Special commands sent to Builtin text renderer through TestString.
 **/
 /**
-  Extension to notify OpenCore builtin renderer that any text it may have produced
+  Extension to notify MaxRegner builtin renderer that any text it may have produced
   on screen is mixed with graphics which it did not control.
 **/
 #define OC_CONSOLE_MARK_UNCONTROLLED  L"MarkUncontrolled"

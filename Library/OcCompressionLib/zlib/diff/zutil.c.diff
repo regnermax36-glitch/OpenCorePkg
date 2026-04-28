@@ -1,5 +1,5 @@
 --- /Users/user/Downloads/zlib-1.2.13/zutil.c	2022-10-07 05:43:09
-+++ /Users/user/GitHub/OpenCorePkg/Library/OcCompressionLib/zlib/zutil.c	2023-04-01 12:30:54
++++ /Users/user/GitHub/MaxRegnerPkg/Library/OcCompressionLib/zlib/zutil.c	2023-04-01 12:30:54
 @@ -6,9 +6,6 @@
  /* @(#) $Id$ */
  

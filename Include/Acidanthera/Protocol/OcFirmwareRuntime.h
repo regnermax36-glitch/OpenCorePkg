@@ -32,11 +32,11 @@
 **/
 typedef struct OC_FWRT_CONFIG_ {
   ///
-  /// Enforce restricted access to OpenCore read-only and write-only GUIDs.
+  /// Enforce restricted access to MaxRegner read-only and write-only GUIDs.
   ///
   BOOLEAN    RestrictedVariables;
   ///
-  /// Enforce BootXXXX variable redirection to OpenCore vendor GUID.
+  /// Enforce BootXXXX variable redirection to MaxRegner vendor GUID.
   ///
   BOOLEAN    BootVariableRedirect;
   ///

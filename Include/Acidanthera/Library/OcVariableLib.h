@@ -1,5 +1,5 @@
 /** @file
-  OpenCore Variable library.
+  MaxRegner Variable library.
 
   Copyright (c) 2016-2022, Vitaly Cheptsov, Marvin Haeuser, Mike Beaton. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-3-Clause
@@ -28,7 +28,7 @@
 #define OPEN_CORE_INT_NVRAM_ATTR  EFI_VARIABLE_BOOTSERVICE_ACCESS
 
 /**
-  Initialize the OpenCore variable library. No other function may be called
+  Initialize the MaxRegner variable library. No other function may be called
   before this function has returned.
 
   @param[in] ForceOcWriteFlash  Whether OC system variables should be forced to
@@ -40,7 +40,7 @@ OcVariableInit (
   );
 
 /**
-  Sets the value of an OpenCore system variable to the OpenCore vendor GUID.
+  Sets the value of an MaxRegner system variable to the MaxRegner vendor GUID.
   If the write is to be performed non-volatile, this function guarantees to not
   request a write if the existing data is identical to the data requested to be
   written.
@@ -303,10 +303,10 @@ OcToggleSip (
 /**
   Load emulated NVRAM using installed protocol when present.
 
-  @param[in]  Storage                 OpenCore storage.
-  @param[in]  LegacyMap               OpenCore legacy NVRAM map, stating which variables are allowed to be read/written.
+  @param[in]  Storage                 MaxRegner storage.
+  @param[in]  LegacyMap               MaxRegner legacy NVRAM map, stating which variables are allowed to be read/written.
   @param[in]  LegacyOverwrite         Whether to overwrite any pre-existing variables found in emulated NVRAM.
-  @param[in]  RequestBootVarRouting   Whether OpenCore boot variable routing is enabled.
+  @param[in]  RequestBootVarRouting   Whether MaxRegner boot variable routing is enabled.
 **/
 VOID
 OcLoadLegacyNvram (

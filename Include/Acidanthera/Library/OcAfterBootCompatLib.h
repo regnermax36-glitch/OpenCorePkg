@@ -159,7 +159,7 @@ typedef struct OC_ABC_SETTINGS_ {
   ///
   BOOLEAN    SignalAppleOS;
   ///
-  /// Provide OpenCore boot-signature when loading macOS.
+  /// Provide MaxRegner boot-signature when loading macOS.
   /// This resolves the ability to wake from hibernate on Mac EFI, which
   /// checks that the hibernation signature matches the SHA-1 hash of the
   /// EFI image it launches prior to exposing the image key.
@@ -177,7 +177,7 @@ typedef struct OC_ABC_SETTINGS_ {
   /// To make it worse VMware also replaces GetMemoryMap pointer in MacMisc, which CoreDxe
   /// effectively trashes when we load drivers. As a result without this hack VMware Fusion
   /// may show "Your Mac OS guest might run unreliably with more than one virtual core."
-  /// message when running OpenCore.
+  /// message when running MaxRegner.
   ///
   BOOLEAN                 ProtectUefiServices;
   ///

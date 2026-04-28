@@ -14,7 +14,7 @@
   VERSION_STRING = 1.0
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   NetworkPkg/NetworkPkg.dec
 

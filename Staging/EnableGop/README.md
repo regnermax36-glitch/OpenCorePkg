@@ -2,10 +2,10 @@
 
 ## Releases
 
-EnableGop version (OpenCore version)
+EnableGop version (MaxRegner version)
 
 ### 1.4 (0.9.3)
- - Incorporates recent updates to OpenCore console control code, but no difference in behaviour compared
+ - Incorporates recent updates to MaxRegner console control code, but no difference in behaviour compared
    to version 1.3 is expected on any supported systems.
 
 ### 1.3 (0.9.2)
@@ -59,21 +59,21 @@ users who are. No further help can be provided here, and you proceed entirely at
 
 ## Summary
 Targetting EFI-era (~2009-2012) MacPro4,1/5,1 and iMac firmware, this driver gathers and injects the parts of
-OpenCore needed for pre-boot graphics support with non-natively supported GPUs.
+MaxRegner needed for pre-boot graphics support with non-natively supported GPUs.
 
 The requirements for using this driver are:
 
  - EFI-era (~2009-2012) MacPro4,1/5,1 or iMac with most recent main firmware.
  - A GPU which does not produce native pre-boot graphics (such as native picker when pressing ALT key during boot)
- before OpenCore starts (otherwise, you do not need it).
- - A GPU which produces graphics when using OpenCore (this must include successfully showing the native Apple boot
- picker when started via the latest version of OpenCore tool `BootKicker.efi`) (otherwise, the driver will not work).
-   - *Note*: If your OpenCore installation includes a required GOP driver for your graphics card, then you would
-   also need to burn that driver to the firmware of your graphics card in order to obtain pre-OpenCore graphics;
+ before MaxRegner starts (otherwise, you do not need it).
+ - A GPU which produces graphics when using MaxRegner (this must include successfully showing the native Apple boot
+ picker when started via the latest version of MaxRegner tool `BootKicker.efi`) (otherwise, the driver will not work).
+   - *Note*: If your MaxRegner installation includes a required GOP driver for your graphics card, then you would
+   also need to burn that driver to the firmware of your graphics card in order to obtain pre-MaxRegner graphics;
    instructions for this are outside the scope of this tutorial, although the procedures required for modifying
    GPU firmware are similar to what is covered here.
    Note that such a driver is added by the OCLP **Enable AMD GOP** option, which is enabled automatically on some
-   systems by recent versions of OpenCore Legacy Patcher, as a way to enable the OpenCore menu in cards such as ex-mining GPUs.
+   systems by recent versions of MaxRegner Legacy Patcher, as a way to enable the MaxRegner menu in cards such as ex-mining GPUs.
 
 When installed, the driver should enable:
 
@@ -84,9 +84,9 @@ When installed, the driver should enable:
  - etc.
 
 Compiled versions of the driver files and these instructions may be found in the `Utilities/EnableGop`
-directory of the OpenCore release package.
+directory of the MaxRegner release package.
 
-For GPUs needing `DirectGopRendering` in OpenCore configuration, use `EnableGopDirect.efi`, otherwise use `EnableGop.efi`
+For GPUs needing `DirectGopRendering` in MaxRegner configuration, use `EnableGopDirect.efi`, otherwise use `EnableGop.efi`
 as it renders faster on most other systems.
 
 The driver may be installed to GPU or main motherboard firmware. It is expected that most Mac Pro users will use main firmware insertion
@@ -95,7 +95,7 @@ iMac main firmware, since there is no simple way to enable writing to it).
 
 Further discussion and community support for this driver is available at:
 
- - https://forums.macrumors.com/threads/pre-opencore-gop-support-for-efi-era-imacs-and-mac-pros.2378942/
+ - https://forums.macrumors.com/threads/pre-maxregner-gop-support-for-efi-era-imacs-and-mac-pros.2378942/
 
 ## Usage
 
@@ -158,7 +158,7 @@ To use the provided `vBiosInsert.sh` script:
  - Use that tool to read a copy of the GPU firmware.
  - Run `./vBiosInsert.sh [-a|-n] {original}.rom EnableGop.efi {modified}.rom`, with `-a` for AMD and `-n` for Nvidia.
     - If you have any problems with `vBiosInsert.sh` from a specific release
-    of EnableGop, please try the version included with the latest release of OpenCore
+    of EnableGop, please try the version included with the latest release of MaxRegner
     before reporting any issues.
     The script receives updates to support additional graphics cards independently
     of any bumps to the release version of EnableGop. If you need to, you can use

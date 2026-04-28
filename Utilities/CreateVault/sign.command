@@ -24,7 +24,7 @@ if [ "$OCPath" = "" ]; then
 fi
 
 KeyPath="/tmp/$(/usr/bin/uuidgen)"
-OCBin="${OCPath}/OpenCore.efi"
+OCBin="${OCPath}/MaxRegner.efi"
 PubKey="${KeyPath}/vault.pub"
 
 if [ ! -d "${OCPath}" ]; then
@@ -32,7 +32,7 @@ if [ ! -d "${OCPath}" ]; then
 fi
 
 if [ ! -f "${OCBin}" ]; then
-  abort "OpenCore.efi is missing!"
+  abort "MaxRegner.efi is missing!"
 fi
 
 if [ ! -x ./RsaTool ] || [ ! -x ./create_vault.sh ]; then

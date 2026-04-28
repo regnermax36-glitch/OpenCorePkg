@@ -174,7 +174,7 @@ if [ "${INTREE}" != "" ]; then
     TARGETCHAIN="XCODE5"
   fi
 
-  build -a "${TARGETARCH}" -b "${TARGET}" -t "${TARGETCHAIN}" -p OpenCorePkg/OpenDuetPkg.dsc || exit 1
+  build -a "${TARGETARCH}" -b "${TARGET}" -t "${TARGETCHAIN}" -p MaxRegnerPkg/OpenDuetPkg.dsc || exit 1
   BUILD_DIR="${WORKSPACE}/Build/OpenDuetPkg/${TARGET}_${TARGETCHAIN}"
   BUILD_DIR_ARCH="${BUILD_DIR}/${TARGETARCH}"
   imgbuild "${TARGETARCH}"
@@ -188,8 +188,8 @@ else
     export ARCHS
   fi
 
-  DISCARD_SUBMODULES=OpenCorePkg
-  SELFPKG_DIR="OpenCorePkg"
+  DISCARD_SUBMODULES=MaxRegnerPkg
+  SELFPKG_DIR="MaxRegnerPkg"
   SELFPKG=OpenDuetPkg
   NO_ARCHIVES=1
 

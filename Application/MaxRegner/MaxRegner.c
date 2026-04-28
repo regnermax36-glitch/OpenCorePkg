@@ -1,5 +1,5 @@
 /** @file
-  OpenCore driver.
+  MaxRegner driver.
 
 Copyright (c) 2019, vit9696. All rights reserved.<BR>
 This program and the accompanying materials
@@ -44,27 +44,27 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 STATIC
 OC_GLOBAL_CONFIG
-  mOpenCoreConfiguration;
+  mMaxRegnerConfiguration;
 
 STATIC
 OC_STORAGE_CONTEXT
-  mOpenCoreStorage;
+  mMaxRegnerStorage;
 
 STATIC
 OC_CPU_INFO
-  mOpenCoreCpuInfo;
+  mMaxRegnerCpuInfo;
 
 STATIC
 UINT8
-  mOpenCoreBooterHash[SHA1_DIGEST_SIZE];
+  mMaxRegnerBooterHash[SHA1_DIGEST_SIZE];
 
 STATIC
 OC_RSA_PUBLIC_KEY *
-  mOpenCoreVaultKey;
+  mMaxRegnerVaultKey;
 
 STATIC
 OC_PRIVILEGE_CONTEXT
-  mOpenCorePrivilege;
+  mMaxRegnerPrivilege;
 
 STATIC
 EFI_HANDLE
@@ -124,51 +124,51 @@ OcMain (
   DEBUG ((DEBUG_INFO, "OC: OcMiscEarlyInit...\n"));
   Status = OcMiscEarlyInit (
              Storage,
-             &mOpenCoreConfiguration,
-             mOpenCoreVaultKey
+             &mMaxRegnerConfiguration,
+             mMaxRegnerVaultKey
              );
 
   if (EFI_ERROR (Status)) {
     return;
   }
 
-  OcCpuScanProcessor (&mOpenCoreCpuInfo);
+  OcCpuScanProcessor (&mMaxRegnerCpuInfo);
 
   DEBUG ((DEBUG_INFO, "OC: OcLoadNvramSupport...\n"));
-  OcLoadNvramSupport (Storage, &mOpenCoreConfiguration);
+  OcLoadNvramSupport (Storage, &mMaxRegnerConfiguration);
   DEBUG ((DEBUG_INFO, "OC: OcMiscMiddleInit...\n"));
   OcMiscMiddleInit (
     Storage,
-    &mOpenCoreConfiguration,
+    &mMaxRegnerConfiguration,
     mStorageRoot,
     LoadPath,
     mStorageHandle,
-    mOpenCoreConfiguration.Booter.Quirks.ForceBooterSignature ? mOpenCoreBooterHash : NULL
+    mMaxRegnerConfiguration.Booter.Quirks.ForceBooterSignature ? mMaxRegnerBooterHash : NULL
     );
   DEBUG ((DEBUG_INFO, "OC: OcLoadUefiSupport...\n"));
-  OcLoadUefiSupport (Storage, &mOpenCoreConfiguration, &mOpenCoreCpuInfo, mOpenCoreBooterHash);
+  OcLoadUefiSupport (Storage, &mMaxRegnerConfiguration, &mMaxRegnerCpuInfo, mMaxRegnerBooterHash);
   DEBUG_CODE_BEGIN ();
   DEBUG ((DEBUG_INFO, "OC: OcMiscLoadSystemReport...\n"));
-  OcMiscLoadSystemReport (&mOpenCoreConfiguration, mStorageHandle);
+  OcMiscLoadSystemReport (&mMaxRegnerConfiguration, mStorageHandle);
   DEBUG_CODE_END ();
   DEBUG ((DEBUG_INFO, "OC: OcLoadAcpiSupport...\n"));
-  OcLoadAcpiSupport (&mOpenCoreStorage, &mOpenCoreConfiguration);
+  OcLoadAcpiSupport (&mMaxRegnerStorage, &mMaxRegnerConfiguration);
   DEBUG ((DEBUG_INFO, "OC: OcLoadPlatformSupport...\n"));
-  OcLoadPlatformSupport (&mOpenCoreConfiguration, &mOpenCoreCpuInfo);
+  OcLoadPlatformSupport (&mMaxRegnerConfiguration, &mMaxRegnerCpuInfo);
   DEBUG ((DEBUG_INFO, "OC: OcLoadDevPropsSupport...\n"));
-  OcLoadDevPropsSupport (&mOpenCoreConfiguration);
+  OcLoadDevPropsSupport (&mMaxRegnerConfiguration);
   DEBUG ((DEBUG_INFO, "OC: OcMiscLateInit...\n"));
-  OcMiscLateInit (Storage, &mOpenCoreConfiguration);
+  OcMiscLateInit (Storage, &mMaxRegnerConfiguration);
   DEBUG ((DEBUG_INFO, "OC: OcLoadKernelSupport...\n"));
-  OcLoadKernelSupport (&mOpenCoreStorage, &mOpenCoreConfiguration, &mOpenCoreCpuInfo);
+  OcLoadKernelSupport (&mMaxRegnerStorage, &mMaxRegnerConfiguration, &mMaxRegnerCpuInfo);
 
-  if (mOpenCoreConfiguration.Misc.Security.EnablePassword) {
-    mOpenCorePrivilege.CurrentLevel = OcPrivilegeUnauthorized;
-    mOpenCorePrivilege.Hash         = mOpenCoreConfiguration.Misc.Security.PasswordHash;
-    mOpenCorePrivilege.Salt         = OC_BLOB_GET (&mOpenCoreConfiguration.Misc.Security.PasswordSalt);
-    mOpenCorePrivilege.SaltSize     = mOpenCoreConfiguration.Misc.Security.PasswordSalt.Size;
+  if (mMaxRegnerConfiguration.Misc.Security.EnablePassword) {
+    mMaxRegnerPrivilege.CurrentLevel = OcPrivilegeUnauthorized;
+    mMaxRegnerPrivilege.Hash         = mMaxRegnerConfiguration.Misc.Security.PasswordHash;
+    mMaxRegnerPrivilege.Salt         = OC_BLOB_GET (&mMaxRegnerConfiguration.Misc.Security.PasswordSalt);
+    mMaxRegnerPrivilege.SaltSize     = mMaxRegnerConfiguration.Misc.Security.PasswordSalt.Size;
 
-    Privilege = &mOpenCorePrivilege;
+    Privilege = &mMaxRegnerPrivilege;
   } else {
     Privilege = NULL;
   }
@@ -176,11 +176,11 @@ OcMain (
   DEBUG ((DEBUG_INFO, "OC: All green, starting boot management...\n"));
 
   OcMiscBoot (
-    &mOpenCoreStorage,
-    &mOpenCoreConfiguration,
+    &mMaxRegnerStorage,
+    &mMaxRegnerConfiguration,
     Privilege,
     OcStartImage,
-    mOpenCoreConfiguration.Uefi.Quirks.RequestBootVarRouting,
+    mMaxRegnerConfiguration.Uefi.Quirks.RequestBootVarRouting,
     mStorageHandle
     );
 }
@@ -197,7 +197,7 @@ OcBootstrap (
   EFI_DEVICE_PATH_PROTOCOL  *RemainingPath;
   UINTN                     StoragePathSize;
 
-  mOpenCoreVaultKey = OcGetVaultKey ();
+  mMaxRegnerVaultKey = OcGetVaultKey ();
   mStorageHandle    = DeviceHandle;
 
   //
@@ -208,7 +208,7 @@ OcBootstrap (
   //
   // Skipping this or later failing to call UnicodeGetParentDirectory means
   // we got valid path to the root of the partition. This happens when
-  // OpenCore.efi was loaded from e.g. firmware and then bootstrapped
+  // MaxRegner.efi was loaded from e.g. firmware and then bootstrapped
   // on a different partition.
   //
   if (mStorageRoot == NULL) {
@@ -237,17 +237,17 @@ OcBootstrap (
   SetDevicePathEndNode ((UINT8 *)mStoragePath + StoragePathSize);
 
   Status = OcStorageInitFromFs (
-             &mOpenCoreStorage,
+             &mMaxRegnerStorage,
              FileSystem,
              mStorageHandle,
              mStoragePath,
              mStorageRoot,
-             mOpenCoreVaultKey
+             mMaxRegnerVaultKey
              );
 
   if (!EFI_ERROR (Status)) {
-    OcMain (&mOpenCoreStorage, LoadPath);
-    OcStorageFree (&mOpenCoreStorage);
+    OcMain (&mMaxRegnerStorage, LoadPath);
+    OcStorageFree (&mMaxRegnerStorage);
   } else {
     DEBUG ((DEBUG_ERROR, "OC: Failed to open root FS - %r!\n", Status));
     if (Status == EFI_SECURITY_VIOLATION) {
@@ -270,7 +270,7 @@ OcGetLoadHandle (
 
 STATIC
 OC_BOOTSTRAP_PROTOCOL
-  mOpenCoreBootStrap = {
+  mMaxRegnerBootStrap = {
   .Revision      = OC_BOOTSTRAP_PROTOCOL_REVISION,
   .GetLoadHandle = OcGetLoadHandle,
 };
@@ -289,10 +289,10 @@ UefiMain (
   OC_BOOTSTRAP_PROTOCOL            *Bootstrap;
   EFI_DEVICE_PATH_PROTOCOL         *AbsPath;
 
-  DEBUG ((DEBUG_INFO, "OC: Starting OpenCore...\n"));
+  DEBUG ((DEBUG_INFO, "OC: Starting MaxRegner...\n"));
 
   //
-  // We have just started by bootstrap or manually at EFI/OC/OpenCore.efi.
+  // We have just started by bootstrap or manually at EFI/OC/MaxRegner.efi.
   // When bootstrap runs us, we only install the protocol.
   // Otherwise we do self start.
   //
@@ -359,7 +359,7 @@ UefiMain (
   Status          = gBS->InstallMultipleProtocolInterfaces (
                            &BootstrapHandle,
                            &gOcBootstrapProtocolGuid,
-                           &mOpenCoreBootStrap,
+                           &mMaxRegnerBootStrap,
                            NULL
                            );
   if (EFI_ERROR (Status)) {

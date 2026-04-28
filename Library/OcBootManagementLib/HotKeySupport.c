@@ -380,7 +380,7 @@ GetPickerKeyInfo (
     //
     // Note: Verbose boot may be entered in three different ways:
     //  - Loaded image options passed from bootloader (as will happen due to below
-    //    code, when CMD+V is pressed during OpenCore picker menu).
+    //    code, when CMD+V is pressed during MaxRegner picker menu).
     //  - `-v` option in NVRAM `boot-args` variable.
     //  - boot.efi itself detecting that CMD+V is held down when it starts.
     //

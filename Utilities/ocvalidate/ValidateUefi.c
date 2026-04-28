@@ -651,7 +651,7 @@ CheckUefiOutput (
   }
 
   //
-  // Parse Output->ConsoleMode by calling OpenCore libraries.
+  // Parse Output->ConsoleMode by calling MaxRegner libraries.
   //
   ConsoleMode = OC_BLOB_GET (&Config->Uefi.Output.ConsoleMode);
   OcParseConsoleMode (
@@ -673,7 +673,7 @@ CheckUefiOutput (
   }
 
   //
-  // Parse Output->Resolution by calling OpenCore libraries.
+  // Parse Output->Resolution by calling MaxRegner libraries.
   //
   Resolution = OC_BLOB_GET (&Config->Uefi.Output.Resolution);
   OcParseScreenResolution (

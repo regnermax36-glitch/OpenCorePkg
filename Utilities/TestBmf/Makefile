@@ -11,7 +11,7 @@ OBJS    = $(PROJECT).o BmfDummy.o
 #
 OBJS   += BitmapFont.o Images.o Blending.o
 #
-# From OpenCore.
+# From MaxRegner.
 #
 OBJS   += OcPng.o lodepng.o OcCompressionLib.o OcTimerLib.o OcAppleKeyMapLib.o UpDownDetection.o OcTypingLib.o ConsoleUtils.o BootEntryInfo.o OcAppleBootPolicyLib.o OcDevicePathLib.o DebugPrint.o BootAudio.o
 

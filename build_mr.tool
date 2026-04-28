@@ -142,9 +142,9 @@ package() {
       mkdir -p "${dstdir}/${arch}/${dir}" || exit 1
     done
 
-    # copy OpenCore main program.
-    cp "${arch}/OpenCore.efi" "${dstdir}/${arch}/EFI/OC" || exit 1
-    printf "%s" "OpenCore" > "${dstdir}/${arch}/EFI/OC/.contentFlavour" || exit 1
+    # copy MaxRegner main program.
+    cp "${arch}/MaxRegner.efi" "${dstdir}/${arch}/EFI/OC" || exit 1
+    printf "%s" "MaxRegner" > "${dstdir}/${arch}/EFI/OC/.contentFlavour" || exit 1
     printf "%s" "Disabled" > "${dstdir}/${arch}/EFI/OC/.contentVisibility" || exit 1
 
     local suffix="${arch}"
@@ -152,7 +152,7 @@ package() {
       suffix="x64"
     fi
     cp "${arch}/Bootstrap.efi" "${dstdir}/${arch}/EFI/BOOT/BOOT${suffix}.efi" || exit 1
-    printf "%s" "OpenCore" > "${dstdir}/${arch}/EFI/BOOT/.contentFlavour" || exit 1
+    printf "%s" "MaxRegner" > "${dstdir}/${arch}/EFI/BOOT/.contentFlavour" || exit 1
     printf "%s" "Disabled" > "${dstdir}/${arch}/EFI/BOOT/.contentVisibility" || exit 1
 
     efiTools=(
@@ -379,7 +379,7 @@ package() {
   cp "${selfdir}/Utilities/ocvalidate/README.md" "${dstdir}/Utilities/ocvalidate"/ || exit 1
 
   pushd "${dstdir}" || exit 1
-  zip -qr -FS ../"OpenCore-${ver}-${2}.zip" ./* || exit 1
+  zip -qr -FS ../"MaxRegner-${ver}-${2}.zip" ./* || exit 1
   popd || exit 1
   rm -rf "${dstdir}" || exit 1
 
@@ -392,9 +392,9 @@ if [ "$ARCHS" = "" ]; then
   ARCHS=(X64 IA32)
   export ARCHS
 fi
-SELFPKG=OpenCorePkg
+SELFPKG=MaxRegnerPkg
 NO_ARCHIVES=0
-DISCARD_SUBMODULES=OpenCorePkg
+DISCARD_SUBMODULES=MaxRegnerPkg
 
 export SELFPKG
 export NO_ARCHIVES

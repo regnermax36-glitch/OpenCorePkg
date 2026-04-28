@@ -501,7 +501,7 @@ OcReconnectConsole (
   // is legit.
   //
   // Note: this block of code may result in black screens on APTIO IV boards when
-  // launching OpenCore from the Shell. Hence it is optional.
+  // launching MaxRegner from the Shell. Hence it is optional.
   //
 
   Status = gBS->LocateHandleBuffer (

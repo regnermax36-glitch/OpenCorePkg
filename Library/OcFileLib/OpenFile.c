@@ -153,7 +153,7 @@ OcOpenFileByRemainingDevicePath (
     //
     // This is a compatibility hack for firmware types that do not support
     // opening filepaths (directories) with a trailing slash.
-    // More details in a852f85986c1fe23fc3a429605e3c560ea800c54 OpenCorePkg commit.
+    // More details in a852f85986c1fe23fc3a429605e3c560ea800c54 MaxRegnerPkg commit.
     //
     PathLength = StrLen (AlignedPathName);
     if ((PathLength > 0) && (AlignedPathName[PathLength - 1] == '\\')) {

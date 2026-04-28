@@ -44,7 +44,7 @@ AsciiFileSystemPathIsLegal (
   );
 
 /**
-  Check if an OpenCore Configuration Comment contains only ASCII printable characters.
+  Check if an MaxRegner Configuration Comment contains only ASCII printable characters.
 
   @param[in]  Comment                  Comment to be checked.
 
@@ -56,7 +56,7 @@ AsciiCommentIsLegal (
   );
 
 /**
-  Check if an OpenCore Configuration Identifier matches specific conventions.
+  Check if an MaxRegner Configuration Identifier matches specific conventions.
 
   @param[in]  Identifier               Identifier to be checked.
   @param[in]  IsKernelPatchIdentifier  TRUE to perform special checks for Kernel->Patch->Identifier.
@@ -70,7 +70,7 @@ AsciiIdentifierIsLegal (
   );
 
 /**
-  Check if an OpenCore Configuration Arch matches specific conventions.
+  Check if an MaxRegner Configuration Arch matches specific conventions.
 
   @param[in]  Arch                     Arch to be checked.
   @param[in]  IsKernelArch             TRUE to perform special checks for Kernel->Scheme->KernelArch.
@@ -84,7 +84,7 @@ AsciiArchIsLegal (
   );
 
 /**
-  Check if an OpenCore Configuration Property contains only ASCII printable characters.
+  Check if an MaxRegner Configuration Property contains only ASCII printable characters.
   This is mainly used in Device Properties and NVRAM Properties.
 
   @param[in]  Property                 Property to be checked.
@@ -155,7 +155,7 @@ DataHasProperMasking (
   );
 
 /**
-  Check if an OpenCore binary patch is valid.
+  Check if an MaxRegner binary patch is valid.
 
   If size of Find cannot be zero and it is different from that of Replace, then error.
   If Mask/ReplaceMask is set, but its size is different from that of Find/Replace, then error.
@@ -221,7 +221,7 @@ FindArrayDuplication (
 /**
   Check if two strings are duplicated to each other. Used as a wrapper of AsciiStrCmp to print duplicated entries.
 
-  @param[in]  EntrySection    Section of strings to which they belong throughout OpenCore Configuration.
+  @param[in]  EntrySection    Section of strings to which they belong throughout MaxRegner Configuration.
   @param[in]  FirstString     Primary entry in string format.
   @param[in]  SecondString    Secondary entry in string format.
 

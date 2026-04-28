@@ -20,7 +20,7 @@
 #include <Library/OcMainLib.h>
 
 /**
-  OpenCore Configuration checker.
+  MaxRegner Configuration checker.
 **/
 typedef
 UINT32
@@ -29,7 +29,7 @@ UINT32
   );
 
 /**
-  Validate OpenCore Configuration ACPI Section.
+  Validate MaxRegner Configuration ACPI Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -41,7 +41,7 @@ CheckACPI (
   );
 
 /**
-  Validate OpenCore Configuration Booter Section.
+  Validate MaxRegner Configuration Booter Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -53,7 +53,7 @@ CheckBooter (
   );
 
 /**
-  Validate OpenCore Configuration DeviceProperties Section.
+  Validate MaxRegner Configuration DeviceProperties Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -65,7 +65,7 @@ CheckDeviceProperties (
   );
 
 /**
-  Validate OpenCore Configuration Kernel Section.
+  Validate MaxRegner Configuration Kernel Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -77,7 +77,7 @@ CheckKernel (
   );
 
 /**
-  Validate OpenCore Configuration Misc Section.
+  Validate MaxRegner Configuration Misc Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -89,7 +89,7 @@ CheckMisc (
   );
 
 /**
-  Validate OpenCore Configuration NVRAM Section.
+  Validate MaxRegner Configuration NVRAM Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -101,7 +101,7 @@ CheckNvram (
   );
 
 /**
-  Validate OpenCore Configuration PlatformInfo Section.
+  Validate MaxRegner Configuration PlatformInfo Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -113,7 +113,7 @@ CheckPlatformInfo (
   );
 
 /**
-  Validate OpenCore Configuration UEFI Section.
+  Validate MaxRegner Configuration UEFI Section.
 
   @param[in]  Config   Configuration structure.
 
@@ -125,7 +125,7 @@ CheckUefi (
   );
 
 /**
-  Validate OpenCore Configuration overall, by calling each checker above.
+  Validate MaxRegner Configuration overall, by calling each checker above.
 
   @param[in]  Config   Configuration structure.
 

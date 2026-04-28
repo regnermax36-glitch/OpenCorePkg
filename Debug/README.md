@@ -22,11 +22,11 @@ By default EDK II optimises produced binaries, so to build a "real" debug binary
 `NOOPT`. Do be aware that it strongly affects resulting binary size:
 
 ```
-build -a X64 -t XCODE5   -b NOOPT -p OpenCorePkg/OpenCorePkg.dsc # for macOS
-build -a X64 -t CLANGPDB -b NOOPT -p OpenCorePkg/OpenCorePkg.dsc # for other systems
+build -a X64 -t XCODE5   -b NOOPT -p MaxRegnerPkg/MaxRegnerPkg.dsc # for macOS
+build -a X64 -t CLANGPDB -b NOOPT -p MaxRegnerPkg/MaxRegnerPkg.dsc # for other systems
 ```
 
-`GdbSyms.dll` is built as a part of OpenCorePkg, yet prebuilt binaries are also available:
+`GdbSyms.dll` is built as a part of MaxRegnerPkg, yet prebuilt binaries are also available:
 
 - `GdbSyms/Bin/X64_XCODE5/GdbSyms.dll` is built with XCODE5
 
@@ -106,7 +106,7 @@ when no macOS guest booting is required.
     Use e.g. `./build.sh -a X64` or  `./build.sh -a X64 -b NOOPT`; additional build arguments such as for serial debugging
     or SMM support may be appended to this.
 
-2. Prepare launch directory with OpenCore as usual. For example, make a directory named
+2. Prepare launch directory with MaxRegner as usual. For example, make a directory named
     `QemuRun` and `cd` to it. You should have a similar directory structure:
 
     ```
@@ -116,14 +116,14 @@ when no macOS guest booting is required.
             ├── BOOT
             │   └── BOOTx64.efi
             └── OC
-                ├── OpenCore.efi
+                ├── MaxRegner.efi
                 └── config.plist
     ```
 
 3. Run QEMU
     
     The OvmfPkg build script can also start the virtual machine which it has just built, e.g.
-    `./build.sh -a X64 qemu -drive format=raw,file=fat:rw:ESP` should be sufficient to start OpenCore;
+    `./build.sh -a X64 qemu -drive format=raw,file=fat:rw:ESP` should be sufficient to start MaxRegner;
     all options after `qemu` are passed directly to QEMU. Starting QEMU this way uses file `OVMF.fd`
     from the OVMF build directory, which is `OVMF_CODE.fd` and `OVMF_VARS.fd` combined; you may prefer
     to follow the second example below which specifies these files separately.
@@ -151,9 +151,9 @@ when no macOS guest booting is required.
 
     You may additionally pass `-S` flag to QEMU to stop at first instruction
     and wait for GDB connection. To use serial debugging add `-serial stdio`
-    (this causes OpenCore console log output to go to the shell which started QEMU).
+    (this causes MaxRegner console log output to go to the shell which started QEMU).
 
-4. Key and mouse support when running OpenCore in QEMU:
+4. Key and mouse support when running MaxRegner in QEMU:
 
     Enabling keyboard and mouse support is effectively the same as on a normal machine, however some typical options are:
 
@@ -190,10 +190,10 @@ Once GDB is installed you can use `efidebug.tool` for debugging. In case you do 
 want to use `efidebug.tool`, the following set of commands can be used as a reference:
 
 ```
-$ ggdb /opt/UDK/Build/OpenCorePkg/NOOPT_XCODE5/X64/OpenCorePkg/Debug/GdbSyms/GdbSyms/DEBUG/GdbSyms.dll.dSYM/Contents/Resources/DWARF/GdbSyms.dll
+$ ggdb /opt/UDK/Build/MaxRegnerPkg/NOOPT_XCODE5/X64/MaxRegnerPkg/Debug/GdbSyms/GdbSyms/DEBUG/GdbSyms.dll.dSYM/Contents/Resources/DWARF/GdbSyms.dll
 
 target remote localhost:8864
-source /opt/UDK/OpenCorePkg/Debug/Scripts/gdb_uefi.py
+source /opt/UDK/MaxRegnerPkg/Debug/Scripts/gdb_uefi.py
 set pagination off
 reload-uefi
 b DebugBreak
@@ -211,7 +211,7 @@ environment variable to `:`-separated list of paths with `.debug` files,
 for example:
 
 ```
-export EFI_SYMBOL_PATH="$WORKSPACE/Build/OvmfX64/NOOPT_CLANGPDB/X64:$WORKSPACE/Build/OpenCorePkg/NOOPT_CLANGPDB/X64"
+export EFI_SYMBOL_PATH="$WORKSPACE/Build/OvmfX64/NOOPT_CLANGPDB/X64:$WORKSPACE/Build/MaxRegnerPkg/NOOPT_CLANGPDB/X64"
 ```
 
 The reason for this requirement is fragile `--add-gnudebug-link` option

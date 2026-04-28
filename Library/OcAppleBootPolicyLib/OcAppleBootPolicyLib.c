@@ -57,7 +57,7 @@ typedef struct {
 ///
 /// Since in real world only 1st and 3rd entries are used, we do not include
 /// 2nd and 4th until further notice. However, we do include a custom entry
-/// for Windows, for the reason OpenCore, unlike Apple EFI, may override
+/// for Windows, for the reason MaxRegner, unlike Apple EFI, may override
 /// BOOTx64.efi, and this is not the case for Apple EFI. So we end up with:
 /// 1. APPLE_BOOTER_DEFAULT_FILE_NAME  -- \System\Library\CoreServices\boot.efi
 /// 2. MS_BOOTER_DEFAULT_FILE_NAME     -- \EFI\Microsoft\Boot\bootmgfw.efi
@@ -66,7 +66,7 @@ typedef struct {
 /// This resolves a problem when Windows installer does not replace our BOOTx64.efi
 /// file with Windows file and then NVRAM reset or Boot Camp software reboot to macOS
 /// results in the removal of the Windows boot entry from NVRAM making Windows
-/// disappear from the list of OpenCore entries without BlessOverride.
+/// disappear from the list of MaxRegner entries without BlessOverride.
 ///
 /// Linux and related entries are not present here, because they have fine working
 /// software for boot management and do not use BOOTx64.efi in the first place.

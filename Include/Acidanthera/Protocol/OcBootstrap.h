@@ -38,7 +38,7 @@
 typedef struct OC_BOOTSTRAP_PROTOCOL_ OC_BOOTSTRAP_PROTOCOL;
 
 /**
-  Obtain OpenCore load handle.
+  Obtain MaxRegner load handle.
 
   @param[in] This           This protocol.
 

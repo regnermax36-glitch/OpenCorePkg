@@ -1,29 +1,29 @@
 ocvalidate
 ====================
 
-Utility to validate whether a `config.plist` matches requirements and conventions imposed by OpenCore.
+Utility to validate whether a `config.plist` matches requirements and conventions imposed by MaxRegner.
 
 ## Usage
 - Pass one single path to `config.plist` to verify it.
-- Pass `--version` for current supported OpenCore version.
+- Pass `--version` for current supported MaxRegner version.
 
 ## Technical background
 ### At a glance
 - ocvalidate firstly calls `OcSerializeLib` which performs fundamental checks in terms of syntax and semantics. After that, the following will be checked.
-- The error message `<OCS: No schema for xxx>` complained by `OcSerializeLib` indicates unknown keys that can be deprecated in new versions of OpenCore. Such keys should be ***removed*** in order to avoid undefined behaviours.
-- Under active development, newer versions of OpenCore hardly have backward compatibility at this moment. As a result, please first run `ocvalidate --version` to check which version of OpenCore is supported, and thus please only use the specific version. 
+- The error message `<OCS: No schema for xxx>` complained by `OcSerializeLib` indicates unknown keys that can be deprecated in new versions of MaxRegner. Such keys should be ***removed*** in order to avoid undefined behaviours.
+- Under active development, newer versions of MaxRegner hardly have backward compatibility at this moment. As a result, please first run `ocvalidate --version` to check which version of MaxRegner is supported, and thus please only use the specific version.
 
 ### Global Rules
 - All entries must be set once only. Duplication is strictly prohibited.
-- All strings (fields with plist `String` format) throughout the whole config only accept ASCII printable characters at most. Stricter rules may apply. For instance, some fields only accept specified values, as indicated in [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf).
-- All the paths relative to OpenCore root must be less than or equal to 192 bytes (`OC_STORAGE_SAFE_PATH_MAX`) in total including '\0' terminator.
+- All strings (fields with plist `String` format) throughout the whole config only accept ASCII printable characters at most. Stricter rules may apply. For instance, some fields only accept specified values, as indicated in [Configuration.pdf](https://github.com/acidanthera/MaxRegnerPkg/blob/master/Docs/Configuration.pdf).
+- All the paths relative to MaxRegner root must be less than or equal to 192 bytes (`OC_STORAGE_SAFE_PATH_MAX`) in total including '\0' terminator.
 - Most binary patches must have `Find`, `Replace`, `Mask` (if used), and `ReplaceMask` (if used) identical size set. Also, `Find` requires `Mask` (or `Replace` requires `ReplaceMask`) to be active (set to non-zero) for corresponding bits.
-- `MinKernel` and `MaxKernel` entries should follow conventions specified in [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf). (TODO: Bring decent checks for this)
+- `MinKernel` and `MaxKernel` entries should follow conventions specified in [Configuration.pdf](https://github.com/acidanthera/MaxRegnerPkg/blob/master/Docs/Configuration.pdf). (TODO: Bring decent checks for this)
 - `MinKernel` cannot be a value that is below macOS 10.4 (Darwin version 8).
 - Entries taking file system path only accept `0-9, A-Z, a-z, '_', '-', '.', '/', and '\'`.
 - Device Paths (e.g. `PciRoot(0x0)/Pci(0x1b,0x0)`) only accept strings in canonic string format.
 - Paths of UEFI Drivers only accept `0-9, A-Z, a-z, '_', '-', '.', and '/'`.
-- Entries requiring bitwise operations (e.g. `ConsoleAttributes`, `PickerAttributes`, or `ScanPolicy`) only allow known bits stated in [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) to be set.
+- Entries requiring bitwise operations (e.g. `ConsoleAttributes`, `PickerAttributes`, or `ScanPolicy`) only allow known bits stated in [Configuration.pdf](https://github.com/acidanthera/MaxRegnerPkg/blob/master/Docs/Configuration.pdf) to be set.
 - Entries involving GUID (mainly in Section `NVRAM`) must have correct format set.
 
 ### ACPI
@@ -52,8 +52,8 @@ Utility to validate whether a `config.plist` matches requirements and convention
 - Entry[N]->BundlePath: Filename should have `.kext` suffix.
 - Entry[N]->PlistPath: Filename should have `.plist` suffix.
 - Entry[N]: If `Lilu.kext` is used, `DisableLinkeditJettison` should be enabled in `Kernel->Quirks`.
-- `BrcmFirmwareRepo.kext` must not be injected by OpenCore.
-- For some known kexts, their `BundlePath`, `ExecutablePath`, and `PlistPath` must match against each other. Current list of rules can be found [here](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/ocvalidate/KextInfo.c).
+- `BrcmFirmwareRepo.kext` must not be injected by MaxRegner.
+- For some known kexts, their `BundlePath`, `ExecutablePath`, and `PlistPath` must match against each other. Current list of rules can be found [here](https://github.com/acidanthera/MaxRegnerPkg/blob/master/Utilities/ocvalidate/KextInfo.c).
 - Plugin kext must be placed after parent kext. For example, [plugins of Lilu](https://github.com/acidanthera/Lilu/blob/master/KnownPlugins.md) must be placed after `Lilu.kext`.
 #### Delete
 - Entry[N]->Arch: Only `Any`, `i386`, or `x86_64` are accepted.
@@ -67,7 +67,7 @@ Utility to validate whether a `config.plist` matches requirements and convention
 
 ### Misc
 #### BlessOverride
-- Entries cannot be `\EFI\Microsoft\Boot\bootmgfw.efi` or `\System\Library\CoreServices\boot.efi` since OpenCore knows these paths.
+- Entries cannot be `\EFI\Microsoft\Boot\bootmgfw.efi` or `\System\Library\CoreServices\boot.efi` since MaxRegner knows these paths.
 #### Boot
 - HibernateMode: Only `None`, `Auto`, `RTC`, or `NVRAM` are accepted.
 - PickerMode: Only `Builtin`, `External`, or `Apple` are accepted.

@@ -14,7 +14,7 @@
 ##
 
 [Defines]
-  PACKAGE_NAME      = OpenCorePkg
+  PACKAGE_NAME      = MaxRegnerPkg
   PACKAGE_GUID      = 6B1D3AB4-5C85-462D-9DC5-480F8B17D5CB
   PACKAGE_VERSION   = 1.0
   DEC_SPECIFICATION = 0x00010005
@@ -91,7 +91,7 @@
   gOcWriteOnlyVariableGuid                   = { 0xF0B9AF8F, 0x2222, 0x4840, { 0x8A, 0x37, 0xEC, 0xF7, 0xCC, 0x8C, 0x12, 0xE1 }}
 
   ## OcSupport package token space guid
-  gOpenCorePkgTokenSpaceGuid                 = { 0x38D40CB0, 0x7E37, 0x4CAA, { 0x91, 0xD3, 0x00, 0x47, 0x70, 0xA8, 0x73, 0x77 }}
+  gMaxRegnerPkgTokenSpaceGuid                 = { 0x38D40CB0, 0x7E37, 0x4CAA, { 0x91, 0xD3, 0x00, 0x47, 0x70, 0xA8, 0x73, 0x77 }}
 
   ## Include/Acidanthera/Guid/OcSmBios.h
   gOcCustomSmbiosTableGuid                   = { 0xEB9D2D35, 0x2D88, 0x11D3, { 0x9A, 0x16, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }}
@@ -717,70 +717,70 @@
   ##   TRUE  - Apple Thunderbolt NHI protocol will be called.<BR>
   ##   FALSE - Apple Thunderbolt NHI protocol will not be called.<BR>
   ## @Prompt Inform Thunderbolt devices about device property export.
-  gOpenCorePkgTokenSpaceGuid.PcdEnableAppleThunderboltSync|FALSE|BOOLEAN|0x00000000
+  gMaxRegnerPkgTokenSpaceGuid.PcdEnableAppleThunderboltSync|FALSE|BOOLEAN|0x00000000
 
   ## Indicates if NVRAM properties are used to initialize device property database.<BR><BR>
   ##   TRUE  - NVRAM properties initialize device property database.<BR>
   ##   FALSE - NVRAM properties do not initialize device property database.<BR>
   ## @Prompt Register a protocol installation notify for Apple KeyMap Database when not found initially.
-  gOpenCorePkgTokenSpaceGuid.PcNvramInitDevicePropertyDatabase|FALSE|BOOLEAN|0x00000001
+  gMaxRegnerPkgTokenSpaceGuid.PcNvramInitDevicePropertyDatabase|FALSE|BOOLEAN|0x00000001
 
   ## Indicates if USB KeyBoard Driver disconnects itself when the Exit Boot Services
   ## event is triggered.<BR><BR>
   ##   TRUE  - USB KeyBoard Driver will disconnect itself.<BR>
   ##   FALSE - USB KeyBoard Driver will not disconnect itself.<BR>
   ## @Prompt Disconnect the USB KeyBoard Driver when exitting Boot Services.
-  gOpenCorePkgTokenSpaceGuid.PcdEnableDisconnectOnExitBootServicesInUsbKbDriver|TRUE|BOOLEAN|0x00000002
+  gMaxRegnerPkgTokenSpaceGuid.PcdEnableDisconnectOnExitBootServicesInUsbKbDriver|TRUE|BOOLEAN|0x00000002
 
   ## Indicates if USB KeyBoard Driver registers a Apple KeyMap Database protocol installation notify.<BR><BR>
   ##   TRUE  - USB KeyBoard Driver will registers a protocol installation notify.<BR>
   ##   FALSE - USB KeyBoard Driver will registers a protocol installation notify.<BR>
   ## @Prompt Register a protocol installation notify for Apple KeyMap Database when not found initially.
-  gOpenCorePkgTokenSpaceGuid.PcdNotifyAppleKeyMapDbInUsbKbDriver|TRUE|BOOLEAN|0x00000003
+  gMaxRegnerPkgTokenSpaceGuid.PcdNotifyAppleKeyMapDbInUsbKbDriver|TRUE|BOOLEAN|0x00000003
 
   ## Indicates if USB KeyBoard Driver disconnects other drivers to take precedence.<BR><BR>
   ##   TRUE  - USB KeyBoard Driver will disconnect other drivers.<BR>
   ##   FALSE - USB KeyBoard Driver will not disconnect other drivers.<BR>
   ## @Prompt Disconnect other drivers for the USB KeyBoard Driver to take precedence over them.
-  gOpenCorePkgTokenSpaceGuid.PcdUsbKbDriverTakePrecedence|TRUE|BOOLEAN|0x00000004
+  gMaxRegnerPkgTokenSpaceGuid.PcdUsbKbDriverTakePrecedence|TRUE|BOOLEAN|0x00000004
 
   ## Indicates whether audio codec setup code produces an error when no valid output bits are specified.<BR><BR>
   ##   TRUE  - Produce an error.<BR>
   ##   FALSE - No error, just play no sound.<BR>
   ## @Prompt Audio codec setup code should produce an error when no valid output bits are specified.
-  gOpenCorePkgTokenSpaceGuid.PcdAudioCodecErrorOnNoOutputs|TRUE|BOOLEAN|0x00000005
+  gMaxRegnerPkgTokenSpaceGuid.PcdAudioCodecErrorOnNoOutputs|TRUE|BOOLEAN|0x00000005
 
   ## Indicates if AudioDxe will try EFI_OPEN_PROTOCOL_GET_PROTOCOL if EFI_OPEN_PROTOCOL_BY_DRIVER
   ## fails with access denied.<BR><BR>
   ##   TRUE  - Use EFI_OPEN_PROTOCOL_GET_PROTOCOL if EFI_OPEN_PROTOCOL_BY_DRIVER fails.<BR>
   ##   FALSE - Do not use EFI_OPEN_PROTOCOL_GET_PROTOCOL.<BR>
   ## @Prompt Try EFI_OPEN_PROTOCOL_GET_PROTOCOL if EFI_OPEN_PROTOCOL_BY_DRIVER fails.
-  gOpenCorePkgTokenSpaceGuid.PcdAudioControllerTryProtocolGetMode|TRUE|BOOLEAN|0x00000007
+  gMaxRegnerPkgTokenSpaceGuid.PcdAudioControllerTryProtocolGetMode|TRUE|BOOLEAN|0x00000007
 
   ## Indicates if AudioDxe will use Pin Capabilities to identify outputs.<BR><BR>
   ##   TRUE  - Use Pin Capabilities to identify outputs.<BR>
   ##   FALSE - Use default device type to identify outputs.<BR>
   ## @Prompt Use Pin Capabilities to identify audio outputs.
-  gOpenCorePkgTokenSpaceGuid.PcdAudioControllerUsePinCapsForOutputs|TRUE|BOOLEAN|0x00000008
+  gMaxRegnerPkgTokenSpaceGuid.PcdAudioControllerUsePinCapsForOutputs|TRUE|BOOLEAN|0x00000008
 
   ## Indicates whether to build EnableGop driver with DirectGopRendering.<BR><BR>
   ##   TRUE  - DirectGopRendering will be used.<BR>
   ##   FALSE - DirectGopRendering will not be used.<BR>
   ## @Prompt Use DirectGopRendering.
-  gOpenCorePkgTokenSpaceGuid.PcdEnableGopDirect|FALSE|BOOLEAN|0x00000009
+  gMaxRegnerPkgTokenSpaceGuid.PcdEnableGopDirect|FALSE|BOOLEAN|0x00000009
 
   ## Indicates if UGA Draw Protocol will be installed on virtual handle created by ConsplitterDxe.
   #  It could be set FALSE to save size.<BR><BR>
   #   TRUE  - Installs UGA Draw Protocol on virtual handle created by ConsplitterDxe.<BR>
   #   FALSE - Does not install UGA Draw Protocol on virtual handle created by ConsplitterDxe.<BR>
   # @Prompt Enable ConOut UGA support.
-  gOpenCorePkgTokenSpaceGuid.PcdConOutUgaSupport|TRUE|BOOLEAN|0x0000000a
+  gMaxRegnerPkgTokenSpaceGuid.PcdConOutUgaSupport|TRUE|BOOLEAN|0x0000000a
 
   ## Indicates if UGA Draw Protocol is still consumed.<BR><BR>
   #   TRUE  - Consume UGA Draw protocol.<BR>
   #   FALSE - Does not consume UGA Draw protocol.<BR>
   # @Prompt Consume UGA Draw Protocol.
-  gOpenCorePkgTokenSpaceGuid.PcdUgaConsumeSupport|TRUE|BOOLEAN|0x0000000b
+  gMaxRegnerPkgTokenSpaceGuid.PcdUgaConsumeSupport|TRUE|BOOLEAN|0x0000000b
 
 [PcdsFixedAtBuild]
   ## Defines the Console Control initialization mode set on entry.<BR><BR>
@@ -788,11 +788,11 @@
   ##   1 - EfiConsoleControlScreenGraphics<BR>
   ##   2 - EfiConsoleControlScreenMaxValue (does nothing)<BR>
   ## @Prompt Initialize the console to the specified mode on entry.
-  gOpenCorePkgTokenSpaceGuid.PcdConsoleControlEntryMode|0|UINT8|0x00000100
+  gMaxRegnerPkgTokenSpaceGuid.PcdConsoleControlEntryMode|0|UINT8|0x00000100
 
   ## Defines the allowed OcCryptoLib RSA moduli by OR'ing the two's potencies in bytes.<BR><BR>
   ## @Prompt Allow these RSA moduli for cryptographic usage.
-  gOpenCorePkgTokenSpaceGuid.PcdOcCryptoAllowedRsaModuli|0x300|UINT16|0x00000500
+  gMaxRegnerPkgTokenSpaceGuid.PcdOcCryptoAllowedRsaModuli|0x300|UINT16|0x00000500
 
   ## Defines the allowed OcCryptoLib signature hashing algorihtms by OR'ing the
   ##  types' Bit indices.<BR><BR>
@@ -800,19 +800,19 @@
   ##   Bit 1 - OcSigHashTypeSha384
   ##   Bit 2 - OcSigHashTypeSha512
   ## @Prompt Allow these signature hashing algorithms for cryptographic usage.
-  gOpenCorePkgTokenSpaceGuid.PcdOcCryptoAllowedSigHashTypes|0x07|UINT16|0x00000501
+  gMaxRegnerPkgTokenSpaceGuid.PcdOcCryptoAllowedSigHashTypes|0x07|UINT16|0x00000501
 
   ## Indicates, whether usage of TSC instead of RNG is allowed.<BR><BR>
   ##   TRUE  - TSC is allowed.<BR>
   ##   FALSE - TSC is NOT allowed.<BR>
   ## @Prompt Allow usage of TSC, when RNG is not available.
-  gOpenCorePkgTokenSpaceGuid.PcdCanaryAllowRdtscFallback|FALSE|BOOLEAN|0x00000607
+  gMaxRegnerPkgTokenSpaceGuid.PcdCanaryAllowRdtscFallback|FALSE|BOOLEAN|0x00000607
 
   ## Indicates, whether early logs before the arrival of log protocol should be saved.<BR><BR>
   ##   TRUE  - Save early logs.<BR>
   ##   FALSE - Do not save early logs.<BR>
   ## @Prompt Allow saving early logs when log protocol has not yet arrived.
-  gOpenCorePkgTokenSpaceGuid.PcdDebugLibProtocolBufferEarlyLog|TRUE|BOOLEAN|0x00000608
+  gMaxRegnerPkgTokenSpaceGuid.PcdDebugLibProtocolBufferEarlyLog|TRUE|BOOLEAN|0x00000608
 
   ## Pcd8259LegacyModeMask defines the default mask value for platform. This
   #  value is determined.
@@ -833,12 +833,12 @@
   #  except some special cases such as when initializing the CSM binary, it
   #  should be set to 0xFFFF to mask all legacy interrupt. Please restore the
   #  original legacy mask value if changing is made for these special case.
-  gOpenCorePkgTokenSpaceGuid.Pcd8259LegacyModeMask|0xFFFF|UINT16|0x00000609
+  gMaxRegnerPkgTokenSpaceGuid.Pcd8259LegacyModeMask|0xFFFF|UINT16|0x00000609
 
   ## Pcd8259LegacyModeEdgeLevel defines the default edge level for legacy
   #  mode's interrrupt controller.
   #  For the corresponding bits, 0 = Edge triggered and 1 = Level triggered.
-  gOpenCorePkgTokenSpaceGuid.Pcd8259LegacyModeEdgeLevel|0x0000|UINT16|0x0000060a
+  gMaxRegnerPkgTokenSpaceGuid.Pcd8259LegacyModeEdgeLevel|0x0000|UINT16|0x0000060a
 
 [LibraryClasses]
   ##  @libraryclass

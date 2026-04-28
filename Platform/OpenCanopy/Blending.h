@@ -1,5 +1,5 @@
 /** @file
-  This file is part of OpenCanopy, OpenCore GUI.
+  This file is part of OpenCanopy, MaxRegner GUI.
 
   Copyright (c) 2021, Marvin Haeuser. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-3-Clause

@@ -642,7 +642,7 @@ OC_DECLARE (OC_UEFI_DRIVER_ARRAY)
 OC_DECLARE (OC_UEFI_APFS)
 
 ///
-/// AppleInput is a set of options to configure OpenCore's reverse engingeered then customised implementation of the AppleEvent protocol.
+/// AppleInput is a set of options to configure MaxRegner's reverse engingeered then customised implementation of the AppleEvent protocol.
 ///
 #define OC_UEFI_APPLEINPUT_FIELDS(_, __) \
   _(OC_STRING                   , AppleEvent                    ,     , OC_STRING_CONSTR ("Auto", _, __)  , OC_DESTR (OC_STRING) ) \

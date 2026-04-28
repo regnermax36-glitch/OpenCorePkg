@@ -28,10 +28,10 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
 
 [Pcd]
-  gOpenCorePkgTokenSpaceGuid.PcdConsoleControlEntryMode
+  gMaxRegnerPkgTokenSpaceGuid.PcdConsoleControlEntryMode
 
 [Protocols]
   gEfiConsoleControlProtocolGuid

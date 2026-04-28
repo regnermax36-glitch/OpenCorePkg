@@ -45,7 +45,7 @@
   APRIORI DXE {
     INF  MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
     INF  MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
-    INF  OpenCorePkg/Legacy/BootPlatform/8259InterruptControllerDxe/8259.inf
+    INF  MaxRegnerPkg/Legacy/BootPlatform/8259InterruptControllerDxe/8259.inf
   }
 
   # Core code
@@ -57,34 +57,34 @@
 
   # Console
   INF  MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/ConSplitterDxe/ConSplitterDxe.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/ConSplitterDxe/ConSplitterDxe.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
 
   # CPU and interrupts
   INF  UefiCpuPkg/CpuIo2Dxe/CpuIo2Dxe.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/CpuDxe/CpuDxe.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/8259InterruptControllerDxe/8259.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/AcpiResetDxe/Reset.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/CpuDxe/CpuDxe.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/8259InterruptControllerDxe/8259.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/AcpiResetDxe/Reset.inf
 
   # Timer
   INF  MdeModulePkg/Universal/Metronome/Metronome.inf
   INF  MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
   INF  MdeModulePkg/Universal/MonotonicCounterRuntimeDxe/MonotonicCounterRuntimeDxe.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/8254TimerDxe/8254Timer.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/8254TimerDxe/8254Timer.inf
   INF  PcAtChipsetPkg/PcatRealTimeClockRuntimeDxe/PcatRealTimeClockRuntimeDxe.inf
 
   # PCI
-  INF  OpenCorePkg/Legacy/BootPlatform/PciRootBridgeDxe/PciRootBridgeNoEnumeration.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/PciBusNoEnumerationDxe/PciBusNoEnumeration.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/PciRootBridgeDxe/PciRootBridgeNoEnumeration.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/PciBusNoEnumerationDxe/PciBusNoEnumeration.inf
 
   # BIOS Video and CSM
-  INF  OpenCorePkg/Legacy/BootPlatform/BiosVideo/BiosVideo.inf
-  INF  OpenCorePkg/Legacy/BootPlatform/LegacyRegion2Dxe/LegacyRegion2Dxe.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/BiosVideo/BiosVideo.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/LegacyRegion2Dxe/LegacyRegion2Dxe.inf
 
   # ISA (e.g. PS/2 devices)
   INF  OvmfPkg/SioBusDxe/SioBusDxe.inf
 
-  # Keyboard input (OpenCore has custom drivers)
+  # Keyboard input (MaxRegner has custom drivers)
   # INF  MdeModulePkg/Bus/Isa/Ps2KeyboardDxe/Ps2KeyboardDxe.inf
   # INF  MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
 
@@ -95,10 +95,10 @@
   # Generic disk I/O (Unicode collation is used by e.g. FAT)
   INF  MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
   INF  MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
-  INF  OpenCorePkg/Platform/OpenPartitionDxe/PartitionDxe.inf
+  INF  MaxRegnerPkg/Platform/OpenPartitionDxe/PartitionDxe.inf
 
   # ACPI and SMBIOS (convenience protocols are optional)
-  # INF  OpenCorePkg/Legacy/BootPlatform/SmbiosGenDxe/SmbiosGen.inf
+  # INF  MaxRegnerPkg/Legacy/BootPlatform/SmbiosGenDxe/SmbiosGen.inf
   # INF  MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
   # INF  MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
 
@@ -106,8 +106,8 @@
   INF  FatPkg/EnhancedFatDxe/Fat.inf
 
   # Binary drivers
-  # INF  RuleOverride=BINARY OpenCorePkg/Legacy/BinDrivers/HfsPlus.inf
-  # INF  RuleOverride=BINARY OpenCorePkg/Legacy/BinDrivers/OpenUsbKbDxe.inf
+  # INF  RuleOverride=BINARY MaxRegnerPkg/Legacy/BinDrivers/HfsPlus.inf
+  # INF  RuleOverride=BINARY MaxRegnerPkg/Legacy/BinDrivers/OpenUsbKbDxe.inf
 
   # Boot management
-  INF  OpenCorePkg/Legacy/BootPlatform/BdsDxe/BdsDxe.inf
+  INF  MaxRegnerPkg/Legacy/BootPlatform/BdsDxe/BdsDxe.inf

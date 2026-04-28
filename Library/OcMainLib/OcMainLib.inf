@@ -1,5 +1,5 @@
 ## @file
-#  OpenCore primary coordination library
+#  MaxRegner primary coordination library
 #
 #  Copyright (c) 2019, vit9696. All rights reserved.<BR>
 #
@@ -21,21 +21,21 @@
   LIBRARY_CLASS                       = OcMainLib|PEIM DXE_DRIVER DXE_RUNTIME_DRIVER UEFI_DRIVER UEFI_APPLICATION DXE_SMM_DRIVER
 
 [Sources]
-  OpenCoreAcpi.c
-  OpenCoreDevProps.c
-  OpenCoreKernel.c
-  OpenCoreKernelPatch.c
-  OpenCoreMisc.c
-  OpenCoreNvram.c
-  OpenCorePlatform.c
-  OpenCoreUefi.c
-  OpenCoreUefiAudio.c
-  OpenCoreUefiInOut.c
-  OpenCoreUefiUnloadDrivers.c
-  OpenCoreVault.c
+  MaxRegnerAcpi.c
+  MaxRegnerDevProps.c
+  MaxRegnerKernel.c
+  MaxRegnerKernelPatch.c
+  MaxRegnerMisc.c
+  MaxRegnerNvram.c
+  MaxRegnerPlatform.c
+  MaxRegnerUefi.c
+  MaxRegnerUefiAudio.c
+  MaxRegnerUefiInOut.c
+  MaxRegnerUefiUnloadDrivers.c
+  MaxRegnerVault.c
 
 [Packages]
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   UefiCpuPkg/UefiCpuPkg.dec

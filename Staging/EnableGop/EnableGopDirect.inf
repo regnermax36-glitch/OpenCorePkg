@@ -29,7 +29,7 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  OpenCorePkg/OpenCorePkg.dec
+  MaxRegnerPkg/MaxRegnerPkg.dec
   UefiCpuPkg/UefiCpuPkg.dec
 
 [LibraryClasses]
@@ -43,7 +43,7 @@
   UefiRuntimeServicesTableLib
 
 [FeaturePcd]
-  gOpenCorePkgTokenSpaceGuid.PcdEnableGopDirect|TRUE
+  gMaxRegnerPkgTokenSpaceGuid.PcdEnableGopDirect|TRUE
 
 [Depex]
   TRUE

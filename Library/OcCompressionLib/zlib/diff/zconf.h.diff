@@ -1,5 +1,5 @@
 --- /Users/user/Downloads/zlib-1.2.13/zconf.h	2022-10-10 02:32:50
-+++ /Users/user/GitHub/OpenCorePkg/Library/OcCompressionLib/zlib/zconf.h	2023-04-01 12:30:54
++++ /Users/user/GitHub/MaxRegnerPkg/Library/OcCompressionLib/zlib/zconf.h	2023-04-01 12:30:54
 @@ -8,540 +8,73 @@
  #ifndef ZCONF_H
  #define ZCONF_H

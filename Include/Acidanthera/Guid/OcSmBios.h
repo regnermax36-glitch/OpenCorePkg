@@ -1,5 +1,5 @@
 /** @file
-  OpenCore custom SMBIOS GUID identifiers.
+  MaxRegner custom SMBIOS GUID identifiers.
 
   Copyright (c) 2019, vit9696. All rights reserved.<BR>
   This program and the accompanying materials

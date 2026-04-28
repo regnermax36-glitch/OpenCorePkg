@@ -1,6 +1,6 @@
-# OpenCore Content Flavours
+# MaxRegner Content Flavours
 
-See [Configuration.pdf](Configuration.pdf) for a technical description of the OpenCore content flavour system.
+See [Configuration.pdf](Configuration.pdf) for a technical description of the MaxRegner content flavour system.
 
 This document provides a list of recommended flavours, so that icon pack artists understand what they must and can do, and so that different icon packs can use consistent names for optional icons.
 
@@ -15,7 +15,7 @@ In general, users are recommended to apply the full specified flavour names from
 
 Icon pack authors are encouraged to provide only those icons for which there is real demand. The complete lists below are provided for consistency of naming, and not because there is a requirement to provide all (or even most, or any - except for the required system icons listed last) of the icons listed here in a given icon pack.
 
-> Note that for all boot entry icon files `<Flavour>.icns` specified below, an `Ext<Flavour>.icns` version may be provided as well. If the selected flavour is specified for an external drive then, if present, `Ext<Flavour>.icns` will be used, otherwise for security reasons OpenCore will use `ExtHardDrive.icns` instead (not `<Flavour>.icns`). Providing `Ext<Flavour>.icns` is optional for icon providers, the fallback behaviour will be perfectly acceptable anyway, in most cases.
+> Note that for all boot entry icon files `<Flavour>.icns` specified below, an `Ext<Flavour>.icns` version may be provided as well. If the selected flavour is specified for an external drive then, if present, `Ext<Flavour>.icns` will be used, otherwise for security reasons MaxRegner will use `ExtHardDrive.icns` instead (not `<Flavour>.icns`). Providing `Ext<Flavour>.icns` is optional for icon providers, the fallback behaviour will be perfectly acceptable anyway, in most cases.
 
 ## macOS
 
@@ -55,7 +55,7 @@ Recovery flavours also automatically add the OS version:
 
 ## Windows
 
-Windows is automatically detected by OpenCore, so the basic `Windows` flavour will be applied automatically. Unlike macOS, Windows versions are not detected automatically, so per-version icons will require manual specification by the user (e.g. in `.contentFlavour`) as follows, in order to be found and used.
+Windows is automatically detected by MaxRegner, so the basic `Windows` flavour will be applied automatically. Unlike macOS, Windows versions are not detected automatically, so per-version icons will require manual specification by the user (e.g. in `.contentFlavour`) as follows, in order to be found and used.
 
 **Windows** icon is recommended, all others are optional.
 
@@ -127,7 +127,7 @@ Create an Issue or Pull Request to request additional tool icons. If doing so pl
 It is recommended to provide this icon.
 
  - **Tool** - Any tool entry
-   - If provided, is used as fallback for non-OS entries in OpenCore; if not provided falls back again to **HardDrive** (which is required)
+   - If provided, is used as fallback for non-OS entries in MaxRegner; if not provided falls back again to **HardDrive** (which is required)
 
 ### Shell Tools
 
@@ -139,7 +139,7 @@ If providing just one file, name it `Shell.icns` if the theming of the icon is g
  - **UEFIShell:Shell** - EDK II UEFI Shell
    - As an example of how flavours work: **UEFIShell:Shell** will try `UEFIShell.icns`, then `Shell.icns` (and then, by OC default behaviour, `Tool.icns`, then `HardDrive.icns`)
    - _**Note**: Including **UEFIShell** anywhere in the flavour triggers picker audio-assist for "UEFI Shell"_
- - **OpenShell:UEFIShell:Shell** - Themed specifically for OpenCore OpenShell (which is a variant of the EDK II UEFI Shell)
+ - **OpenShell:UEFIShell:Shell** - Themed specifically for MaxRegner OpenShell (which is a variant of the EDK II UEFI Shell)
    - This is the recommended flavour to use for `OpenShell.efi`, as is done in the sample config files
    - Although this is the recommended *flavour*, icon artists are not required to provide this icon file, since this flavour will automatically find and use `Shell.icns` or `UEFIShell.icns` anyway
    - Because **UEFIShell** is included in this flavour, it will also trigger picker audio-assist for "UEFI Shell"
@@ -188,7 +188,7 @@ Certain well-known bootloaders have also been assigned a flavour:
 
  - **Boatloader** - Generic bootloader icon (`Bootloader.icns`)
  - **Grub:Bootloader** - Icon for the GRUB2 bootloader (`Grub.icns`)
- - **OpenCore:Bootloader** - OpenCore intentionally does not offer to start instances of itself which have had the OC binary signature applied (i.e. standard release versions), however a) it will show non-signed versions and b) we need to have our own flavour (`OpenCore.icns`)
+ - **MaxRegner:Bootloader** - MaxRegner intentionally does not offer to start instances of itself which have had the OC binary signature applied (i.e. standard release versions), however a) it will show non-signed versions and b) we need to have our own flavour (`MaxRegner.icns`)
 
 ---
 

@@ -1,5 +1,5 @@
 /** @file
-  OpenCore Boot Entry Protocol.
+  MaxRegner Boot Entry Protocol.
 
   Copyright (C) 2021, Mike Beaton. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-3-Clause
@@ -36,7 +36,7 @@
 typedef struct OC_BOOT_ENTRY_PROTOCOL_ OC_BOOT_ENTRY_PROTOCOL;
 
 /**
-  Return list of OpenCore boot entries associated with filesystem.
+  Return list of MaxRegner boot entries associated with filesystem.
 
   @param[in]  PickerContext     Picker context.
   @param[in]  Device            The handle of the device to scan. NULL is passed in to request
@@ -72,7 +72,7 @@ EFI_STATUS
   );
 
 /**
-  Free list of OpenCore boot entries from previous call to OC_BOOT_ENTRY_PROTOCOL_GET_ENTRIES.
+  Free list of MaxRegner boot entries from previous call to OC_BOOT_ENTRY_PROTOCOL_GET_ENTRIES.
 
   @param[in]  Entries           List of boot entries, as returned by previous call.
                                 Correct implementation of interface should additionally

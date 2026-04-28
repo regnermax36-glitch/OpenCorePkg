@@ -1,5 +1,5 @@
 //
-// OpenCore project
+// MaxRegner project
 // Acidanthera version detection code
 // Copyright (c) 2021 vit9696
 // Public domain release

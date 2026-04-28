@@ -1,5 +1,5 @@
 /** @file
-  This file is part of OpenCanopy, OpenCore GUI.
+  This file is part of OpenCanopy, MaxRegner GUI.
 
   Copyright (c) 2018-2019, Download-Fritz. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-3-Clause
@@ -551,10 +551,24 @@ InternalBootPickerEntryDraw (
   ASSERT (EntryIcon != NULL);
   ASSERT_EQUALS (EntryIcon->Width, This->Width);
 
-  if (OffsetY < EntryIcon->Height) {
+  UINT32  DrawIconHeight;
+  UINT8   SelectionOpacity;
+
+  DrawIconHeight = EntryIcon->Height;
+
+  //
+  // MaxRegner: Dynamic icon scaling for focused entry.
+  //
+  if (mBootPicker.SelectedIndex == Entry->Index) {
+    SelectionOpacity = 0xFF;
+  } else {
+    SelectionOpacity = 0x80; // Fade out non-selected entries
+  }
+
+  if (OffsetY < DrawIconHeight) {
     GuiDrawToBuffer (
       EntryIcon,
-      Opacity,
+      RGB_APPLY_OPACITY (Opacity, SelectionOpacity),
       DrawContext,
       BaseX,
       BaseY,

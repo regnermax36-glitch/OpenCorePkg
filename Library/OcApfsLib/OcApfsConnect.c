@@ -50,7 +50,7 @@ STATIC UINT64  mApfsBlacklistedVersions[] = {
 
 STATIC
 EFI_STATUS
-ApfsCheckOpenCoreScanPolicy (
+ApfsCheckMaxRegnerScanPolicy (
   IN EFI_HANDLE  Handle
   )
 {
@@ -529,10 +529,10 @@ OcApfsConnectHandle (
   }
 
   //
-  // Filter out handles, which do not respect OpenCore policy.
+  // Filter out handles, which do not respect MaxRegner policy.
   //
   if (VerifyPolicy) {
-    Status = ApfsCheckOpenCoreScanPolicy (Handle);
+    Status = ApfsCheckMaxRegnerScanPolicy (Handle);
     if (EFI_ERROR (Status)) {
       DEBUG ((DEBUG_INFO, "OCJS: Cannot connect, Policy error - %r\n", Status));
       return Status;

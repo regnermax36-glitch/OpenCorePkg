@@ -7,7 +7,7 @@ PROJECT = Smbios
 PRODUCT = $(PROJECT)$(INFIX)$(SUFFIX)
 OBJS    = $(PROJECT).o
 #
-# From OpenCore.
+# From MaxRegner.
 #
 OBJS   += SmbiosPatch.o SmbiosInternal.o DebugSmbios.o LegacyRegionLock.o LegacyRegionUnLock.o
 
