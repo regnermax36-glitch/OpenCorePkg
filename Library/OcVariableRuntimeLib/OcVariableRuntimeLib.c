@@ -193,7 +193,7 @@ LoadNvram (
     //
     // Note 1: LegacyOverwrite remains useful here, even though we know we are writing to
     // emulated NVRAM which 'starts off empty'; both for any variables set by the emulated
-    // NVRAM driver itself, and for those set by any part of OpenDuet when that is in use.
+    // NVRAM driver itself, and for those set by any part of MaxRegnerDuet when that is in use.
     //
     // Note 2: If we obey WriteFlash here, then when it is TRUE the SaveNvram method fails
     // to save anything to nvram.plist, since everything is marked volatile. As we are in a

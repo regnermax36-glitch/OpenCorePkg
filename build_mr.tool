@@ -283,26 +283,26 @@ package() {
     cp "${selfdir}/Utilities/LogoutHook/${file}" "${dstdir}/Utilities/LogoutHook"/ || exit 1
   done
 
-  # Copy OpenDuetPkg booter.
+  # Copy MaxRegnerDuetPkg booter.
   for arch in "${ARCHS[@]}"; do
     local tgt
     local booter
     local booter_blockio
     tgt="$(basename "$(pwd)")"
-    booter="$(pwd)/../../OpenDuetPkg/${tgt}/${arch}/boot"
-    booter_blockio="$(pwd)/../../OpenDuetPkg/${tgt}/${arch}/boot-blockio"
+    booter="$(pwd)/../../MaxRegnerDuetPkg/${tgt}/${arch}/boot"
+    booter_blockio="$(pwd)/../../MaxRegnerDuetPkg/${tgt}/${arch}/boot-blockio"
 
     if [ -f "${booter}" ]; then
-      echo "Copying OpenDuetPkg boot file from ${booter}..."
+      echo "Copying MaxRegnerDuetPkg boot file from ${booter}..."
       cp "${booter}" "${dstdir}/Utilities/LegacyBoot/boot${arch}" || exit 1
     else
-      echo "Failed to find OpenDuetPkg at ${booter}!"
+      echo "Failed to find MaxRegnerDuetPkg at ${booter}!"
     fi
     if [ -f "${booter_blockio}" ]; then
-      echo "Copying OpenDuetPkg BlockIO boot file from ${booter_blockio}..."
+      echo "Copying MaxRegnerDuetPkg BlockIO boot file from ${booter_blockio}..."
       cp "${booter_blockio}" "${dstdir}/Utilities/LegacyBoot/boot${arch}-blockio" || exit 1
     else
-      echo "Failed to find OpenDuetPkg BlockIO at ${booter_blockio}!"
+      echo "Failed to find MaxRegnerDuetPkg BlockIO at ${booter_blockio}!"
     fi
   done
 

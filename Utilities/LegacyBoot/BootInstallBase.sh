@@ -86,7 +86,7 @@ else
 
   diskutil list
   echo "Disable SIP in the case of any problems with installation!!!"
-  echo "Enter disk number to install OpenDuet (${ARCHS}${DUET_SUFFIX}) to:"
+  echo "Enter disk number to install MaxRegnerDuet (${ARCHS}${DUET_SUFFIX}) to:"
   read -r N
 
   if ! diskutil info disk"${N}" |  grep -q "/dev/disk"; then

@@ -24,13 +24,13 @@ services:
     volumes:
       - ${PWD}:/com.docker.devenvironments.code
     working_dir: /com.docker.devenvironments.code
-  build-oc:
+  build-mr:
     extends:
       service: dev-edk2
     entrypoint:
       - /bin/bash
       - -c
-      - "{ . ~/.edk2_rc.sh && eval \"$$(/usr/bin/curl -LfsS https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh)\" && ./build_oc.tool ; } || exit 1"
+      - "{ . ~/.edk2_rc.sh && eval \"$$(/usr/bin/curl -LfsS https://raw.githubusercontent.com/acidanthera/ocbuild/master/ci-bootstrap.sh)\" && ./build_mr.tool ; } || exit 1"
   build-duet:
     extends:
       service: dev-edk2

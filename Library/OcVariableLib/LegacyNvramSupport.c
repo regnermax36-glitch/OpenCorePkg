@@ -5,8 +5,8 @@
 
   References MaxRegner global config (for legacy NVRAM). Despite referencing
   global config directly, is required to live outside OcMainLib to avoid
-  having to link OcMainLib and all its dependencies to OpenDuet, when we
-  link OcVariableRuntimeLib to OpenDuet.
+  having to link OcMainLib and all its dependencies to MaxRegnerDuet, when we
+  link OcVariableRuntimeLib to MaxRegnerDuet.
 
   Copyright (c) 2019-2022, vit9696, mikebeaton. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-3-Clause

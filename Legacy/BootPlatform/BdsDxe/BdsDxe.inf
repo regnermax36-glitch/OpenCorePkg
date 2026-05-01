@@ -30,7 +30,7 @@
   BdsEntry.c
 
 [Packages]
-  MaxRegnerPkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerDuetPkg.dec
   MaxRegnerPkg/MaxRegnerPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec

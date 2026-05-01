@@ -680,8 +680,8 @@ that other tools may contain malware. In addition, configurations created for a 
 hardware setup should never be used on different hardware setups.
 
 For BIOS booting, a third-party UEFI environment provider is required and
-\texttt{OpenDuetPkg} is one such UEFI environment provider for legacy systems.
-To run MaxRegner on such a legacy system, \texttt{OpenDuetPkg} can be installed
+\texttt{MaxRegnerDuetPkg} is one such UEFI environment provider for legacy systems.
+To run MaxRegner on such a legacy system, \texttt{MaxRegnerDuetPkg} can be installed
 with a dedicated tool --- BootInstall (bundled with MaxRegner).
 \href{https://github.com/corpnewt/gibMacOS}{Third-party utilities} can be used
 to perform this on systems other than macOS.
@@ -1702,9 +1702,9 @@ To view their current state, use the \texttt{pmset -g} command in Terminal.
   in all versions, and 10.4 and 10.5 32-bit versions also contain illegal overlapping
   sections. Modern, strict PE loaders will refuse to load such images unless additional
   mitigations are applied. The image loader which matters here is the one provided by
-  the system firmware, or by OpenDuet if OpenDuet is providing
+  the system firmware, or by MaxRegnerDuet if MaxRegnerDuet is providing
   the UEFI compatibility layer. Image loaders which enforce these stricter
-  rules include the loader provided with current versions of OpenDuet,
+  rules include the loader provided with current versions of MaxRegnerDuet,
   the loader in OVMF if compiled from \href{https://github.com/acidanthera/audk}{audk},
   and possibly the image loaders of some very recent 3rd party firmware (e.g. Microsoft).
 
@@ -3384,7 +3384,7 @@ The boot process is as follows:
 \end{itemize}
 
 \emph{Note 1}: This process will only work reliably when the \texttt{RequestBootVarRouting}
-option is enabled or the firmware does not control UEFI boot options (\texttt{OpenDuetPkg} or
+option is enabled or the firmware does not control UEFI boot options (\texttt{MaxRegnerDuetPkg} or
 custom BDS). When \texttt{LauncherOption} is not enabled, other operating systems may
 overwrite MaxRegner settings and this property should therefore be enabled when planning
 to use other operating systems.
@@ -6613,7 +6613,7 @@ even cause permanent firmware damage. Some of the known drivers are listed below
 \href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{BiosVideo}}\textbf{*}
 & CSM video driver implementing graphics output protocol based on VESA and legacy
   BIOS interfaces. Used for UEFI firmware with fragile GOP support (e.g. low resolution).
-  Requires \texttt{ReconnectGraphicsOnConnect}. Included in OpenDuet out of the box. \\
+  Requires \texttt{ReconnectGraphicsOnConnect}. Included in MaxRegnerDuet out of the box. \\
 \href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{CrScreenshotDxe}}\textbf{*}
 & Screenshot making driver saving images to the root of MaxRegner partition (ESP) or
   any available writeable filesystem upon pressing \texttt{F10}.
@@ -6662,7 +6662,7 @@ even cause permanent firmware damage. Some of the known drivers are listed below
 & \hyperref[uefiruntime]{MaxRegner plugin} implementing \texttt{OC\_FIRMWARE\_RUNTIME} protocol. \\
 \href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenLegacyBoot}}\textbf{*}
 & \hyperref[legacyboot]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
-  to allow detection and booting of legacy operating systems from MaxRegner on Macs, OpenDuet
+  to allow detection and booting of legacy operating systems from MaxRegner on Macs, MaxRegnerDuet
   and systems with a CSM. \\
 \href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenLinuxBoot}}\textbf{*}
 & \hyperref[uefilinux]{MaxRegner plugin} implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}
@@ -6683,12 +6683,12 @@ even cause permanent firmware damage. Some of the known drivers are listed below
   This driver can be used to support loading older DMG recoveries such as OS X 10.9
   using Apple Partitioning Scheme, or for loading other macOS Installers where these were
   created using the Apple Partitioning Scheme (creating macOS Installers using GPT avoids
-  the need for this). OpenDuet already includes this driver. \\
+  the need for this). MaxRegnerDuet already includes this driver. \\
 \href{https://github.com/acidanthera/MaxRegnerPkg}{\texttt{OpenVariableRuntimeDxe}}\textbf{*}
-& \hyperref[emunvram]{MaxRegner plugin} offering emulated NVRAM support. OpenDuet already
+& \hyperref[emunvram]{MaxRegner plugin} offering emulated NVRAM support. MaxRegnerDuet already
 includes this driver. \\
 \href{https://github.com/acidanthera/audk}{\texttt{Ps2KeyboardDxe}}\textbf{*}
-& PS/2 keyboard driver from \texttt{MdeModulePkg}. \texttt{OpenDuetPkg} and some types of firmware
+& PS/2 keyboard driver from \texttt{MdeModulePkg}. \texttt{MaxRegnerDuetPkg} and some types of firmware
   may not include this driver, but it is necessary for PS/2 keyboard to work.
   Note, unlike \texttt{OpenUsbKbDxe} this driver has no \texttt{AppleKeyMapAggregator}
   support and thus requires \texttt{KeySupport} to be enabled. \\
@@ -6897,7 +6897,7 @@ functioning. Feature highlights:
 \subsection{OpenLegacyBoot}\label{legacyboot}
 OpenLegacyBoot is an MaxRegner plugin implementing \texttt{OC\_BOOT\_ENTRY\_PROTOCOL}.
 It aims to detect and boot legacy installed operating systems on supported systems, such as
-OpenDuet and Mac models capable of legacy booting.
+MaxRegnerDuet and Mac models capable of legacy booting.
 
 Usage:
 
@@ -7592,7 +7592,7 @@ the driver within the \texttt{UEFI/Drivers} section:
 
 Provides in-memory emulated NVRAM implementation. This can be useful on systems with fragile
 (e.g. MacPro5,1, see discussion linked from this \href{https://forums.macrumors.com/posts/30945127}{forum post})
-or incompatible NVRAM implementations. This driver is included by default in OpenDuet.
+or incompatible NVRAM implementations. This driver is included by default in MaxRegnerDuet.
 
 In addition to installing emulated NVRAM, this driver additionally installs an MaxRegner compatible
 protocol enabling the following:
@@ -7610,16 +7610,16 @@ Recommended configuration settings for this driver:
 
 \begin{itemize}
 \tightlist
-  \item \texttt{OpenVariableRuntimeDxe.efi} loaded using \texttt{LoadEarly=true}. OpenDuet users
-  should not load this driver, as a firmware driver serving the same purpose is included in OpenDuet.
+  \item \texttt{OpenVariableRuntimeDxe.efi} loaded using \texttt{LoadEarly=true}. MaxRegnerDuet users
+  should not load this driver, as a firmware driver serving the same purpose is included in MaxRegnerDuet.
   \item \texttt{OpenRuntime.efi} specified after \texttt{OpenVariableRuntimeDxe.efi} (when applicable),
   also loaded using \texttt{LoadEarly=true} for correct operation of \texttt{RequestBootVarRouting}.
   \begin{itemize}
   \tightlist
     \item \texttt{RequestBootVarRouting} is never strictly needed while using emulated NVRAM, but
     it can be convenient to leave it set on a system which needs to switch between real and emulated NVRAM.
-    \item \texttt{RequestBootVarRouting} is never required on an OpenDuet system, since there are
-    no BIOS-managed boot entries to protect, therefore on OpenDuet recommended settings are
+    \item \texttt{RequestBootVarRouting} is never required on an MaxRegnerDuet system, since there are
+    no BIOS-managed boot entries to protect, therefore on MaxRegnerDuet recommended settings are
     \texttt{LoadEarly=false} for \texttt{OpenRuntime.efi} and \texttt{RequestBootVarRouting=false}.
   \end{itemize}
   \item \texttt{LegacySchema} populated.
@@ -8752,8 +8752,8 @@ MaxRegner is installed, in order for the \texttt{Launchd.command} script to work
   display's EDID.
 
   \emph{Note}: This option depends on the \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h}{\texttt{OC\_FORCE\_RESOLUTION\_PROTOCOL}}
-  protocol being present. This protocol is currently only supported by \texttt{OpenDuetPkg}. The
-  \texttt{OpenDuetPkg} implementation currently only supports Intel iGPUs and certain ATI GPUs.
+  protocol being present. This protocol is currently only supported by \texttt{MaxRegnerDuetPkg}. The
+  \texttt{MaxRegnerDuetPkg} implementation currently only supports Intel iGPUs and certain ATI GPUs.
 
 \item
   \texttt{GopBurstMode}\\
@@ -9556,7 +9556,7 @@ However, as this may not always be accurate, the latest versions are listed belo
 \begin{itemize}
   \item Disk images on these systems use the Apple Partitioning Scheme
     and require the \texttt{OpenPartitionDxe} driver to run DMG recovery
-    and installation (included in OpenDuet). It is possible to set
+    and installation (included in MaxRegnerDuet). It is possible to set
     \texttt{DmgLoading} to \texttt{Disabled} to run the recovery
     without DMG loading avoiding the need for \texttt{OpenPartitionDxe}.
   \item Cached kernel images often do not contain family drivers

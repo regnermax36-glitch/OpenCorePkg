@@ -24,7 +24,7 @@
   VERSION_STRING                 = 1.0
 
 [Packages]
-  MaxRegnerPkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerDuetPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   MaxRegnerPkg/MaxRegnerPkg.dec

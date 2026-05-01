@@ -786,7 +786,7 @@ VariableServiceInitialize (
   gBS->CreateEventEx = OriginalCreateEventEx;
 
   // Signal events immediately. These events occur in this order and before
-  // MaxRegner is loaded when the equivalent driver is part of OpenDuet.
+  // MaxRegner is loaded when the equivalent driver is part of MaxRegnerDuet.
   gBS->SignalEvent (EndOfDxeEvent);
   gBS->SignalEvent (ReadyToBootEvent);
 
