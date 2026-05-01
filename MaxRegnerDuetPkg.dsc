@@ -25,7 +25,7 @@
   SUPPORTED_ARCHITECTURES        = X64|IA32
   BUILD_TARGETS                  = RELEASE|DEBUG|NOOPT
   SKUID_IDENTIFIER               = DEFAULT
-  FLASH_DEFINITION               = MaxRegnerPkg/OpenDuetPkg.fdf
+  FLASH_DEFINITION               = MaxRegnerPkg/MaxRegnerDuetPkg.fdf
 
 !include MdePkg/MdeLibs.dsc.inc
 

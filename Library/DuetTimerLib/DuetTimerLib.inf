@@ -41,7 +41,7 @@
 [Packages]
   MdePkg/MdePkg.dec
   MaxRegnerPkg/MaxRegnerPkg.dec
-  MaxRegnerPkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerDuetPkg.dec
 
 [LibraryClasses]
   BaseLib

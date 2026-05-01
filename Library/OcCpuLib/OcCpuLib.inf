@@ -28,7 +28,7 @@
 
 [Packages]
   MaxRegnerPkg/MaxRegnerPkg.dec
-  MaxRegnerPkg/OpenDuetPkg.dec
+  MaxRegnerPkg/MaxRegnerDuetPkg.dec
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   UefiCpuPkg/UefiCpuPkg.dec
