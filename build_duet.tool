@@ -175,7 +175,7 @@ if [ "${INTREE}" != "" ]; then
   fi
 
   build -a "${TARGETARCH}" -b "${TARGET}" -t "${TARGETCHAIN}" -p MaxRegnerPkg/MaxRegnerDuetPkg.dsc || exit 1
-  BUILD_DIR="${WORKSPACE}/Build/OpenDuetPkg/${TARGET}_${TARGETCHAIN}"
+  BUILD_DIR="${WORKSPACE}/Build/MaxRegnerDuetPkg/${TARGET}_${TARGETCHAIN}"
   BUILD_DIR_ARCH="${BUILD_DIR}/${TARGETARCH}"
   imgbuild "${TARGETARCH}"
 else
@@ -190,7 +190,7 @@ else
 
   DISCARD_SUBMODULES=MaxRegnerPkg
   SELFPKG_DIR="MaxRegnerPkg"
-  SELFPKG=OpenDuetPkg
+  SELFPKG=MaxRegnerDuetPkg
   NO_ARCHIVES=1
 
   export DISCARD_SUBMODULES
