@@ -198,7 +198,7 @@ OcBootstrap (
   UINTN                     StoragePathSize;
 
   mMaxRegnerVaultKey = OcGetVaultKey ();
-  mStorageHandle    = DeviceHandle;
+  mStorageHandle     = DeviceHandle;
 
   //
   // Calculate root path (never freed).
