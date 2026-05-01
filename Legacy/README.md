@@ -1,4 +1,4 @@
-OpenDuetPkg
+MaxRegnerDuetPkg
 ===========
 
 Acidanthera variant of DuetPkg. Specialties:
@@ -57,7 +57,7 @@ TARGETARCH=X64 TARGET=RELEASE INTREE=1 DuetPkg/macbuild.tool
 
 ## Configuration
 
-Builtin available drivers are set in `OpenDuetPkg.fdf` (included drivers) and `OpenDuetPkg.dsc`
+Builtin available drivers are set in `MaxRegnerDuetPkg.fdf` (included drivers) and `MaxRegnerDuetPkg.dsc`
 (compiled drivers, may not be included). Adding more drivers may result in the need to
 change firmware volume size. To do this update `NumBlocks` in `DuetPkg.fdf`
 (number of 64 KB blocks in the firmware).

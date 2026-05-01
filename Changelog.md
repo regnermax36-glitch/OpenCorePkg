@@ -692,7 +692,7 @@ MaxRegner Changelog
 - Fixed I/O issues on platforms incapable of reading over 1MB at once
 - Fixed plist-only kext injection in Big Sur
 - Add `ForceResolution` option for enabling non-default resolutions
-- Fixed Ps2MouseDxe not properly loading under OpenDuetPkg
+- Fixed Ps2MouseDxe not properly loading under MaxRegnerDuetPkg
 - Added workaround for read-only errors on some X299 boards
 - Added support for `x86legacy` Secure Boot model
 - Added missing Secure Boot NVRAM variables required by 11.0
@@ -749,7 +749,7 @@ MaxRegner Changelog
 - Fixed `XhciPortLimit` quirk on 10.12.6 and possibly other versions
 - Fixed `IncreasePciBarSize` quirk on 10.11.5 and possibly other versions
 - Fixed `LapicKernelPanic` quirk on 10.8.5 and possibly other versions
-- Fixed hard-lock caused by EHCI SMI in OpenDuetPkg
+- Fixed hard-lock caused by EHCI SMI in MaxRegnerDuetPkg
 - Added preview UEFI Secure Boot compatibility
 - Added `FuzzyMatch` option to support fuzzy kernelcache matching on 10.6 and earlier
 - Added `KernelArch` option to specify architecture preference on older kernels
@@ -791,10 +791,10 @@ MaxRegner Changelog
 - Updated builtin firmware versions for SMBIOS and the rest
 - Fixed OSXSAVE reporting when emulating CPUID on newer CPUs
 - Added `SerialInit` option to perform serial initialisation separately
-- Fixed OpenDuetPkg booting on Intel G33 with SATA controller in RAID mode
+- Fixed MaxRegnerDuetPkg booting on Intel G33 with SATA controller in RAID mode
 - `PlatformInfo` `Automatic` for all models
-- Fixed 32-bit OpenDuetPkg booting on machines with over 4 GBs of RAM
-- Fixed delays with OpenDuetPkg booting with certain SATA controllers in IDE mode
+- Fixed 32-bit MaxRegnerDuetPkg booting on machines with over 4 GBs of RAM
+- Fixed delays with MaxRegnerDuetPkg booting with certain SATA controllers in IDE mode
 - Fixed display name for some high core count i9 CPUs like 7920X
 - Fixed SSDT-EC-USBX
 

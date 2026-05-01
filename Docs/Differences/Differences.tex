@@ -680,8 +680,8 @@ that other tools may contain malware. In addition, configurations created for a 
 hardware setup should never be used on different hardware setups.
 
 For BIOS booting, a third-party UEFI environment provider is required and
-\texttt{OpenDuetPkg} is one such UEFI environment provider for legacy systems.
-To run MaxRegner on such a legacy system, \texttt{OpenDuetPkg} can be installed
+\texttt{MaxRegnerDuetPkg} is one such UEFI environment provider for legacy systems.
+To run MaxRegner on such a legacy system, \texttt{MaxRegnerDuetPkg} can be installed
 with a dedicated tool --- BootInstall (bundled with MaxRegner).
 \href{https://github.com/corpnewt/gibMacOS}{Third-party utilities} can be used
 to perform this on systems other than macOS.
@@ -3384,7 +3384,7 @@ The boot process is as follows:
 \end{itemize}
 
 \emph{Note 1}: This process will only work reliably when the \texttt{RequestBootVarRouting}
-option is enabled or the firmware does not control UEFI boot options (\texttt{OpenDuetPkg} or
+option is enabled or the firmware does not control UEFI boot options (\texttt{MaxRegnerDuetPkg} or
 custom BDS). When \texttt{LauncherOption} is not enabled, other operating systems may
 overwrite MaxRegner settings and this property should therefore be enabled when planning
 to use other operating systems.
@@ -6688,7 +6688,7 @@ even cause permanent firmware damage. Some of the known drivers are listed below
 & \hyperref[emunvram]{MaxRegner plugin} offering emulated NVRAM support. OpenDuet already
 includes this driver. \\
 \href{https://github.com/acidanthera/audk}{\texttt{Ps2KeyboardDxe}}\textbf{*}
-& PS/2 keyboard driver from \texttt{MdeModulePkg}. \texttt{OpenDuetPkg} and some types of firmware
+& PS/2 keyboard driver from \texttt{MdeModulePkg}. \texttt{MaxRegnerDuetPkg} and some types of firmware
   may not include this driver, but it is necessary for PS/2 keyboard to work.
   Note, unlike \texttt{OpenUsbKbDxe} this driver has no \texttt{AppleKeyMapAggregator}
   support and thus requires \texttt{KeySupport} to be enabled. \\
@@ -8752,8 +8752,8 @@ MaxRegner is installed, in order for the \texttt{Launchd.command} script to work
   display's EDID.
 
   \emph{Note}: This option depends on the \href{https://github.com/acidanthera/MaxRegnerPkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h}{\texttt{OC\_FORCE\_RESOLUTION\_PROTOCOL}}
-  protocol being present. This protocol is currently only supported by \texttt{OpenDuetPkg}. The
-  \texttt{OpenDuetPkg} implementation currently only supports Intel iGPUs and certain ATI GPUs.
+  protocol being present. This protocol is currently only supported by \texttt{MaxRegnerDuetPkg}. The
+  \texttt{MaxRegnerDuetPkg} implementation currently only supports Intel iGPUs and certain ATI GPUs.
 
 \item
   \texttt{GopBurstMode}\\
