@@ -44,7 +44,7 @@ MaxRegner Changelog
 
 #### v1.0.3
 - Fixed support for `AMD_CPU_EXT_FAMILY_1AH`, thx @Shaneee
-- Fixed EHCI handoff logic in OpenDuet, causing older machines to hang at start
+- Fixed EHCI handoff logic in MaxRegnerDuet, causing older machines to hang at start
 - Added Arrow Lake CPU detection
 - Fixed Raptor Lake CPU detection
 - Supported booting with TuneD in Fedora 41 in OpenLinuxBoot
@@ -76,13 +76,13 @@ MaxRegner Changelog
 - Added Apple Silicon support in all provided utilities
 - Utilities now require macOS 10.9+ (MaxRegner itself still supports macOS 10.4+)
 - Added `AllowRelocationBlock` support for 32-bit version
-- Enabled additional serial logging in non-RELEASE builds of OpenDuet
-- Added missing DxeCore ImageContext HOB in OpenDuet
-- Fixed assert caused by dependency ordering in OpenDuet
-- Prevented assert in normal situation when freeing memory above 4GB in OpenDuet
-- Prevented debug assert reporting that optional Hii protocols are not present in OpenDuet
-- Fixed problem loading non-firmware runtime drivers (e.g. OpenRuntime.efi) in OpenDuet
-- Resolved issue using NOOPT debugging in OpenDuet
+- Enabled additional serial logging in non-RELEASE builds of MaxRegnerDuet
+- Added missing DxeCore ImageContext HOB in MaxRegnerDuet
+- Fixed assert caused by dependency ordering in MaxRegnerDuet
+- Prevented assert in normal situation when freeing memory above 4GB in MaxRegnerDuet
+- Prevented debug assert reporting that optional Hii protocols are not present in MaxRegnerDuet
+- Fixed problem loading non-firmware runtime drivers (e.g. OpenRuntime.efi) in MaxRegnerDuet
+- Resolved issue using NOOPT debugging in MaxRegnerDuet
 - Fixed alphabetical ordering in Configuration.pdf, thx @leon9078
 
 #### v0.9.9
@@ -93,7 +93,7 @@ MaxRegner Changelog
 - Improved macrecovery download logic for slow connections to get chunklist first, thx @scriptod911
 
 #### v0.9.8
-- Updated OpenDuet to allow loading unsigned, unaligned legacy Apple images such as HfsPlusLegacy.efi
+- Updated MaxRegnerDuet to allow loading unsigned, unaligned legacy Apple images such as HfsPlusLegacy.efi
 - Fixed CPU frequency calculation on AMD 10h family
 - Swapped the position of Shutdown and Restart buttons to better match recent macOS
 - Added `OC_ATTR_USE_REVERSED_UI` to allow access to previous default Shutdown and Restart button arrangement
@@ -107,14 +107,14 @@ MaxRegner Changelog
 - Added `FirmwareSettingsEntry.efi` driver which adds menu entry to reboot into UEFI firmware settings
 - Enabled use of picker shortcut keys which are read out in OpenCanopy when using `PickerAudioAssist`
 - Modified builtin picker so as not to respond to keys queued while audio assist menu is being read out
-- Fixed Linux EFI stub loading error when using OpenDuet since 0.8.8
-- Fixed APFS JumpStart with OpenDuet and `SecureBootModel` `Disabled`
+- Fixed Linux EFI stub loading error when using MaxRegnerDuet since 0.8.8
+- Fixed APFS JumpStart with MaxRegnerDuet and `SecureBootModel` `Disabled`
 - Added TSC frequency calculation for xen hypervisor, thx @netanelc305
 - Supported additional early Nvidia UEFI VBIOS in `EnableGop` `vBiosInsert.sh`
 
 #### v0.9.7
 - Updated recovery_urls.txt
-- Changed OpenDuet to enforce `W^X` settings rather than fixing them in loaded images
+- Changed MaxRegnerDuet to enforce `W^X` settings rather than fixing them in loaded images
 - Updated `FixupAppleEfiImages` quirk to fix `W^X` errors in all non-Secure Boot Apple signed binaries
 - Updated builtin firmware versions for SMBIOS and the rest
 - Updated `AppleEfiSignTool` to work with new PE COFF loader
@@ -145,9 +145,9 @@ MaxRegner Changelog
 - Allowed `.contentVisibility` in same boot FS root locations as `.VolumeIcon.icns`, in order to survive macOS updates
 - Fixed incorrect core count on Silvermont Atom/Celeron processors
 - Fixed PM timer detection on Silvermont Atom/Celeron processors for TSC calculations
-- Fixed PM timer detection on non-Intel chipsets when booted through OpenDuet
+- Fixed PM timer detection on non-Intel chipsets when booted through MaxRegnerDuet
 - Fixed `FadtEnableReset` on NVIDIA nForce chipset platforms
-- Added BlockIoDxe alternative OpenDuet variant
+- Added BlockIoDxe alternative MaxRegnerDuet variant
 - Added support for ATI cards when using `ForceResolution` option
 
 #### v0.9.3
@@ -232,7 +232,7 @@ MaxRegner Changelog
 - Added Linux support to QemuBuild.command used for Duet debugging
 - Built in new secure PE/COFF loader
 - Added prebuilt mtoc universal binary with Apple Silicon support
-- Corrected OpenDuet build on Apple Silicon
+- Corrected MaxRegnerDuet build on Apple Silicon
 - Added SD card device path support for boot device selection
 
 #### v0.8.7
@@ -292,7 +292,7 @@ MaxRegner Changelog
 - Added `--show-csr` option for `Toggle SIP` boot menu entry
 - Added macOS 10.4 and 10.5 support to `AllowRelocationBlock` Booter quirk
 - Added CPU cache info injection for macOS 10.4 to `ProvideCurrentCpuInfo` quirk
-- Added emulated NVRAM driver for use separately from OpenDuet
+- Added emulated NVRAM driver for use separately from MaxRegnerDuet
 - Added support for NVRAM reset and set default boot entry when using emulated NVRAM
 - Upgraded emulated NVRAM logout script to allow unsupervised installation of recent macOS OTA updates
 - Added `Driver` -> `LoadEarly` for drivers which need to be loaded before NVRAM init
@@ -554,7 +554,7 @@ MaxRegner Changelog
 - Fixed OpenCanopy intro animation not scaling with UIScale
 - Add OpenCanopy boot entry label scrolling (fixes missing long labels)
 - Added tabbable Shutdown and Restart buttons to builtin picker
-- Fixed in-firmware shutdown for some systems running OpenDuet
+- Fixed in-firmware shutdown for some systems running MaxRegnerDuet
 - Added Zero as alias hotkey for Escape, to force show picker if hidden
 - Added =/+ key as alias for CTRL to set default OS
 - Added additional support for configuring correct key repeat behaviour with KeySupport mode
@@ -627,7 +627,7 @@ MaxRegner Changelog
 - Updated builtin firmware versions for SMBIOS and the rest
 
 #### v0.6.5
-- Fixed installing OpenDuet on protected volumes
+- Fixed installing MaxRegnerDuet on protected volumes
 - Updated underlying EDK II package to edk2-stable202011
 - Updated builtin firmware versions for SMBIOS and the rest
 - Fixed macrecovery server protocol compatibility
@@ -648,7 +648,7 @@ MaxRegner Changelog
 
 #### v0.6.4
 - Added `BlacklistAppleUpdate` to fix macOS 11 broken update optout
-- Dropped HII services from OpenDuet improving size and performance
+- Dropped HII services from MaxRegnerDuet improving size and performance
 - Fixed patching of injected kexts in mkext
 - Added support for launching from relative paths
 - Added direct path passing for tools via `RealPath`
@@ -669,7 +669,7 @@ MaxRegner Changelog
 - Added support for `StartupMute` variable in `PlayChime`
 - Added support for per-volume icons for APFS on Preboot
 - Removed HII dependency from OpenUsbKbDxe driver
-- Fixed undefined behavior in OpenDuet causing random crashes and hangs
+- Fixed undefined behavior in MaxRegnerDuet causing random crashes and hangs
 
 #### v0.6.3
 - Added support for xml comments in plist files
